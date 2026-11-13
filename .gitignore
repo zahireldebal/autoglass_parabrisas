@@ -1,0 +1,24 @@
+# Dependencias y builds
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Entorno
+.env*
+
+# Logs y temporales
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.tmp
+.cache/
+test-results/
+playwright-report/
+.lighthouse/
+
+# Material original del cliente (no se sube)
+modelocarro/
+Fotos/

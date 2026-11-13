@@ -1,0 +1,101 @@
+{
+  "hero-colocacion": {
+    "width": 503,
+    "height": 860,
+    "sizes": [
+      480,
+      503
+    ]
+  },
+  "stock-parabrisas": {
+    "width": 1264,
+    "height": 738,
+    "sizes": [
+      480,
+      960,
+      1264
+    ]
+  },
+  "cambio-parabrisas": {
+    "width": 570,
+    "height": 314,
+    "sizes": [
+      480,
+      570
+    ]
+  },
+  "luneta-nivus": {
+    "width": 940,
+    "height": 850,
+    "sizes": [
+      480,
+      940
+    ]
+  },
+  "lamina-seguridad": {
+    "width": 510,
+    "height": 690,
+    "sizes": [
+      480,
+      510
+    ]
+  },
+  "taller-importacion": {
+    "width": 1195,
+    "height": 740,
+    "sizes": [
+      480,
+      960,
+      1195
+    ]
+  },
+  "fachada-frente": {
+    "width": 1150,
+    "height": 734,
+    "sizes": [
+      480,
+      960,
+      1150
+    ]
+  },
+  "filtracion-burlete": {
+    "width": 722,
+    "height": 356,
+    "sizes": [
+      480,
+      722
+    ]
+  },
+  "camaro-taller": {
+    "width": 722,
+    "height": 448,
+    "sizes": [
+      480,
+      722
+    ]
+  },
+  "saveiro-fachada": {
+    "width": 640,
+    "height": 870,
+    "sizes": [
+      480,
+      640
+    ]
+  },
+  "fachada-acceso": {
+    "width": 716,
+    "height": 850,
+    "sizes": [
+      480,
+      716
+    ]
+  },
+  "carteles-taller": {
+    "width": 708,
+    "height": 850,
+    "sizes": [
+      480,
+      708
+    ]
+  }
+}

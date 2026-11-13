@@ -1,0 +1,49 @@
+{
+  "name": "autoglass-parabrisas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "next lint",
+    "test": "vitest run",
+    "images": "node scripts/process-images.mjs",
+    "model": "node scripts/optimize-model.mjs",
+    "render:fallback": "node scripts/render-fallback.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "framer-motion": "^11.18.2",
+    "next": "^15.5.29",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.92.0",
+    "three": "^0.170.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.170.0",
+    "meshoptimizer": "^1.3.0",
+    "playwright": "^1.65.1",
+    "postcss": "^8.5.33",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "sharp@0.35.5": true,
+    "sharp@0.33.5": true
+  }
+}
