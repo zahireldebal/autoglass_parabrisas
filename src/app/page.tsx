@@ -1,3 +1,13 @@
+import { Hero } from '@/components/sections/Hero';
+import { TrustBar } from '@/components/sections/TrustBar';
+import { Services } from '@/components/sections/Services';
+
 export default function Home() {
-  return <div id="inicio" className="min-h-screen pt-24 container-x">Autoglass</div>;
+  return (
+    <>
+      <Hero />
+      <TrustBar />
+      <Services />
+    </>
+  );
 }

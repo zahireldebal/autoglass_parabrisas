@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 type Props = {
@@ -11,20 +11,19 @@ type Props = {
   y?: number;
 };
 
-/** Entrada al hacer scroll: fade + slide corto. Respeta prefers-reduced-motion. */
+/**
+ * Entrada al hacer scroll: fade + slide corto.
+ * Con prefers-reduced-motion, <MotionConfig reducedMotion="user"> anula el desplazamiento
+ * y solo queda un fundido breve.
+ */
 export function Reveal({ children, delay = 0, className, as = 'div', y = 22 }: Props) {
-  const reduce = useReducedMotion();
   const Comp = motion[as];
-  if (reduce) {
-    const Static = as;
-    return <Static className={className}>{children}</Static>;
-  }
   return (
     <Comp
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      viewport={{ once: true, margin: '0px 0px -8% 0px' }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
