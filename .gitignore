@@ -22,3 +22,6 @@ playwright-report/
 # Material original del cliente (no se sube)
 modelocarro/
 Fotos/
+
+# Scripts de prueba locales
+.dev/
