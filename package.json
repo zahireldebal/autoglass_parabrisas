@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
-    "lint": "next lint",
+    "start": "node scripts/serve-out.mjs 4173",
     "test": "vitest run",
     "images": "node scripts/process-images.mjs",
     "model": "node scripts/optimize-model.mjs",
-    "render:fallback": "node scripts/render-fallback.mjs"
+    "render:fallback": "node scripts/render-fallback.mjs",
+    "test:e2e": "node scripts/e2e-form.mjs --simulador"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

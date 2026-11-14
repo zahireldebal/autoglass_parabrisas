@@ -1,0 +1,150 @@
+# Autoglass Parabrisas: sitio web
+
+Sitio one-page de **Autoglass Parabrisas** (Maldonado, Uruguay): importación, venta y colocación de cristales automotrices, polarizado y láminas de seguridad. Toda consulta termina en **WhatsApp** mediante un formulario que arma el mensaje automáticamente. Incluye un **simulador de polarizado 3D**.
+
+- **Stack:** Next.js 15 (App Router, exportación estática), TypeScript, Tailwind CSS 4, React Three Fiber + drei (3D), React Hook Form + Zod, Framer Motion (solo en partes que se cargan bajo demanda).
+- **Sin backend:** se despliega como sitio estático en Netlify.
+
+---
+
+## Correrlo en local
+
+Requiere **Node 20 o superior**.
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
+
+Build de producción (genera la carpeta `out/`):
+
+```bash
+npm run build
+node scripts/serve-out.mjs 4173   # sirve out/ en http://localhost:4173
+```
+
+Pruebas:
+
+```bash
+npm test                          # tests de la lógica del mensaje de WhatsApp (Vitest)
+npm run build && node scripts/e2e-form.mjs --simulador   # prueba de punta a punta del formulario (Playwright)
+```
+
+> La primera vez que uses Playwright: `npx playwright install chromium`.
+
+---
+
+## Editar datos del negocio
+
+**Todo está en `src/data/business.ts`:** WhatsApp, teléfono fijo, Instagram, dirección, coordenadas, horarios, zonas de domicilio, si trabajan con seguros o a domicilio, puntaje de Google, URL del sitio y crédito del modelo 3D. El resto del sitio (textos, footer, JSON-LD, formulario y mensaje de WhatsApp) toma los datos de ahí.
+
+| Qué | Archivo |
+|---|---|
+| Datos del negocio | `src/data/business.ts` |
+| Servicios (tarjetas) | `src/data/services.ts` |
+| Opciones del formulario y del simulador (servicios, tonos, láminas, zonas) | `src/data/options.ts` |
+| Preguntas frecuentes | `src/data/faq.ts` |
+| Galería de trabajos | `src/data/gallery.ts` |
+| Reseñas | `src/components/sections/Reviews.tsx` |
+| Texto del mensaje de WhatsApp | `src/lib/whatsapp.ts` (con tests en `whatsapp.test.ts`) |
+| Validaciones del formulario | `src/lib/quoteSchema.ts` |
+
+Si `worksWithInsurance` o `homeService` se ponen en `false`, se ocultan solos el bloque de seguros y los campos correspondientes del formulario.
+
+---
+
+## Fotos
+
+Las fotos originales van en `Fotos/` (**no se suben al repositorio**). El script las recorta, les sube un poco el contraste y genera WebP en varios anchos en `public/img/`, junto con el manifiesto `src/data/images.json`, el favicon y la imagen para compartir (`public/og-image.jpg`).
+
+```bash
+npm run images
+```
+
+**Para agregar o reemplazar una foto:**
+
+1. Copiá el archivo a `Fotos/`.
+2. En `scripts/process-images.mjs`, agregá o editá la entrada `{ name, source, crop }`. Si la foto es original (no es una captura), sacá `crop`.
+3. Corré `npm run images`.
+4. Usá el `name` en `src/data/services.ts` o `src/data/gallery.ts`.
+
+No repitas una misma foto en dos secciones.
+
+---
+
+## Simulador 3D
+
+- Código: `src/components/simulator/`.
+  - `SimulatorSection.tsx`: interfaz, carga diferida y detección de dispositivo.
+  - `CarScene.tsx`: escena 3D.
+  - `Fallback2D.tsx`: versión liviana.
+- Modelo optimizado: `public/models/auto.glb` (1,7 MB). El original (`modelocarro/`, 43 MB) no se sube.
+- **Rendimiento:**
+  - Se descarga solo cuando la sección se acerca a la pantalla, con barra de progreso real.
+  - Renderiza bajo demanda (`frameloop="demand"`) y se pausa fuera de pantalla.
+  - En celular, el auto no captura el scroll hasta tocar "Tocá para girar el auto".
+- **Versión liviana:** si no hay WebGL, si el render es por software o si el equipo tiene poca memoria o CPU (o ahorro de datos), se muestra con imágenes del auto en 6 ángulos y el polarizado como una capa enmascarada sobre los vidrios. Se puede forzar con `?sim=2d` y forzar el 3D con `?sim=3d`.
+
+### Cambiar el modelo 3D
+
+1. Poné el modelo nuevo (glTF o GLB) en una carpeta, por ejemplo `modelocarro/`.
+2. En `scripts/optimize-model.mjs`, ajustá `SRC` y el mapa `GLASS_NAMES`, que dice qué mesh es cada vidrio: `glass_windshield` (parabrisas), `glass_rear` (luneta) y `glass_*` para los laterales. Para identificarlos, mirá los nombres y las posiciones de los meshes (el frente del auto tiene que apuntar a +Z).
+3. Corré `npm run model`. Genera `public/models/auto.glb` y `src/data/model.json`.
+4. Si cambia el tamaño del auto, ajustá en `CarScene.tsx` las constantes de cámara (`EXT_TARGET`, `EXT_DISTANCE`, `DRIVER_EYE` y `DRIVER_LOOK`, que es la posición del conductor) y los puntos de la rajadura en `WindshieldFx`.
+5. Regenerá las imágenes de la versión liviana:
+   ```bash
+   npm run build && npm run render:fallback && npm run build
+   ```
+6. Actualizá el crédito y la licencia en `business.modelCredit`.
+
+---
+
+## Desplegar en Netlify
+
+El repo incluye `netlify.toml` (build `npm run build`, publica `out/`, Node 22, cabeceras de caché). Cada push a `main` se publica automáticamente.
+
+1. En Netlify: **Add new site → Import an existing project → GitHub** y elegí `zahireldebal/autoglass_parabrisas`.
+2. Netlify lee la configuración de `netlify.toml`, así que no hace falta tocar nada más.
+3. **Deploy.** La URL queda como `https://<nombre>.netlify.app`. Si el nombre no es `autoglass-parabrisas`, cambiá el valor por defecto de `SITE_URL` en `src/data/business.ts`, o definí la variable del paso siguiente.
+
+### Dominio final (autoglassparabrisas.com)
+
+Cuando el cliente apruebe:
+
+1. En Netlify: **Site configuration → Environment variables**, agregá `NEXT_PUBLIC_SITE_URL = https://autoglassparabrisas.com` y volvé a desplegar. También se puede cambiar el valor por defecto de `SITE_URL` en `src/data/business.ts`. Esto actualiza el canonical, `sitemap.xml`, `robots.txt`, Open Graph y el JSON-LD.
+2. **Domain management → Add a domain:** `autoglassparabrisas.com`. Seguí las instrucciones de DNS de Netlify (registros A/ALIAS al balanceador de Netlify, o cambiar los nameservers a Netlify DNS) y agregá también `www`.
+3. Esperá a que se emita el certificado HTTPS (Let's Encrypt, automático).
+4. Enviá `https://autoglassparabrisas.com/sitemap.xml` en Google Search Console.
+
+---
+
+## Rendimiento (Lighthouse)
+
+Medido en local sobre el build de producción (`out/`, servido con gzip), con Lighthouse 12. La página incluye el simulador, que se carga en forma diferida.
+
+| Perfil | Performance | Accesibilidad | Buenas prácticas | SEO |
+|---|---|---|---|---|
+| Mobile (Moto G simulado, 4G lenta, CPU ×4) | **75 a 92** según la corrida (mejores: 91 y 92) | 100 | 100 | 100 |
+| Desktop | **95 a 99** | 100 | 100 | 100 |
+
+- **Métricas mobile:** FCP 1,5 s · LCP 3,2 a 3,6 s · CLS 0 a 0,003 · TBT 100 a 660 ms.
+- **Por qué varía:** el TBT cambia mucho de una corrida a otra en la máquina de desarrollo, que tenía otros procesos abiertos.
+- **JS inicial:** 118 KB. El 3D, el formulario, el modal y el lightbox se descargan recién cuando hacen falta.
+
+Para volver a medir:
+
+```bash
+npm run build && node scripts/serve-out.mjs 4300
+npx lighthouse http://localhost:4300/ --view
+```
+
+Medilo también con [PageSpeed Insights](https://pagespeed.web.dev/) sobre la URL publicada en Netlify: es la medición que vale para un celular real.
+
+---
+
+## Créditos
+
+- © 2026 Autoglass Parabrisas · Diseño y desarrollo: MundoWeb · Todos los derechos reservados.
+- Modelo 3D: ["Generic Sedan Car"](https://sketchfab.com/3d-models/generic-sedan-car-58c33766470d46e7b2aed542650494e5) por [Márcio Meireles](https://sketchfab.com/marciomeireles), licencia [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/). El modelo fue optimizado (se quitaron partes no visibles y se comprimieron la geometría y las texturas) y el color de la carrocería se modifica en el simulador.
+
+Pendientes de contenido: ver [`PENDIENTES.md`](PENDIENTES.md).
