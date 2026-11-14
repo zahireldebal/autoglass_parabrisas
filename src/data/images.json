@@ -97,5 +97,14 @@
       480,
       708
     ]
+  },
+  "polarizado-render": {
+    "width": 1080,
+    "height": 675,
+    "sizes": [
+      480,
+      960,
+      1080
+    ]
   }
 }
