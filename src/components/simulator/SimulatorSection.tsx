@@ -372,21 +372,32 @@ export function SimulatorSection() {
             )}
 
             <div className="mt-auto" data-hide-fab>
-              <button
-                type="button"
-                className="btn btn-primary w-full text-xl"
-                aria-haspopup="dialog"
-                onClick={() =>
-                  openQuote({
-                    service: 'Polarizado',
-                    tint: state.tint === 'none' ? 'asesoramiento' : state.tint,
-                    glassScope: 'todos',
-                    source: 'simulador',
-                  })
-                }
-              >
-                <IconWhatsApp className="h-6 w-6" /> Quiero este polarizado
-              </button>
+              {state.view === 'windshield' ? (
+                <button
+                  type="button"
+                  className="btn btn-primary w-full text-xl"
+                  aria-haspopup="dialog"
+                  onClick={() => openQuote({ service: 'Cambio de parabrisas', source: 'simulador' })}
+                >
+                  <IconWhatsApp className="h-6 w-6" /> Quiero cambiar mi parabrisas
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-primary w-full text-xl"
+                  aria-haspopup="dialog"
+                  onClick={() =>
+                    openQuote({
+                      service: 'Polarizado',
+                      tint: state.tint === 'none' ? 'asesoramiento' : state.tint,
+                      glassScope: 'todos',
+                      source: 'simulador',
+                    })
+                  }
+                >
+                  <IconWhatsApp className="h-6 w-6" /> Quiero este polarizado
+                </button>
+              )}
             </div>
           </Reveal>
         </div>
