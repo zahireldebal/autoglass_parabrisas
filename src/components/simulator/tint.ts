@@ -14,7 +14,7 @@ export type SimState = {
 export const initialSimState: SimState = {
   tint: '35',
   film: 'window-films',
-  includeWindshield: false,
+  includeWindshield: true, // el tono se aplica a todos los vidrios, incluido el parabrisas
   view: 'exterior',
   windshield: 'antes',
 };

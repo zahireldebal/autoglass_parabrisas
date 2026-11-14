@@ -380,7 +380,7 @@ export function SimulatorSection() {
                   openQuote({
                     service: 'Polarizado',
                     tint: state.tint === 'none' ? 'asesoramiento' : state.tint,
-                    glassScope: 'laterales-luneta',
+                    glassScope: 'todos',
                     source: 'simulador',
                   })
                 }
