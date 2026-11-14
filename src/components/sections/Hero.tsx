@@ -11,7 +11,7 @@ export function Hero() {
         <Picture
           name="hero-colocacion"
           alt="Técnico de Autoglass colocando un parabrisas en el taller de Maldonado"
-          sizes="(min-width: 1024px) 46vw, 100vw"
+          sizes="(min-width: 1024px) 46vw, (min-width: 640px) 100vw, 67vw"
           priority
           className="h-full w-full object-cover object-[50%_30%]"
         />
