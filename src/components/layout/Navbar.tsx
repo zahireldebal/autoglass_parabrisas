@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { IconMenu, IconWhatsApp, IconX } from '@/components/ui/Icons';
 import { useQuote } from '@/components/quote/QuoteContext';
 
@@ -91,16 +90,8 @@ export function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            id="menu-movil"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-line bg-ink lg:hidden"
-          >
+      <div id="menu-movil" className="expand-panel border-line bg-ink data-[open=true]:border-t lg:hidden" data-open={menuOpen} inert={!menuOpen}>
+        <div>
             <ul className="container-x flex flex-col py-3">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
@@ -126,9 +117,8 @@ export function Navbar() {
                 </button>
               </li>
             </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </header>
   );
 }

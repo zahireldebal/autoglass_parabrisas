@@ -14,7 +14,7 @@ import path from 'node:path';
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'Fotos');
 const OUT = path.join(ROOT, 'public', 'img');
-const WIDTHS = [480, 960, 1440];
+const WIDTHS = [480, 720, 960, 1440];
 
 /** name: nombre de salida · crop: {left, top, width, height} en px de la captura. */
 const IMAGES = [
@@ -34,7 +34,9 @@ const IMAGES = [
 
 async function main() {
   await fs.mkdir(OUT, { recursive: true });
-  const manifest = {};
+  // Se conserva lo que agregan otros scripts (p. ej. polarizado-render de render-fallback.mjs)
+  const manifestPath = path.join(ROOT, 'src', 'data', 'images.json');
+  const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8').catch(() => '{}'));
   for (const img of IMAGES) {
     const input = path.join(SRC, img.source);
     const base = sharp(input).extract(img.crop);
@@ -93,7 +95,7 @@ async function main() {
     .toFile(path.join(ROOT, 'public', 'og-image.jpg'));
   console.log('✓ og-image.jpg');
 
-  await fs.writeFile(path.join(ROOT, 'src', 'data', 'images.json'), JSON.stringify(manifest, null, 2));
+  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
   console.log('✓ src/data/images.json');
 }
 

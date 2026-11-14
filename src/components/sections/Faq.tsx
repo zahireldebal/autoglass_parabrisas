@@ -1,7 +1,6 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { faq } from '@/data/faq';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconChevronDown } from '@/components/ui/Icons';
@@ -49,22 +48,11 @@ export function Faq() {
                       <IconChevronDown className={`h-6 w-6 shrink-0 text-brand transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     </button>
                   </h3>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        id={panelId}
-                        role="region"
-                        aria-labelledby={btnId}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-5 pb-5 text-mist sm:px-6">{f.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div id={panelId} role="region" aria-labelledby={btnId} className="expand-panel" data-open={isOpen} inert={!isOpen}>
+                    <div>
+                      <p className="px-5 pb-5 text-mist sm:px-6">{f.a}</p>
+                    </div>
+                  </div>
                 </li>
               );
             })}

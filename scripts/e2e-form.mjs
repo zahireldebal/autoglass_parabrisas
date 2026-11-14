@@ -41,9 +41,9 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   await dlg.getByRole('button', { name: 'Ver mensaje' }).click();
   check(await dlg.getByText('Contanos tu nombre').isVisible(), 'muestra error de nombre en español');
   await dlg.getByLabel('Nombre').fill('Juan Pérez');
-  await dlg.getByPlaceholder('Marca (ej. Toyota)').fill('Toyota');
-  await dlg.getByPlaceholder('Modelo (ej. Corolla)').fill('Corolla');
-  await dlg.getByPlaceholder('Año (ej. 2018)').fill('2018');
+  await dlg.getByLabel('Marca').fill('Toyota');
+  await dlg.getByLabel('Modelo').fill('Corolla');
+  await dlg.getByLabel('Año (opcional)').fill('2018');
   await dlg.locator('label.chip', { hasText: /^Sí$/ }).click();
   await dlg.getByLabel('Aseguradora (opcional)').fill('BSE');
   await dlg.locator('label.chip', { hasText: 'En el taller' }).click();
@@ -69,18 +69,22 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   const draft = await page.evaluate(() => localStorage.getItem('autoglass-cotizacion-borrador-v1'));
   check(!!draft && draft.includes('Juan Pérez'), 'borrador guardado en localStorage');
   await page.reload({ waitUntil: 'networkidle' });
+  await page.locator('#contacto').scrollIntoViewIfNeeded();
+  await page.locator('#contacto form').waitFor();
   const name = await page.locator('#contacto form').getByLabel('Nombre').inputValue();
   check(name === 'Juan Pérez', 'el borrador se recupera al recargar');
 });
 
 // 2) Formulario de contacto en 375 px: SIN seguro, A DOMICILIO con zona
 await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, async (page) => {
+  await page.locator('#contacto').scrollIntoViewIfNeeded();
   const form = page.locator('#contacto form');
+  await form.waitFor();
   await form.scrollIntoViewIfNeeded();
   await form.getByLabel('Nombre').fill('Ana Gómez');
   await form.getByLabel('Servicio').selectOption('Vidrio lateral');
-  await form.getByPlaceholder('Marca (ej. Toyota)').fill('Volkswagen');
-  await form.getByPlaceholder('Modelo (ej. Corolla)').fill('Gol');
+  await form.getByLabel('Marca').fill('Volkswagen');
+  await form.getByLabel('Modelo').fill('Gol');
   await form.locator('label.chip', { hasText: /^No$/ }).click();
   await form.locator('label.chip', { hasText: 'A domicilio' }).click();
   await form.getByRole('button', { name: 'Ver mensaje' }).click();
@@ -114,8 +118,8 @@ await scenario('Polarizado desde tarjeta', { width: 375, height: 812 }, async (p
   await dlg.locator('label.chip', { hasText: '20 %' }).click();
   await dlg.getByLabel('Tipo de lámina').selectOption('nano-ceramico');
   await dlg.locator('label.chip', { hasText: 'Laterales y luneta' }).click();
-  await dlg.getByPlaceholder('Marca (ej. Toyota)').fill('Chevrolet');
-  await dlg.getByPlaceholder('Modelo (ej. Corolla)').fill('Onix');
+  await dlg.getByLabel('Marca').fill('Chevrolet');
+  await dlg.getByLabel('Modelo').fill('Onix');
   await dlg.getByRole('button', { name: 'Ver mensaje' }).click();
   await dlg.getByText('Revisá tu mensaje').waitFor();
   const msg = decode(await dlg.getByTestId('send-whatsapp').getAttribute('href'));

@@ -11,13 +11,13 @@ import { QuoteModal } from '@/components/quote/QuoteModal';
 
 const barlow = Barlow({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-barlow',
   display: 'swap',
 });
 const barlowCondensed = Barlow_Condensed({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['700', '800'],
   variable: '--font-barlow-condensed',
   display: 'swap',
 });
@@ -65,7 +65,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-UY" className={`${barlow.variable} ${barlowCondensed.variable}`}>
+    <html lang="es-UY" className={`${barlow.variable} ${barlowCondensed.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Marca que hay JS: recién ahí se ocultan las entradas animadas */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />

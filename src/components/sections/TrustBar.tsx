@@ -16,6 +16,7 @@ export function TrustBar() {
   return (
     <section aria-label="Por qué Autoglass" className="relative -mt-[3.5vw] pt-[3.5vw]">
       <div className="container-x">
+        <h2 className="sr-only">Por qué elegir Autoglass</h2>
         <ul className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4">
           {items.map((it, i) => (
             <Reveal as="li" key={it.title} delay={i * 0.05} className="card flex gap-4 p-4 sm:p-5">

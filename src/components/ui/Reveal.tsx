@@ -1,33 +1,22 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
   delay?: number;
   className?: string;
   as?: 'div' | 'li' | 'section' | 'article';
-  y?: number;
 };
 
 /**
- * Entrada al hacer scroll: fade + slide corto.
- * Con prefers-reduced-motion, <MotionConfig reducedMotion="user"> anula el desplazamiento
- * y solo queda un fundido breve.
+ * Entrada al hacer scroll (fade + slide corto) hecha con CSS: la activa <RevealObserver/>.
+ * Sin JavaScript o con prefers-reduced-motion, el contenido se ve sin animación.
+ * Es un componente de servidor: no suma JavaScript a la página.
  */
-export function Reveal({ children, delay = 0, className, as = 'div', y = 22 }: Props) {
-  const Comp = motion[as];
+export function Reveal({ children, delay = 0, className, as: Tag = 'div' }: Props) {
   return (
-    <Comp
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -8% 0px' }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <Tag data-reveal="" className={className} style={delay ? ({ '--reveal-delay': `${delay}s` } as CSSProperties) : undefined}>
       {children}
-    </Comp>
+    </Tag>
   );
 }
 

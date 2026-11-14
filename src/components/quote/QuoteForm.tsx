@@ -235,13 +235,13 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
           </legend>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-[1fr_1fr_7rem]">
             <div>
-              <label htmlFor={id('brand')} className="sr-only">
+              <label htmlFor={id('brand')} className="mb-1 block text-sm text-mist">
                 Marca
               </label>
               <input
                 id={id('brand')}
                 className="field"
-                placeholder="Marca (ej. Toyota)"
+                placeholder="Ej. Toyota"
                 aria-invalid={!!errors.brand}
                 aria-describedby={errors.brand ? id('brand-err') : undefined}
                 {...register('brand')}
@@ -253,13 +253,13 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
               )}
             </div>
             <div>
-              <label htmlFor={id('model')} className="sr-only">
+              <label htmlFor={id('model')} className="mb-1 block text-sm text-mist">
                 Modelo
               </label>
               <input
                 id={id('model')}
                 className="field"
-                placeholder="Modelo (ej. Corolla)"
+                placeholder="Ej. Corolla"
                 aria-invalid={!!errors.model}
                 aria-describedby={errors.model ? id('model-err') : undefined}
                 {...register('model')}
@@ -271,15 +271,15 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
               )}
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <label htmlFor={id('year')} className="sr-only">
-                Año
+              <label htmlFor={id('year')} className="mb-1 block text-sm text-mist">
+                Año (opcional)
               </label>
               <input
                 id={id('year')}
                 className="field"
                 inputMode="numeric"
                 maxLength={4}
-                placeholder="Año (ej. 2018)"
+                placeholder="Ej. 2018"
                 aria-invalid={!!errors.year}
                 aria-describedby={errors.year ? id('year-err') : undefined}
                 {...register('year')}

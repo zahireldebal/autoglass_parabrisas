@@ -1,13 +1,9 @@
-'use client';
-
 import { business } from '@/data/business';
 import { Picture } from '@/components/ui/Picture';
 import { IconArrowRight, IconStar, IconWhatsApp } from '@/components/ui/Icons';
-import { useQuote } from '@/components/quote/QuoteContext';
+import { QuoteButton } from '@/components/quote/QuoteContext';
 
 export function Hero() {
-  const { openQuote } = useQuote();
-
   return (
     <section id="inicio" aria-labelledby="hero-title" className="cut-bottom relative overflow-hidden bg-ink">
       {/* Fondo: foto real de un trabajo (en mobile ocupa todo; en desktop va a la derecha) */}
@@ -30,7 +26,7 @@ export function Hero() {
           <p className="hero-in eyebrow" style={{ animationDelay: '0.05s' }}>
             Importador directo · {business.city}
           </p>
-          <h1 id="hero-title" className="hero-in h-display mt-4 text-[3.1rem] sm:text-7xl lg:text-[5.4rem]">
+          <h1 id="hero-title" className="h-display mt-4 text-[3.1rem] sm:text-7xl lg:text-[5.4rem]">
             Parabrisas, cristales y <span className="text-brand">polarizado</span> para tu auto
           </h1>
           <p className="hero-in mt-5 max-w-xl text-lg text-snow/90 sm:text-xl" style={{ animationDelay: '0.2s' }}>
@@ -40,9 +36,9 @@ export function Hero() {
           </p>
 
           <div className="hero-in mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: '0.28s' }}>
-            <button type="button" className="btn btn-primary text-xl" onClick={() => openQuote()} aria-haspopup="dialog">
+            <QuoteButton className="btn btn-primary text-xl">
               <IconWhatsApp className="h-6 w-6" /> Cotizá por WhatsApp
-            </button>
+            </QuoteButton>
             <a href="#simulador" className="btn btn-outline">
               Probá el simulador <IconArrowRight className="h-5 w-5" />
             </a>

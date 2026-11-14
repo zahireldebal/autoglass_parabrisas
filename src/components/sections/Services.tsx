@@ -1,5 +1,3 @@
-'use client';
-
 import { services } from '@/data/services';
 import { FILM_TYPES } from '@/data/options';
 import { Picture } from '@/components/ui/Picture';
@@ -30,7 +28,7 @@ export function Services() {
                   <Picture
                     name={s.image}
                     alt={s.imageAlt}
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, calc(100vw - 2rem)"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 to-transparent" />

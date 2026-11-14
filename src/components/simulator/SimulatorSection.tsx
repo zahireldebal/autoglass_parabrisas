@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotionPref } from '@/components/ui/useMediaQuery';
 import model from '@/data/model.json';
 import { business } from '@/data/business';
 import { FILM_TYPES, TINT_LEVELS } from '@/data/options';
@@ -72,7 +72,7 @@ function useCaptureConfig(): CaptureConfig | null {
 
 export function SimulatorSection() {
   const { openQuote } = useQuote();
-  const reduced = !!useReducedMotion();
+  const reduced = useReducedMotionPref();
   const [state, setState] = useState<SimState>(initialSimState);
   const [mode, setMode] = useState<Mode>('idle');
   const [progress, setProgress] = useState(0);
