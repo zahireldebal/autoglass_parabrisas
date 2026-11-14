@@ -24,8 +24,6 @@ export const quoteSchema = z
       .refine((v) => !v || (/^\d{4}$/.test(v) && Number(v) >= 1950 && Number(v) <= currentYear + 1), {
         message: `El año tiene que ser de 4 cifras, entre 1950 y ${currentYear + 1}.`,
       }),
-    insurance: z.enum(['si', 'no', '']).optional(),
-    insurer: z.string().trim().max(40, 'Muy largo.').optional(),
     preferredDay: z.string().optional(),
     timeSlot: z.enum(['mañana', 'tarde', '']).optional(),
     location: z.enum(['taller', 'domicilio', '']).optional(),
@@ -56,8 +54,6 @@ export const emptyQuote: QuoteFormValues = {
   brand: '',
   model: '',
   year: '',
-  insurance: '',
-  insurer: '',
   preferredDay: '',
   timeSlot: '',
   location: '',

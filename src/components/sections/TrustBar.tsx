@@ -1,12 +1,11 @@
 import { business } from '@/data/business';
 import { Reveal } from '@/components/ui/Reveal';
-import { IconBoxes, IconCard, IconGift, IconHome, IconShield, IconShip, IconTruck } from '@/components/ui/Icons';
+import { IconBoxes, IconCard, IconGift, IconHome, IconShip, IconTruck } from '@/components/ui/Icons';
 
 const items = [
   { icon: IconShip, title: 'Importador directo', text: 'Sin intermediarios: mejor precio y disponibilidad.' },
   { icon: IconGift, title: 'Colocación GRATIS', text: 'Con la compra del cristal.' },
   { icon: IconHome, title: 'A domicilio sin costo', text: business.homeServiceZones.join(' · ') },
-  { icon: IconShield, title: 'Gestión por seguro', text: 'Puede salirte gratis según tu cobertura.' },
   { icon: IconCard, title: 'Hasta 6 pagos', text: 'Con todas las tarjetas.' },
   { icon: IconTruck, title: 'Autos, camionetas y camiones', text: 'Cristales para todo tipo de vehículo.' },
   { icon: IconBoxes, title: 'Stock para todas las marcas', text: 'Y si no está, lo conseguimos.' },
@@ -29,7 +28,7 @@ export function TrustBar() {
               </div>
             </Reveal>
           ))}
-          <Reveal as="li" delay={0.35} className="flex items-center rounded-2xl border border-dashed border-brand/50 p-4 sm:p-5">
+          <Reveal as="li" delay={0.35} className="flex items-center rounded-2xl border border-dashed min-[420px]:col-span-2 border-brand/50 p-4 sm:p-5">
             <p className="font-display text-xl font-bold uppercase leading-tight tracking-wide">
               Llegás, lo cambiamos <span className="text-brand">y seguís camino.</span>
             </p>

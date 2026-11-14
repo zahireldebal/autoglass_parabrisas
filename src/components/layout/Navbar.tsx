@@ -8,7 +8,6 @@ export const NAV_LINKS = [
   { href: '#servicios', label: 'Servicios' },
   { href: '#simulador', label: 'Simulador' },
   { href: '#trabajos', label: 'Trabajos' },
-  { href: '#seguros', label: 'Seguros' },
   { href: '#preguntas', label: 'Preguntas' },
   { href: '#contacto', label: 'Contacto' },
 ];

@@ -107,7 +107,6 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
   }, [watch]);
 
   const service = watch('service');
-  const insurance = watch('insurance');
   const location = watch('location');
   const tint = watch('tint');
   const glassScope = watch('glassScope');
@@ -292,27 +291,6 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
             </div>
           </div>
         </fieldset>
-
-        {business.worksWithInsurance && (
-          <div className="grid gap-3">
-            <ChipGroup
-              label="¿Es por seguro?"
-              name="insurance"
-              options={[
-                { value: 'si', label: 'Sí' },
-                { value: 'no', label: 'No' },
-              ]}
-              value={insurance}
-              register={register('insurance')}
-              uid={id('ins')}
-            />
-            {insurance === 'si' && (
-              <Field label="Aseguradora (opcional)" id={id('insurer')} error={errors.insurer?.message}>
-                <input id={id('insurer')} className="field" placeholder="Ej. BSE, Sura, Mapfre…" {...register('insurer')} />
-              </Field>
-            )}
-          </div>
-        )}
 
         {business.homeService && (
           <div className="grid gap-3">

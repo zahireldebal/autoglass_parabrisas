@@ -32,8 +32,8 @@ async function scenario(name, viewport, fn) {
   await ctx.close();
 }
 
-// 1) Modal desde el botón de servicio: cambio de parabrisas, CON seguro, en taller
-await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 900 }, async (page) => {
+// 1) Modal desde el botón de servicio: cambio de parabrisas, en taller
+await scenario('Servicio → modal, taller', { width: 1440, height: 900 }, async (page) => {
   await page.getByRole('button', { name: 'Consultar por Cambio de parabrisas' }).click();
   const dlg = page.getByRole('dialog');
   await dlg.waitFor();
@@ -44,8 +44,6 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   await dlg.getByLabel('Marca').fill('Toyota');
   await dlg.getByLabel('Modelo').fill('Corolla');
   await dlg.getByLabel('Año (opcional)').fill('2018');
-  await dlg.locator('label.chip', { hasText: /^Sí$/ }).click();
-  await dlg.getByLabel('Aseguradora (opcional)').fill('BSE');
   await dlg.locator('label.chip', { hasText: 'En el taller' }).click();
   await dlg.locator('label.chip', { hasText: 'Tarde' }).click();
   await dlg.getByLabel('Comentario (opcional)').fill('Tiene una rajadura del lado del conductor.');
@@ -57,7 +55,7 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   check(href.startsWith('https://wa.me/59896126160?text='), 'link wa.me al número del negocio');
   check(msg.startsWith('Hola, soy *Juan Pérez*, quiero consultar por *Cambio de parabrisas*'), 'saludo correcto');
   check(msg.includes('Vehículo: *Toyota Corolla 2018*'), 'vehículo');
-  check(msg.includes('Es por seguro: *Sí* (BSE)'), 'seguro con aseguradora');
+  check(!/seguro/i.test(msg), 'el mensaje no menciona seguros');
   check(msg.includes('Lugar: *En el taller*'), 'taller');
   check(msg.includes('Franja preferida: por la *tarde*'), 'franja');
   check(await dlg.getByText('Si tenés fotos del daño').isVisible(), 'aviso de fotos');
@@ -75,8 +73,8 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   check(name === 'Juan Pérez', 'el borrador se recupera al recargar');
 });
 
-// 2) Formulario de contacto en 375 px: SIN seguro, A DOMICILIO con zona
-await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, async (page) => {
+// 2) Formulario de contacto en 375 px: A DOMICILIO con zona
+await scenario('Contacto, domicilio', { width: 375, height: 812 }, async (page) => {
   await page.locator('#contacto').scrollIntoViewIfNeeded();
   const form = page.locator('#contacto form');
   await form.waitFor();
@@ -85,7 +83,6 @@ await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, a
   await form.getByLabel('Servicio').selectOption('Vidrio lateral');
   await form.getByLabel('Marca').fill('Volkswagen');
   await form.getByLabel('Modelo').fill('Gol');
-  await form.locator('label.chip', { hasText: /^No$/ }).click();
   await form.locator('label.chip', { hasText: 'A domicilio' }).click();
   await form.getByRole('button', { name: 'Ver mensaje' }).click();
   check(await form.getByText('Elegí la zona').isVisible(), 'pide zona si es a domicilio');
@@ -101,7 +98,7 @@ await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, a
   await sec.getByText('Revisá tu mensaje').waitFor();
   const msg = decode(await sec.getByTestId('send-whatsapp').getAttribute('href'));
   show(msg);
-  check(msg.includes('Es por seguro: *No*'), 'sin seguro');
+  check(!/seguro/i.test(msg), 'el mensaje no menciona seguros');
   check(msg.includes('Lugar: *A domicilio*, zona *San Carlos*'), 'domicilio con zona');
   check(/Día preferido: \*\S+ \d+ de \S+\*, por la \*mañana\*/u.test(msg), 'día y franja');
   check(!msg.includes('Comentario'), 'omite campos vacíos');
