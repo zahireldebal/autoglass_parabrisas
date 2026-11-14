@@ -1,62 +1,87 @@
 /**
- * Recorta las capturas originales de /Fotos (Instagram / Google Maps) para quitar
- * la interfaz y genera WebP optimizados en /public/img en varios anchos.
- * Los originales NO se modifican. Genera src/data/images.json (manifiesto).
+ * Genera las fotos del sitio en /public/img (WebP en varios anchos) + src/data/images.json.
+ *
+ * Fuente de cada foto (ver scripts/images.config.mjs):
+ *   1. Fotos/hd/<name>.png  → versión en HD (super-resolución ESRGAN, ver README) si existe.
+ *   2. Si no, el recorte de la captura original en Fotos/.
+ * Después: acabado suave (contraste/nitidez), censura de matrículas y exportación.
+ * Los originales NO se modifican.
  *
  * Uso: npm run images
- * Para reemplazar una foto por su original en alta: poné el archivo en /Fotos,
- * actualizá `source` y `crop` (o quitá `crop`) en la lista de abajo y volvé a correr.
  */
 import sharp from 'sharp';
 import fs from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { IMAGES } from './images.config.mjs';
 
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'Fotos');
+const HD = path.join(SRC, 'hd');
 const OUT = path.join(ROOT, 'public', 'img');
-const WIDTHS = [480, 720, 960, 1440];
+const WIDTHS = [480, 720, 960, 1440, 1920];
+const MAX = 1920;
 
-/** name: nombre de salida · crop: {left, top, width, height} en px de la captura. */
-const IMAGES = [
-  { name: 'hero-colocacion', source: 'instagram4.png', crop: { left: 476, top: 24, width: 503, height: 860 } },
-  { name: 'stock-parabrisas', source: 'sitio2.png', crop: { left: 0, top: 116, width: 1264, height: 738 } },
-  { name: 'cambio-parabrisas', source: 'instagram3.png', crop: { left: 12, top: 324, width: 570, height: 314 } },
-  { name: 'luneta-nivus', source: 'sitio4.png', crop: { left: 12, top: 0, width: 940, height: 850 } },
-  { name: 'lamina-seguridad', source: 'instagram11.png', crop: { left: 698, top: 80, width: 510, height: 690 } },
-  { name: 'taller-importacion', source: 'sitio1.png', crop: { left: 72, top: 106, width: 1195, height: 740 } },
-  { name: 'fachada-frente', source: 'maps3.png', crop: { left: 70, top: 116, width: 1150, height: 734 } },
-  { name: 'filtracion-burlete', source: 'instagram6.png', crop: { left: 366, top: 318, width: 722, height: 356 } },
-  { name: 'camaro-taller', source: 'instagram5.png', crop: { left: 366, top: 332, width: 722, height: 448 } },
-  { name: 'saveiro-fachada', source: 'instagram8.png', crop: { left: 390, top: 17, width: 640, height: 870 } },
-  { name: 'fachada-acceso', source: 'maps2.png', crop: { left: 0, top: 0, width: 716, height: 850 } },
-  { name: 'carteles-taller', source: 'sitio3.png', crop: { left: 14, top: 0, width: 708, height: 850 } },
-];
+/** Difumina las matrículas (cajas en fracciones 0–1 de la imagen). */
+async function censorPlates(buf, plates = []) {
+  if (!plates.length) return buf;
+  const { width, height } = await sharp(buf).metadata();
+  const layers = [];
+  for (const p of plates) {
+    const left = Math.max(0, Math.round(p.x * width));
+    const top = Math.max(0, Math.round(p.y * height));
+    const w = Math.min(width - left, Math.round(p.w * width));
+    const h = Math.min(height - top, Math.round(p.h * height));
+    if (w < 2 || h < 2) continue;
+    // pixelado + desenfoque: ilegible pero discreto
+    const small = await sharp(buf)
+      .extract({ left, top, width: w, height: h })
+      .resize(Math.max(2, Math.round(w / 14)), Math.max(1, Math.round(h / 14)))
+      .toBuffer();
+    const patch = await sharp(small).resize(w, h, { kernel: 'cubic' }).blur(Math.max(1.5, Math.min(w, h) / 6)).toBuffer();
+    layers.push({ input: patch, left, top });
+  }
+  return sharp(buf).composite(layers).toBuffer();
+}
+
+async function load(img) {
+  const hdPath = path.join(HD, `${img.name}.png`);
+  if (existsSync(hdPath)) return { pipe: sharp(hdPath), hd: true };
+  return { pipe: sharp(path.join(SRC, img.source)).extract(img.crop), hd: false };
+}
 
 async function main() {
   await fs.mkdir(OUT, { recursive: true });
-  // Se conserva lo que agregan otros scripts (p. ej. polarizado-render de render-fallback.mjs)
   const manifestPath = path.join(ROOT, 'src', 'data', 'images.json');
+  // Se conserva lo que agregan otros scripts (p. ej. polarizado-render de render-fallback.mjs)
   const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8').catch(() => '{}'));
+  const processed = {};
+
   for (const img of IMAGES) {
-    const input = path.join(SRC, img.source);
-    const base = sharp(input).extract(img.crop);
-    const buf = await base
+    const { pipe, hd } = await load(img);
+    let buf = await pipe
+      .resize({ width: MAX, height: MAX, fit: 'inside', withoutEnlargement: true, kernel: 'lanczos3' })
       .modulate({ saturation: 1.05 })
-      .linear(1.06, -6) // un poco más de contraste
-      .sharpen({ sigma: 0.6 })
+      .linear(1.05, -5) // un poco más de contraste
+      .sharpen(hd ? { sigma: 1.1, m1: 0.6, m2: 2.2 } : { sigma: 0.6 })
       .toBuffer();
+    buf = await censorPlates(buf, img.plates);
+    processed[img.name] = buf;
+
     const { width, height } = await sharp(buf).metadata();
-    const widths = WIDTHS.filter((w) => w < width);
-    widths.push(Math.min(width, 1440));
-    const uniq = [...new Set(widths)].sort((a, b) => a - b);
-    for (const w of uniq) {
+    // limpiar versiones anteriores de esta foto
+    for (const f of await fs.readdir(OUT)) if (f.startsWith(`${img.name}-`) && f.endsWith('.webp')) await fs.unlink(path.join(OUT, f));
+    const sizes = [...new Set([...WIDTHS.filter((w) => w < width), Math.min(width, MAX)])].sort((a, b) => a - b);
+    for (const w of sizes) {
       await sharp(buf)
-        .resize({ width: w })
-        .webp({ quality: 78, effort: 6 })
+        .resize({ width: w, kernel: 'lanczos3' })
+        .webp({ quality: w >= 1440 ? 74 : 78, effort: 6, smartSubsample: true })
         .toFile(path.join(OUT, `${img.name}-${w}.webp`));
     }
-    manifest[img.name] = { width, height, sizes: uniq };
-    console.log(`✓ ${img.name}  ${width}x${height}  → ${uniq.join(', ')}`);
+    manifest[img.name] = { width, height, sizes };
+    console.log(
+      `✓ ${img.name}  ${hd ? 'HD' : 'captura'}  ${width}x${height}  → ${sizes.join(', ')}${img.plates?.length ? `  (${img.plates.length} matrícula/s censurada/s)` : ''}`,
+    );
   }
 
   // Logo: recorte circular (el PNG original tiene esquinas negras)
@@ -75,9 +100,11 @@ async function main() {
   await sharp(logo).resize(96, 96, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(path.join(ROOT, 'src', 'app', 'icon.png'));
   console.log('✓ logo e íconos');
 
-  // Imagen Open Graph 1200x630 (logo + fachada)
-  const bg = await sharp(path.join(SRC, 'maps3.png'))
-    .extract({ left: 70, top: 116, width: 1150, height: 604 })
+  // Imagen Open Graph 1200x630 (fachada ya censurada + logo)
+  const fachada = processed['fachada-frente'];
+  const fm = await sharp(fachada).metadata();
+  const bg = await sharp(fachada)
+    .extract({ left: 0, top: 0, width: fm.width, height: Math.min(fm.height, Math.round(fm.width * (630 / 1200))) })
     .resize(1200, 630, { fit: 'cover' })
     .modulate({ brightness: 0.42 })
     .toBuffer();

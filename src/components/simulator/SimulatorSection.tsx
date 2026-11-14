@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useReducedMotionPref } from '@/components/ui/useMediaQuery';
 import model from '@/data/model.json';
 import { business } from '@/data/business';
-import { FILM_TYPES, TINT_LEVELS } from '@/data/options';
+import { TINT_LEVELS } from '@/data/options';
 import { useQuote } from '@/components/quote/QuoteContext';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconArrowRight, IconChevronLeft, IconChevronRight, IconEye, IconRotate, IconWhatsApp, IconX } from '@/components/ui/Icons';
@@ -181,7 +181,7 @@ export function SimulatorSection() {
               Mirá cómo te queda <span className="text-brand">antes de decidir</span>
             </>
           }
-          intro="Girá el auto, elegí el tono y la lámina, y mirá desde el asiento del conductor. También podés ver cómo queda un parabrisas cambiado."
+          intro="Girá el auto, elegí el tono de polarizado y mirá desde el asiento del conductor. También podés ver cómo queda un parabrisas cambiado."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
@@ -333,37 +333,6 @@ export function SimulatorSection() {
               </p>
             </div>
 
-            <div>
-              <h3 id="lamina-label" className="font-display text-xl font-bold uppercase tracking-wide">
-                Tipo de lámina
-              </h3>
-              <div role="radiogroup" aria-labelledby="lamina-label" className="mt-3 flex flex-wrap gap-2">
-                {FILM_TYPES.map((f) => (
-                  <button key={f.value} type="button" role="radio" aria-checked={state.film === f.value} className="chip" onClick={() => update({ film: f.value })}>
-                    {f.label}
-                  </button>
-                ))}
-              </div>
-              <p className="mt-2 text-sm text-mist">{FILM_TYPES.find((f) => f.value === state.film)?.description}</p>
-            </div>
-
-            <div>
-              <label className="flex min-h-11 cursor-pointer items-center justify-between gap-4">
-                <span className="font-semibold">Incluir parabrisas</span>
-                <input
-                  type="checkbox"
-                  role="switch"
-                  checked={state.includeWindshield}
-                  onChange={(e) => update({ includeWindshield: e.target.checked })}
-                  className="peer sr-only"
-                />
-                <span
-                  aria-hidden
-                  className="relative h-7 w-12 shrink-0 rounded-full bg-steel transition-colors peer-checked:bg-brand peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand after:absolute after:top-1 after:left-1 after:h-5 after:w-5 after:rounded-full after:bg-snow after:transition-transform peer-checked:after:translate-x-5"
-                />
-              </label>
-              <p className="mt-1 text-sm text-mist">El polarizado del parabrisas está regulado. Consultanos qué está permitido.</p>
-            </div>
 
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {state.view === 'interior' ? (
@@ -411,7 +380,6 @@ export function SimulatorSection() {
                   openQuote({
                     service: 'Polarizado',
                     tint: state.tint === 'none' ? 'asesoramiento' : state.tint,
-                    film: state.film,
                     glassScope: 'laterales-luneta',
                     source: 'simulador',
                   })

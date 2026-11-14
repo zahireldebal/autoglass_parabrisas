@@ -1,107 +1,131 @@
 {
   "hero-colocacion": {
-    "width": 503,
-    "height": 860,
+    "width": 1123,
+    "height": 1920,
     "sizes": [
       480,
-      503
+      720,
+      960,
+      1123
     ]
   },
   "stock-parabrisas": {
-    "width": 1264,
-    "height": 738,
+    "width": 1920,
+    "height": 1121,
     "sizes": [
       480,
       720,
       960,
-      1264
+      1440,
+      1920
     ]
   },
   "cambio-parabrisas": {
-    "width": 570,
-    "height": 314,
+    "width": 1920,
+    "height": 1058,
     "sizes": [
       480,
-      570
+      720,
+      960,
+      1440,
+      1920
     ]
   },
   "luneta-nivus": {
-    "width": 940,
-    "height": 850,
+    "width": 1880,
+    "height": 1700,
     "sizes": [
       480,
       720,
-      940
+      960,
+      1440,
+      1880
     ]
   },
   "lamina-seguridad": {
-    "width": 510,
-    "height": 690,
+    "width": 1419,
+    "height": 1920,
     "sizes": [
       480,
-      510
+      720,
+      960,
+      1419
     ]
   },
   "taller-importacion": {
-    "width": 1195,
-    "height": 740,
+    "width": 1920,
+    "height": 1189,
     "sizes": [
       480,
       720,
       960,
-      1195
+      1440,
+      1920
     ]
   },
   "fachada-frente": {
-    "width": 1150,
-    "height": 734,
+    "width": 1920,
+    "height": 1225,
     "sizes": [
       480,
       720,
       960,
-      1150
+      1440,
+      1920
     ]
   },
   "filtracion-burlete": {
-    "width": 722,
-    "height": 356,
+    "width": 1920,
+    "height": 947,
     "sizes": [
       480,
       720,
-      722
+      960,
+      1440,
+      1920
     ]
   },
   "camaro-taller": {
-    "width": 722,
-    "height": 448,
+    "width": 1920,
+    "height": 1191,
     "sizes": [
       480,
       720,
-      722
+      960,
+      1440,
+      1920
     ]
   },
   "saveiro-fachada": {
-    "width": 640,
-    "height": 870,
+    "width": 1412,
+    "height": 1920,
     "sizes": [
       480,
-      640
+      720,
+      960,
+      1412
     ]
   },
   "fachada-acceso": {
-    "width": 716,
-    "height": 850,
+    "width": 1617,
+    "height": 1920,
     "sizes": [
       480,
-      716
+      720,
+      960,
+      1440,
+      1617
     ]
   },
   "carteles-taller": {
-    "width": 708,
-    "height": 850,
+    "width": 1599,
+    "height": 1920,
     "sizes": [
       480,
-      708
+      720,
+      960,
+      1440,
+      1599
     ]
   },
   "polarizado-render": {

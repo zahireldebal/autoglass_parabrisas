@@ -1,0 +1,11 @@
+{
+  "name": "autoglass-upscale",
+  "private": true,
+  "description": "Super-resolución ESRGAN de las fotos (herramienta opcional)",
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.11.0",
+    "@upscalerjs/esrgan-medium": "^1.0.0",
+    "@upscalerjs/esrgan-thick": "^1.0.0",
+    "upscaler": "^1.0.0"
+  }
+}

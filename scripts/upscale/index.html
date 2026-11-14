@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="/node_modules/@tensorflow/tfjs/dist/tf.min.js"></script>
+    <script src="/node_modules/upscaler/dist/browser/umd/upscaler.min.js"></script>
+    <script src="/node_modules/@upscalerjs/esrgan-thick/dist/umd/models/esrgan-thick/src/x2/index.min.js"></script>
+    <script src="/node_modules/@upscalerjs/esrgan-thick/dist/umd/models/esrgan-thick/src/x3/index.min.js"></script>
+    <script src="/node_modules/@upscalerjs/esrgan-thick/dist/umd/models/esrgan-thick/src/x4/index.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const defs = { 2: ESRGANThick2x, 3: ESRGANThick3x, 4: ESRGANThick4x };
+      const cache = {};
+      window.upscaleImage = async (src, scale) => {
+        if (!cache[scale]) {
+          const d = defs[scale];
+          cache[scale] = new Upscaler({ model: { ...d, path: `/node_modules/@upscalerjs/esrgan-thick/models/x${scale}/model.json` } });
+          await cache[scale].getModel();
+        }
+        return cache[scale].upscale(src, { output: 'base64', patchSize: 96, padding: 6, awaitNextFrame: true });
+      };
+      window.ready = true;
+    </script>
+  </body>
+</html>

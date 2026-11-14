@@ -86,13 +86,6 @@
     text-transform: uppercase;
     color: var(--color-brand);
   }
-  .eyebrow::before {
-    content: '';
-    width: 1.75rem;
-    height: 3px;
-    background: var(--color-brand);
-    transform: skewX(-20deg);
-  }
 
   /* Botones */
   .btn {

@@ -134,13 +134,11 @@ if (process.argv.includes('--simulador')) {
   await scenario('Simulador → Quiero este polarizado', { width: 1440, height: 900 }, async (page) => {
     await page.locator('#simulador').scrollIntoViewIfNeeded();
     await page.locator('#simulador').getByRole('radio', { name: /^35 %/ }).click();
-    await page.locator('#simulador').getByRole('radio', { name: /Nano Carbon HP/ }).click();
     await page.getByRole('button', { name: 'Quiero este polarizado' }).click();
     const dlg = page.getByRole('dialog');
     await dlg.waitFor();
     check((await dlg.getByLabel('Servicio').inputValue()) === 'Polarizado', 'servicio Polarizado precargado');
     check(await dlg.locator('input[value="35"]').isChecked(), 'tono 35 % precargado');
-    check((await dlg.getByLabel('Tipo de lámina').inputValue()) === 'nano-carbon-hp', 'lámina precargada');
   });
 }
 

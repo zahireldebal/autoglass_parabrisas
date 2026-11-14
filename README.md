@@ -55,18 +55,27 @@ Si `worksWithInsurance` o `homeService` se ponen en `false`, se ocultan solos el
 
 ## Fotos
 
-Las fotos originales van en `Fotos/` (**no se suben al repositorio**). El script las recorta, les sube un poco el contraste y genera WebP en varios anchos en `public/img/`, junto con el manifiesto `src/data/images.json`, el favicon y la imagen para compartir (`public/og-image.jpg`).
+Las fotos originales van en `Fotos/` (**no se suben al repositorio**). La lista de fotos, con su recorte, el factor de mejora y las matrículas a censurar, está en `scripts/images.config.mjs`.
 
-```bash
-npm run images
-```
+1. **Mejora a HD (opcional):** las fotos actuales son capturas de Instagram y Maps. Se les aplica super-resolución con ESRGAN (UpscalerJS, en la GPU vía Playwright) y quedan en `Fotos/hd/<name>.png`. Las dependencias están aparte para no cargar el build de Netlify:
+   ```bash
+   cd scripts/upscale && npm install && cd ../..
+   node --max-old-space-size=6144 scripts/upscale/run.mjs            # todas
+   node --max-old-space-size=6144 scripts/upscale/run.mjs hero-colocacion   # una sola
+   ```
+2. **Procesar:**
+   ```bash
+   npm run images
+   ```
+   Usa la versión HD si existe y, si no, el recorte de la captura. Les da un acabado suave (contraste y nitidez), **difumina las matrículas** y genera WebP de 480 a 1920 px en `public/img/`. También genera `src/data/images.json`, el favicon y `public/og-image.jpg`.
 
 **Para agregar o reemplazar una foto:**
 
 1. Copiá el archivo a `Fotos/`.
-2. En `scripts/process-images.mjs`, agregá o editá la entrada `{ name, source, crop }`. Si la foto es original (no es una captura), sacá `crop`.
-3. Corré `npm run images`.
-4. Usá el `name` en `src/data/services.ts` o `src/data/gallery.ts`.
+2. Agregá o editá su entrada en `scripts/images.config.mjs`. Si es una foto original y no una captura, sacá `crop` y `scale`.
+3. Si se ven matrículas, agregá `plates: [{ x, y, w, h }]`, en fracciones de 0 a 1 de la imagen.
+4. Corré `npm run images`.
+5. Usá el `name` en `src/data/services.ts` o `src/data/gallery.ts`.
 
 No repitas una misma foto en dos secciones.
 
@@ -81,6 +90,7 @@ No repitas una misma foto en dos secciones.
 - Modelo optimizado: `public/models/auto.glb` (1,7 MB). El original (`modelocarro/`, 43 MB) no se sube.
 - **Rendimiento:**
   - Se descarga solo cuando la sección se acerca a la pantalla, con barra de progreso real.
+  - Hoy el simulador muestra solo el selector de tono. El tipo de lámina y la opción de incluir el parabrisas están desactivados hasta tener información real: el código sigue en `tint.ts` y `CarScene.tsx`.
   - Renderiza bajo demanda (`frameloop="demand"`) y se pausa fuera de pantalla.
   - En celular, el auto no captura el scroll hasta tocar "Tocá para girar el auto".
 - **Versión liviana:** si no hay WebGL, si el render es por software o si el equipo tiene poca memoria o CPU (o ahorro de datos), se muestra con imágenes del auto en 6 ángulos y el polarizado como una capa enmascarada sobre los vidrios. Se puede forzar con `?sim=2d` y forzar el 3D con `?sim=3d`.

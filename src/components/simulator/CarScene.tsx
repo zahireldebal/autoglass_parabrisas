@@ -132,6 +132,13 @@ function Car({ url, state, capture, onLoaded }: { url: string; state: SimState; 
 
   useEffect(() => onLoaded(mats), [mats, onLoaded]);
 
+  // Con frameloop="demand" hay que pedir un cuadro cuando cambia el tono;
+  // si no, el cambio recién se veía al mover el auto.
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    invalidate();
+  }, [state.tint, state.film, state.includeWindshield, invalidate]);
+
   // Transición suave del tono
   const targetColor = useMemo(() => new THREE.Color(), []);
   useFrame((s, dt) => {

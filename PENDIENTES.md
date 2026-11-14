@@ -14,6 +14,7 @@ Cada punto indica **qué** falta y **dónde** se cambia.
 | 1.3 | **¿Cuándo se puede manejar después del cambio?** (tiempo de curado del adhesivo). | `src/data/faq.ts` | `[CONFIRMAR CON EL CLIENTE]` |
 | 1.4 | **¿Cuánto dura el polarizado?** Garantía de cada línea de lámina. | `src/data/faq.ts` | `[CONFIRMAR CON EL CLIENTE]` |
 | 1.5 | **¿Qué tonos de polarizado están permitidos?** Normativa vigente, sobre todo en parabrisas y vidrios delanteros. No inventamos porcentajes legales. | `src/data/faq.ts` | `[CONFIRMAR CON EL CLIENTE]` + aviso en el simulador |
+| 1.6a | **Simulador: tipo de lámina e "incluir parabrisas"** quedaron ocultos hasta saber cómo se ve cada lámina y qué está permitido en el parabrisas. | `src/components/simulator/SimulatorSection.tsx` | Solo selector de tono |
 | 1.6 | **Características técnicas de las láminas** (Window Films, Nano Cerámico, Nano Carbon HP): rechazo de calor, UV, garantía, si alguna es "de seguridad". Las descripciones actuales son genéricas. | `src/data/options.ts` → `FILM_TYPES` | Descripciones cortas y genéricas |
 | 1.7 | **Zonas de domicilio sin costo:** Piriápolis, Maldonado, San Carlos y Rocha (sacado de una historia de Instagram). ¿Sigue vigente? ¿Punta del Este entra dentro de "Maldonado"? | `src/data/business.ts` → `homeServiceZones` | Esas 4 zonas |
 | 1.8 | **Seguros:** se usa "Gestionamos el cambio de tu parabrisas o cristal, gratis según tu cobertura" (de su publicación). ¿Con qué aseguradoras trabajan? Se podrían listar. | `src/components/sections/Insurance.tsx` | Texto genérico |
@@ -25,7 +26,7 @@ Cada punto indica **qué** falta y **dónde** se cambia.
 
 | # | Qué falta | Dónde | Nota |
 |---|---|---|---|
-| 2.1 | **Originales en alta resolución** de todas las fotos. Las actuales son capturas de pantalla de Instagram y Google Maps (entre 500 y 1270 px de ancho), recortadas para quitar la interfaz. | Poner en `Fotos/`, ajustar `scripts/process-images.mjs` y correr `npm run images` | La del hero (`hero-colocacion`, 503 × 860) es la más chica: en desktop se ve algo blanda |
+| 2.1 | **Originales en alta resolución** de todas las fotos. Las actuales son capturas de Instagram y Google Maps (entre 500 y 1270 px), mejoradas a HD con super-resolución (ESRGAN). La mejora ayuda, pero no reemplaza el original: la del hero es un cuadro de video y sigue algo blanda. | Poner en `Fotos/`, ajustar `scripts/images.config.mjs` y correr `npm run images` | Mejoradas a HD, con las matrículas censuradas |
 | 2.2 | **Foto real de un polarizado** terminado. Hoy la tarjeta "Polarizado" usa un render del simulador marcado como "Imagen ilustrativa". | `src/data/services.ts` (`polarizado` → `image`, quitar `illustrative`) | — |
 | 2.3 | **Más fotos de trabajos** para la galería (hoy 5). Idealmente pares **antes/después** del mismo vehículo, para sumar un slider comparativo. | `src/data/gallery.ts` | No hay pares antes/después |
 | 2.4 | **Foto de lunetas o laterales** colocados. Hoy se usa la VW Nivus de atrás. | `src/data/services.ts` | — |

@@ -25,3 +25,7 @@ Fotos/
 
 # Scripts de prueba locales
 .dev/
+
+# Herramienta de super-resolución (dependencias aparte)
+scripts/upscale/node_modules/
+scripts/upscale/in/
