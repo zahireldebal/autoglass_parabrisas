@@ -371,7 +371,7 @@ export function SimulatorSection() {
               </div>
             )}
 
-            <div className="mt-auto">
+            <div className="mt-auto" data-hide-fab>
               <button
                 type="button"
                 className="btn btn-primary w-full text-xl"

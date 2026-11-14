@@ -4,16 +4,34 @@ import { useEffect, useState } from 'react';
 import { IconWhatsApp } from '@/components/ui/Icons';
 import { useQuote } from '@/components/quote/QuoteContext';
 
-/** Botón flotante: abre el formulario rápido (no WhatsApp directo). */
+/**
+ * Botón flotante: abre el formulario rápido (no WhatsApp directo).
+ * Se esconde cuando ya hay otro botón de consulta a la vista (los elementos con `data-hide-fab`:
+ * el botón del simulador, la sección de contacto y el pie), para no taparlo ni repetirlo.
+ */
 export function FloatingWhatsApp() {
   const { openQuote, open } = useQuote();
-  const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [ctaInView, setCtaInView] = useState(false);
+  const visible = scrolled && !ctaInView;
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 300);
+    const onScroll = () => setScrolled(window.scrollY > 300);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll('[data-hide-fab]');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+    const inView = new Set<Element>();
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) (e.isIntersecting ? inView.add(e.target) : inView.delete(e.target));
+      setCtaInView(inView.size > 0);
+    });
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
   }, []);
 
   if (open) return null;

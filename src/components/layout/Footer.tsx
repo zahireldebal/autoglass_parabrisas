@@ -4,7 +4,7 @@ import { IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-line bg-carbon pt-14 pb-28 sm:pb-14">
+    <footer data-hide-fab className="relative border-t border-line bg-carbon pt-14 pb-28 sm:pb-14">
       <div className="absolute inset-x-0 top-0 h-[3px] bg-brand" aria-hidden />
       <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
