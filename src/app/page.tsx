@@ -3,7 +3,6 @@ import { TrustBar } from '@/components/sections/TrustBar';
 import { Services } from '@/components/sections/Services';
 import { SimulatorSection } from '@/components/simulator/SimulatorSection';
 import { HowWeWork } from '@/components/sections/HowWeWork';
-import { Insurance } from '@/components/sections/Insurance';
 import { Gallery } from '@/components/sections/Gallery';
 import { WhyImport } from '@/components/sections/WhyImport';
 import { Faq } from '@/components/sections/Faq';
@@ -18,7 +17,6 @@ export default function Home() {
       <Services />
       <SimulatorSection />
       <HowWeWork />
-      <Insurance />
       <Gallery />
       <WhyImport />
       <Faq />

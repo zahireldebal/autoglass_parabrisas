@@ -14,10 +14,6 @@ export const faq: { q: string; a: string; pending?: boolean }[] = [
     pending: true,
   },
   {
-    q: '¿Trabajan con seguros?',
-    a: 'Sí. Si tenés seguro, gestionamos el cambio de tu parabrisas o cristal, que puede salirte gratis según tu cobertura. Contanos con qué aseguradora estás al consultar.',
-  },
-  {
     q: '¿Van a domicilio?',
     a: 'Sí, vamos a domicilio sin costo adicional en Piriápolis, Maldonado, San Carlos y Rocha. Para otras zonas, consultanos.',
   },

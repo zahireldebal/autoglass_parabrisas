@@ -36,7 +36,7 @@ npm run build && node scripts/e2e-form.mjs --simulador   # prueba de punta a pun
 
 ## Editar datos del negocio
 
-**Todo está en `src/data/business.ts`:** WhatsApp, teléfono fijo, Instagram, dirección, coordenadas, horarios, zonas de domicilio, si trabajan con seguros o a domicilio, puntaje de Google, URL del sitio y crédito del modelo 3D. El resto del sitio (textos, footer, JSON-LD, formulario y mensaje de WhatsApp) toma los datos de ahí.
+**Todo está en `src/data/business.ts`:** WhatsApp, teléfono fijo, Instagram, dirección, coordenadas, horarios, zonas de domicilio, si van a domicilio, puntaje de Google, URL del sitio y crédito del modelo 3D. El resto del sitio (textos, footer, JSON-LD, formulario y mensaje de WhatsApp) toma los datos de ahí.
 
 | Qué | Archivo |
 |---|---|
@@ -49,7 +49,7 @@ npm run build && node scripts/e2e-form.mjs --simulador   # prueba de punta a pun
 | Texto del mensaje de WhatsApp | `src/lib/whatsapp.ts` (con tests en `whatsapp.test.ts`) |
 | Validaciones del formulario | `src/lib/quoteSchema.ts` |
 
-Si `worksWithInsurance` o `homeService` se ponen en `false`, se ocultan solos el bloque de seguros y los campos correspondientes del formulario.
+Si `homeService` se pone en `false`, se ocultan solos los campos de domicilio del formulario.
 
 ---
 
