@@ -22,10 +22,11 @@ export function Footer() {
 
         <div>
           <h2 className="h-display text-xl text-brand">Servicios</h2>
-          <ul className="mt-4 space-y-2 text-mist">
+          <ul className="mt-4 space-y-3 text-mist">
             {services.map((s) => (
               <li key={s.id}>
-                <a href="#servicios" className="nav-link hover:text-snow">
+                {/* before: amplía la zona táctil a 44 px sin cambiar cómo se ve */}
+                <a href="#servicios" className="nav-link block w-fit before:absolute before:inset-x-0 before:-inset-y-1.5 before:content-[''] hover:text-snow">
                   {s.title}
                 </a>
               </li>

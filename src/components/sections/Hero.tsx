@@ -51,7 +51,7 @@ export function Hero() {
                   <IconStar key={i} className="h-4 w-4" />
                 ))}
               </span>
-              <a href="#opiniones" className="underline-offset-4 hover:underline">
+              <a href="#opiniones" className="relative underline-offset-4 before:absolute before:-inset-x-2 before:-inset-y-3 before:content-[''] hover:underline">
                 {business.google.rating.toString().replace('.', ',')} en Google · {business.google.reviewCount} reseñas
               </a>
             </li>
