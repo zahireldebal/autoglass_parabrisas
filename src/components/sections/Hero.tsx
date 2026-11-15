@@ -11,7 +11,7 @@ export function Hero() {
         <Picture
           name="hero-colocacion"
           alt="Técnico de Autoglass colocando un parabrisas en el taller de Maldonado"
-          sizes="(min-width: 1024px) 46vw, 100vw"
+          sizes="(min-width: 1024px) 46vw, (min-width: 640px) 100vw, 67vw"
           priority
           className="h-full w-full object-cover object-[50%_30%]"
         />
@@ -51,7 +51,7 @@ export function Hero() {
                   <IconStar key={i} className="h-4 w-4" />
                 ))}
               </span>
-              <a href="#opiniones" className="underline-offset-4 hover:underline">
+              <a href="#opiniones" className="relative underline-offset-4 before:absolute before:-inset-x-2 before:-inset-y-3 before:content-[''] hover:underline">
                 {business.google.rating.toString().replace('.', ',')} en Google · {business.google.reviewCount} reseñas
               </a>
             </li>

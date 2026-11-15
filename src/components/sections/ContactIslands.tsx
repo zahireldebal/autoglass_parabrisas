@@ -61,7 +61,7 @@ export function MapCard() {
             <Picture
               name="fachada-frente"
               alt=""
-              sizes="(min-width: 1024px) 40vw, 100vw"
+              sizes="(min-width: 1024px) 40vw, (min-width: 640px) 100vw, 67vw"
               className="h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-50"
             />
             <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-ink/30">

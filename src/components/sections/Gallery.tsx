@@ -72,7 +72,7 @@ export function Gallery() {
                     <img
                       src={imageSrc(g.name, 480)}
                       srcSet={imageSrcSet(g.name)}
-                      sizes={i === 0 ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, 50vw'}
+                      sizes={i === 0 ? '(min-width: 1024px) 66vw, (min-width: 640px) 100vw, 67vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 34vw'}
                       width={dims[g.name]?.width}
                       height={dims[g.name]?.height}
                       alt={g.alt}
