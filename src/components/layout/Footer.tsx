@@ -1,4 +1,5 @@
-import { business, telHref, waBase } from '@/data/business';
+import { business, telHref } from '@/data/business';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { services } from '@/data/services';
 import { IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 
@@ -37,7 +38,7 @@ export function Footer() {
           <h2 className="h-display text-xl text-brand">Contacto</h2>
           <ul className="mt-4 space-y-3 text-mist">
             <li>
-              <a href={waBase} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-snow">
+              <a href={buildWhatsAppUrl('Hola, quiero hacer una consulta.')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-snow">
                 <IconWhatsApp className="h-5 w-5 text-brand" /> WhatsApp {business.whatsappDisplay}
               </a>
             </li>

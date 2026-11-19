@@ -1,4 +1,5 @@
-import { business, telHref, waBase } from '@/data/business';
+import { business, telHref } from '@/data/business';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 import { HoursCard, MapCard } from './ContactIslands';
@@ -31,7 +32,7 @@ export function Contact() {
           <Reveal delay={0.08} className="grid content-start gap-6">
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <li>
-                <a href={waBase} target="_blank" rel="noopener noreferrer" className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                <a href={buildWhatsAppUrl('Hola, quiero hacer una consulta.')} target="_blank" rel="noopener noreferrer" className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-ink">
                     <IconWhatsApp className="h-6 w-6" />
                   </span>

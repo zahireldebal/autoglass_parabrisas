@@ -3,7 +3,7 @@ import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconChat, IconHome, IconTag, IconWrench } from '@/components/ui/Icons';
 
 const steps = [
-  { icon: IconChat, title: 'Consultás por WhatsApp', text: 'Contanos qué vidrio necesitás. Si tenés dudas, mandanos una foto de tu auto.' },
+  { icon: IconChat, title: 'Consultás por WhatsApp', text: 'Contanos qué vidrio necesitás. Si tenés dudas, mandanos una foto de tu vehículo.' },
   { icon: IconTag, title: 'Te cotizamos según tu vehículo', text: 'Marca, modelo y año: te pasamos el precio del cristal exacto. Hasta 6 pagos.' },
   {
     icon: IconHome,

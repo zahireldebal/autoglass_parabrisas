@@ -62,7 +62,7 @@ export function WhyImport() {
           </ul>
           <Reveal delay={0.25}>
             <p className="mt-8 flex items-center gap-2 font-semibold">
-              <IconCheck className="h-5 w-5 text-brand" /> Con la compra del cristal, la colocación es GRATIS.
+              <IconCheck className="h-5 w-5 text-brand" /> Con la compra del cristal, la colocación es sin costo.
             </p>
           </Reveal>
         </div>

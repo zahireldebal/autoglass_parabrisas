@@ -4,11 +4,11 @@ import { IconBoxes, IconCard, IconGift, IconHome, IconShield, IconShip, IconTruc
 
 const items = [
   { icon: IconShip, title: 'Importador directo', text: 'Sin intermediarios: mejor precio y disponibilidad.' },
-  { icon: IconGift, title: 'Colocación GRATIS', text: 'Con la compra del cristal.' },
+  { icon: IconGift, title: 'Colocación sin costo', text: 'Con la compra del cristal.' },
   { icon: IconHome, title: 'A domicilio sin costo', text: business.homeServiceZones.join(' · ') },
-  { icon: IconShield, title: 'Gestión por seguro', text: 'Puede salirte gratis según tu cobertura.' },
+  { icon: IconShield, title: 'Parabrisas con tu seguro', text: 'Nos encargamos de toda la gestión con tu aseguradora.' },
   { icon: IconCard, title: 'Hasta 6 pagos', text: 'Con todas las tarjetas.' },
-  { icon: IconTruck, title: 'Autos, camionetas y camiones', text: 'Cristales para todo tipo de vehículo.' },
+  { icon: IconTruck, title: 'Todo tipo de vehículo', text: 'Autos, camionetas, camiones, ómnibus y ambulancias.' },
   { icon: IconBoxes, title: 'Stock para todas las marcas', text: 'Y si no está, lo conseguimos.' },
 ];
 
