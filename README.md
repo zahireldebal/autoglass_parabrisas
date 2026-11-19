@@ -1,6 +1,6 @@
 # Autoglass Parabrisas: sitio web
 
-Sitio one-page de **Autoglass Parabrisas** (Maldonado, Uruguay): importación, venta y colocación de cristales automotrices, polarizado y láminas de seguridad. Toda consulta termina en **WhatsApp** mediante un formulario que arma el mensaje automáticamente. Incluye un **simulador de polarizado 3D**.
+Sitio one-page de **Autoglass Parabrisas** (Maldonado, Uruguay): importación, venta y colocación de cristales automotrices para todo tipo de vehículo, láminas de seguridad Security Film y venta mayorista para talleres. Toda consulta termina en **WhatsApp** (con un formulario que arma el mensaje, o con un mensaje directo en Security Film y venta mayorista). Incluye un **simulador 3D de la lámina de seguridad**.
 
 - **Stack:** Next.js 15 (App Router, exportación estática), TypeScript, Tailwind CSS 4, React Three Fiber + drei (3D), React Hook Form + Zod, Framer Motion (solo en partes que se cargan bajo demanda).
 - **Sin backend:** se despliega como sitio estático en Netlify.
@@ -42,7 +42,9 @@ npm run build && node scripts/e2e-form.mjs --simulador   # prueba de punta a pun
 |---|---|
 | Datos del negocio | `src/data/business.ts` |
 | Servicios (tarjetas) | `src/data/services.ts` |
-| Opciones del formulario y del simulador (servicios, tonos, láminas, zonas) | `src/data/options.ts` |
+| Opciones del formulario y del simulador (servicios, tono de la lámina, vidrios, zonas) | `src/data/options.ts` |
+| Datos de Security Film (ficha de la marca) | `src/data/securityFilm.ts` |
+| Aseguradoras | `src/data/business.ts` → `insurers` |
 | Preguntas frecuentes | `src/data/faq.ts` |
 | Galería de trabajos | `src/data/gallery.ts` |
 | Reseñas | `src/components/sections/Reviews.tsx` |
@@ -55,13 +57,13 @@ Si `worksWithInsurance` o `homeService` se ponen en `false`, se ocultan solos el
 
 ## Fotos
 
-Las fotos originales van en `Fotos/` (**no se suben al repositorio**). La lista de fotos, con su recorte, el factor de mejora y las matrículas a censurar, está en `scripts/images.config.mjs`.
+Las fotos originales van en `Fotos/` y, las de la segunda tanda, en `nuevasfotos/` (**ninguna de las dos carpetas se sube al repositorio**). La lista de fotos, con su recorte, el factor de mejora y las matrículas a censurar, está en `scripts/images.config.mjs`.
 
 1. **Mejora a HD (opcional):** las fotos actuales son capturas de Instagram y Maps. Se les aplica super-resolución con ESRGAN (UpscalerJS, en la GPU vía Playwright) y quedan en `Fotos/hd/<name>.png`. Las dependencias están aparte para no cargar el build de Netlify:
    ```bash
    cd scripts/upscale && npm install && cd ../..
    node --max-old-space-size=6144 scripts/upscale/run.mjs            # todas
-   node --max-old-space-size=6144 scripts/upscale/run.mjs hero-colocacion   # una sola
+   node --max-old-space-size=6144 scripts/upscale/run.mjs portada   # una sola (solo las que tienen `scale`)
    ```
 2. **Procesar:**
    ```bash
@@ -71,7 +73,7 @@ Las fotos originales van en `Fotos/` (**no se suben al repositorio**). La lista 
 
 **Para agregar o reemplazar una foto:**
 
-1. Copiá el archivo a `Fotos/`.
+1. Copiá el archivo a `Fotos/` (o a otra carpeta e indicala con `dir`).
 2. Agregá o editá su entrada en `scripts/images.config.mjs`. Si es una foto original y no una captura, sacá `crop` y `scale`.
 3. Si se ven matrículas, agregá `plates: [{ x, y, w, h }]`, en fracciones de 0 a 1 de la imagen.
 4. Corré `npm run images`.
@@ -90,10 +92,10 @@ No repitas una misma foto en dos secciones.
 - Modelo optimizado: `public/models/auto.glb` (1,7 MB). El original (`modelocarro/`, 43 MB) no se sube.
 - **Rendimiento:**
   - Se descarga solo cuando la sección se acerca a la pantalla, con barra de progreso real.
-  - Hoy el simulador muestra solo el selector de tono. El tipo de lámina y la opción de incluir el parabrisas están desactivados hasta tener información real: el código sigue en `tint.ts` y `CarScene.tsx`.
+  - El simulador compara "Sin lámina" y "Con lámina de seguridad (20 %)", aplicada a todos los vidrios (incluido el parabrisas). Carrocería blanca (`paint` en `CarScene.tsx`).
   - Renderiza bajo demanda (`frameloop="demand"`) y se pausa fuera de pantalla.
   - En celular, el auto no captura el scroll hasta tocar "Tocá para girar el auto".
-- **Versión liviana:** si no hay WebGL, si el render es por software o si el equipo tiene poca memoria o CPU (o ahorro de datos), se muestra con imágenes del auto en 6 ángulos y el polarizado como una capa enmascarada sobre los vidrios. Se puede forzar con `?sim=2d` y forzar el 3D con `?sim=3d`.
+- **Versión liviana:** si no hay WebGL, si el render es por software o si el equipo tiene poca memoria o CPU (o ahorro de datos), se muestra con imágenes del vehículo en 6 ángulos y la lámina como una capa enmascarada sobre los vidrios. Se puede forzar con `?sim=2d` y forzar el 3D con `?sim=3d`.
 
 ### Cambiar el modelo 3D
 
@@ -115,13 +117,13 @@ El repo incluye `netlify.toml` (build `npm run build`, publica `out/`, Node 22, 
 
 1. En Netlify: **Add new site → Import an existing project → GitHub** y elegí `zahireldebal/autoglass_parabrisas`.
 2. Netlify lee la configuración de `netlify.toml`, así que no hace falta tocar nada más.
-3. **Deploy.** La URL queda como `https://<nombre>.netlify.app`. Si el nombre no es `autoglass-parabrisas`, cambiá el valor por defecto de `SITE_URL` en `src/data/business.ts`, o definí la variable del paso siguiente.
+3. **Deploy.** La URL actual es `https://autoglassparabriss.netlify.app`. Está definida en **un solo lugar**: `DEFAULT_SITE_URL` en `src/data/business.ts` (o la variable `NEXT_PUBLIC_SITE_URL`, que tiene prioridad). De ahí salen el canonical, og:url, og:image, twitter:image, `sitemap.xml`, `robots.txt` y el JSON-LD.
 
 ### Dominio final (autoglassparabrisas.com)
 
 Cuando el cliente apruebe:
 
-1. En Netlify: **Site configuration → Environment variables**, agregá `NEXT_PUBLIC_SITE_URL = https://autoglassparabrisas.com` y volvé a desplegar. También se puede cambiar el valor por defecto de `SITE_URL` en `src/data/business.ts`. Esto actualiza el canonical, `sitemap.xml`, `robots.txt`, Open Graph y el JSON-LD.
+1. En Netlify: **Site configuration → Environment variables**, agregá `NEXT_PUBLIC_SITE_URL = https://autoglassparabrisas.com` y volvé a desplegar. También se puede cambiar `DEFAULT_SITE_URL` en `src/data/business.ts`. Esto actualiza el canonical, `sitemap.xml`, `robots.txt`, Open Graph y el JSON-LD.
 2. **Domain management → Add a domain:** `autoglassparabrisas.com`. Seguí las instrucciones de DNS de Netlify (registros A/ALIAS al balanceador de Netlify, o cambiar los nameservers a Netlify DNS) y agregá también `www`.
 3. Esperá a que se emita el certificado HTTPS (Let's Encrypt, automático).
 4. Enviá `https://autoglassparabrisas.com/sitemap.xml` en Google Search Console.
