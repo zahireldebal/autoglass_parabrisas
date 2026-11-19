@@ -9,7 +9,7 @@ export function Insurance() {
   return (
     <section id="seguros" aria-labelledby="seguros-title" className="py-16 sm:py-24">
       <div className="container-x">
-        <Reveal className="relative overflow-hidden rounded-3xl border-2 border-brand/70 bg-gradient-to-br from-carbon-2 to-ink shadow-[0_30px_80px_-40px_rgba(240,179,49,0.45)]">
+        <Reveal className="relative overflow-hidden rounded-3xl border-2 border-brand/70 bg-gradient-to-br from-carbon-2 to-ink shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)]">
           {/* Única cinta de precaución del sitio */}
           <div className="caution-tape" aria-hidden />
           <div className="grid lg:grid-cols-[1.25fr_1fr]">

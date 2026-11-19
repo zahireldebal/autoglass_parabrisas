@@ -58,12 +58,12 @@ export function Navbar() {
             height={160}
             className={`rounded-full transition-all duration-300 ${compact ? 'h-10 w-10' : 'h-12 w-12'}`}
           />
-          <span className="h-display text-xl leading-none sm:text-2xl">
+          <span className="h-display text-xl leading-none whitespace-nowrap sm:text-2xl">
             Autoglass <span className="text-brand">Parabrisas</span>
           </span>
         </a>
 
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden items-center gap-6 xl:flex">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="nav-link font-display text-lg font-semibold uppercase tracking-wide">
@@ -80,7 +80,7 @@ export function Navbar() {
           <button
             ref={menuBtn}
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="menu-movil"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -91,7 +91,7 @@ export function Navbar() {
         </div>
       </nav>
 
-      <div id="menu-movil" className="expand-panel border-line bg-ink data-[open=true]:border-t lg:hidden" data-open={menuOpen} inert={!menuOpen}>
+      <div id="menu-movil" className="expand-panel border-line bg-ink data-[open=true]:border-t xl:hidden" data-open={menuOpen} inert={!menuOpen}>
         <div>
             <ul className="container-x flex flex-col py-3">
               {NAV_LINKS.map((l) => (

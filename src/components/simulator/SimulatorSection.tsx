@@ -217,7 +217,7 @@ export function SimulatorSection() {
               {(mode === 'idle' || mode === 'loading' || (mode === '3d' && !ready)) && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/sim/a0-base.webp" alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 blur-[1px]" loading="lazy" />
+                  <img src="/sim/a0-base.webp" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 blur-[1px]" loading="lazy" />
                   <div className="relative w-2/3 max-w-xs text-center">
                     <p className="font-display text-xl font-bold tracking-wide uppercase">Cargando simulador…</p>
                     <div
@@ -230,7 +230,7 @@ export function SimulatorSection() {
                     >
                       <div className="h-full rounded-full bg-brand transition-[width] duration-200" style={{ width: `${Math.max(4, progress * 100)}%` }} />
                     </div>
-                    <p className="mt-2 text-sm text-mist">{Math.round(progress * 100)} %</p>
+                    <p className="mt-2 text-sm font-semibold text-snow">{Math.round(progress * 100)} %</p>
                   </div>
                 </div>
               )}
