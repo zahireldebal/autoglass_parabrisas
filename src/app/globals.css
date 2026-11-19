@@ -11,6 +11,9 @@
   --color-line: #2f383e;
   --color-mist: #aeb6bd; /* texto secundario sobre negro: contraste ≈ 9:1 */
   --color-snow: #f4f6f7;
+  /* Marca Security Film (sacado de su ficha): negro, blanco y este azul */
+  --color-sf-blue: #0173c7;
+  --color-sf-blue-strong: #01609f;
 
   --font-display: var(--font-barlow-condensed), 'Arial Narrow', sans-serif;
   --font-sans: var(--font-barlow), system-ui, sans-serif;

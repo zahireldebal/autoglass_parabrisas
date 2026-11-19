@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/Hero';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { Services } from '@/components/sections/Services';
+import { SecurityFilm } from '@/components/sections/SecurityFilm';
 import { SimulatorSection } from '@/components/simulator/SimulatorSection';
 import { HowWeWork } from '@/components/sections/HowWeWork';
 import { Insurance } from '@/components/sections/Insurance';
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Services />
+      <SecurityFilm />
       <SimulatorSection />
       <HowWeWork />
       <Insurance />

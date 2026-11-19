@@ -6,6 +6,7 @@ import { useQuote } from '@/components/quote/QuoteContext';
 
 export const NAV_LINKS = [
   { href: '#servicios', label: 'Servicios' },
+  { href: '#security-film', label: 'Security Film' },
   { href: '#simulador', label: 'Simulador' },
   { href: '#trabajos', label: 'Trabajos' },
   { href: '#seguros', label: 'Seguros' },
