@@ -9,7 +9,6 @@ export const NAV_LINKS = [
   { href: '#security-film', label: 'Security Film' },
   { href: '#simulador', label: 'Simulador' },
   { href: '#trabajos', label: 'Trabajos' },
-  { href: '#seguros', label: 'Seguros' },
   { href: '#preguntas', label: 'Preguntas' },
   { href: '#contacto', label: 'Contacto' },
 ];
@@ -49,7 +48,7 @@ export function Navbar() {
         Saltar al contenido
       </a>
       <nav aria-label="Principal" className={`container-x flex items-center justify-between transition-all duration-300 ${compact ? 'h-16' : 'h-20'}`}>
-        <a href="#inicio" className="flex items-center gap-3" aria-label="Autoglass Parabrisas, ir al inicio">
+        <a href="#inicio" className="flex min-h-11 items-center gap-3" aria-label="Autoglass Parabrisas, ir al inicio">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/img/logo-160.webp"

@@ -29,7 +29,7 @@ export function WhyImport() {
             <Picture
               name="taller-importacion"
               alt="Recepción del taller Autoglass con el cartel Importación, venta y colocación"
-              sizes="(min-width: 1024px) 45vw, 100vw"
+              sizes="(min-width: 1024px) 45vw, (min-width: 640px) 100vw, 67vw"
               className="aspect-[4/3] w-full object-cover"
             />
           </div>

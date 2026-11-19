@@ -1,6 +1,6 @@
 import { business } from '@/data/business';
 import { Picture } from '@/components/ui/Picture';
-import { IconArrowRight, IconShield, IconStar, IconWhatsApp } from '@/components/ui/Icons';
+import { IconArrowRight, IconStar, IconWhatsApp } from '@/components/ui/Icons';
 import { QuoteButton } from '@/components/quote/QuoteContext';
 
 export function Hero() {
@@ -11,7 +11,7 @@ export function Hero() {
         <Picture
           name="portada"
           alt="Técnico de Autoglass con la remera del taller trabajando sobre el parabrisas de un vehículo gris en el taller de Maldonado"
-          sizes="(min-width: 1024px) 46vw, 100vw"
+          sizes="(min-width: 1024px) 46vw, (min-width: 640px) 100vw, 67vw"
           priority
           className="h-full w-full object-cover object-[50%_35%]"
         />
@@ -38,21 +38,6 @@ export function Hero() {
             {business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}.
           </p>
 
-          {/* Sello destacado: seguro */}
-          <a
-            href="#seguros"
-            className="hero-in group mt-6 inline-flex max-w-xl items-center gap-3 rounded-2xl border-2 border-brand bg-brand/10 py-3 pr-5 pl-3 transition-colors hover:bg-brand/20"
-            style={{ animationDelay: '0.24s' }}
-          >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-ink">
-              <IconShield className="h-7 w-7" />
-            </span>
-            <span className="font-display text-xl leading-tight font-bold tracking-wide text-snow uppercase sm:text-2xl">
-              Tu parabrisas <span className="text-brand">gratis</span> con el seguro de tu vehículo
-            </span>
-            <IconArrowRight className="h-5 w-5 shrink-0 text-brand transition-transform group-hover:translate-x-1" />
-          </a>
-
           <div className="hero-in mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: '0.28s' }}>
             <QuoteButton className="btn btn-primary text-xl">
               <IconWhatsApp className="h-6 w-6" /> Cotizá por WhatsApp
@@ -69,7 +54,7 @@ export function Hero() {
                   <IconStar key={i} className="h-4 w-4" />
                 ))}
               </span>
-              <a href="#opiniones" className="underline-offset-4 hover:underline">
+              <a href="#opiniones" className="relative underline-offset-4 before:absolute before:-inset-x-2 before:-inset-y-3 before:content-[''] hover:underline">
                 {business.google.rating.toString().replace('.', ',')} en Google · {business.google.reviewCount} reseñas
               </a>
             </li>

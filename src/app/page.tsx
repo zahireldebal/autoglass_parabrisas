@@ -4,7 +4,6 @@ import { Services } from '@/components/sections/Services';
 import { SecurityFilm } from '@/components/sections/SecurityFilm';
 import { SimulatorSection } from '@/components/simulator/SimulatorSection';
 import { HowWeWork } from '@/components/sections/HowWeWork';
-import { Insurance } from '@/components/sections/Insurance';
 import { Gallery } from '@/components/sections/Gallery';
 import { WhyImport } from '@/components/sections/WhyImport';
 import { Faq } from '@/components/sections/Faq';
@@ -20,7 +19,6 @@ export default function Home() {
       <SecurityFilm />
       <SimulatorSection />
       <HowWeWork />
-      <Insurance />
       <Gallery />
       <WhyImport />
       <Faq />

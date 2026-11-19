@@ -52,7 +52,9 @@ export default function QuoteModalContent() {
 
   const title =
     preset?.source === 'simulador'
-      ? 'Quiero mi lámina de seguridad'
+      ? preset.service === 'Láminas de seguridad'
+        ? 'Quiero mi lámina de seguridad'
+        : 'Quiero cambiar mi parabrisas'
       : preset?.service
         ? `Consultá por ${preset.service.toLowerCase()}`
         : 'Cotizá por WhatsApp';

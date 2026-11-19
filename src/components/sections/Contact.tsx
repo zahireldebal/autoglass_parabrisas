@@ -7,7 +7,7 @@ import { LazyQuoteForm } from '@/components/quote/LazyQuoteForm';
 
 export function Contact() {
   return (
-    <section id="contacto" aria-labelledby="contacto-title" className="cut-top bg-carbon pt-[calc(3.5vw+5rem)] pb-20 sm:pb-28">
+    <section id="contacto" data-hide-fab aria-labelledby="contacto-title" className="cut-top bg-carbon pt-[calc(3.5vw+5rem)] pb-20 sm:pb-28">
       <div className="container-x">
         <SectionHeading
           id="contacto-title"

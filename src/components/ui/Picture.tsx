@@ -25,7 +25,12 @@ type Props = {
   style?: React.CSSProperties;
 };
 
-/** Imagen responsive a partir de los WebP generados por scripts/process-images.mjs */
+/**
+ * Imagen responsive a partir de los WebP generados por scripts/process-images.mjs
+ *
+ * En celulares (< 640 px), los `sizes` declaran 2/3 del ancho real: así una pantalla 3x baja
+ * una foto de calidad 2x, que a ese tamaño no se distingue y pesa la mitad.
+ */
 export function Picture({ name, alt, sizes = '100vw', className, priority, style }: Props) {
   const e = images[name];
   if (!e) {

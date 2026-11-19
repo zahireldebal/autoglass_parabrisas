@@ -28,7 +28,7 @@ export function Services() {
                   <Picture
                     name={s.image}
                     alt={s.imageAlt}
-                    sizes="(min-width: 1024px) 290px, (min-width: 640px) 45vw, calc(100vw - 2rem)"
+                    sizes="(min-width: 1024px) 290px, (min-width: 640px) 45vw, calc((100vw - 2rem) * 0.67)"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 to-transparent" />

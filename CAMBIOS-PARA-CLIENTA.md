@@ -5,9 +5,9 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 
 ---
 
-**Sector 0 – Cambios generales:** en toda la web dice "vehículo" en lugar de "auto", porque trabajan con autos, camionetas, camiones, ómnibus y ambulancias. Se sacó todo lo de polarizado (tonos, líneas de lámina y textos). Ahora se habla siempre de lámina de seguridad.
+**Sector 0 – Cambios generales:** se quitó todo lo relacionado con seguros (sección, sello de la portada y preguntas). En toda la web dice "vehículo" en lugar de "auto", porque trabajan con autos, camionetas, camiones, ómnibus y ambulancias. Se sacó todo lo de polarizado (tonos, líneas de lámina y textos). Ahora se habla siempre de lámina de seguridad.
 
-**Sector 1 – Portada:** tiene la foto nueva y el título "Cristales automotrices y láminas de seguridad para tu vehículo", con el texto que mandaste. Abajo aparece la frase "Tu vehículo, en las mejores manos." y un sello destacado: "Tu parabrisas gratis con el seguro de tu vehículo". Si lo tocan, lleva directo a la sección de seguros.
+**Sector 1 – Portada:** tiene la foto nueva y el título "Cristales automotrices y láminas de seguridad para tu vehículo", con el texto que mandaste. Abajo aparece la frase "Tu vehículo, en las mejores manos."
 
 **Sector 2 – Servicios:** quedaron exactamente 4: Cristales automotrices, Láminas de seguridad Security Film, Venta mayorista y Servicio a domicilio, con los textos que pediste. El botón de venta mayorista abre WhatsApp con un mensaje para talleres.
 
@@ -15,15 +15,13 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 
 **Sector 4 – Simulador 3D:** el vehículo ahora es blanco y hay un solo tono: se elige entre "Sin lámina" y "Con lámina de seguridad (20 %)". Siguen estando "Ver desde adentro" y "Parabrisas antes / después". El botón ahora dice "Quiero mi lámina de seguridad".
 
-**Sector 5 – Seguros:** la sección es más grande y tiene foto. Usa el título y el texto que mandaste, y muestra las aseguradoras con las que trabajan: Mapfre, Porto Seguro, SURA, Sancor Seguros, Surco, Berkley, San Cristóbal y HDI. Abajo dice "Sujeto a la cobertura de tu póliza." y está el botón "Consultanos por tu seguro".
+**Sector 5 – Galería:** se sumaron las fotos nuevas del taller, de cambios de parabrisas y de cristales. Ahora hay 13 fotos, que se pueden filtrar por "Parabrisas y cristales", "Láminas de seguridad" y "El taller". No hay ningún contador de trabajos realizados.
 
-**Sector 6 – Galería:** se sumaron las fotos nuevas del taller, de cambios de parabrisas y de cristales. Ahora hay 13 fotos, que se pueden filtrar por "Parabrisas y cristales", "Láminas de seguridad" y "El taller". No hay ningún contador de trabajos realizados.
+**Sector 6 – Preguntas frecuentes:** se sacaron las dos preguntas sobre polarizado. Se agregaron "¿Qué es la lámina de seguridad?" y "¿Venden por mayor?", con tus respuestas. La pregunta sobre cuándo se puede manejar después del cambio ya no tiene el aviso "a confirmar".
 
-**Sector 7 – Preguntas frecuentes:** se sacaron las dos preguntas sobre polarizado. Se agregaron "¿Qué es la lámina de seguridad?", "¿Venden por mayor?" y "¿El seguro cubre el cambio?", con tus respuestas. La pregunta sobre cuándo se puede manejar después del cambio ya no tiene el aviso "a confirmar".
+**Sector 7 – Opiniones:** se sacó la tercera reseña, porque el texto estaba incompleto. Quedan las dos reseñas completas y el puntaje de Google.
 
-**Sector 8 – Opiniones:** se sacó la tercera reseña, porque el texto estaba incompleto. Quedan las dos reseñas completas y el puntaje de Google.
-
-**Sector 9 – Google y redes sociales:** se actualizó cómo aparece la web en Google y al compartirla por WhatsApp o redes. Ahora habla de cristales automotrices, lámina de seguridad Security Film, venta mayorista y parabrisas con seguro. La imagen que aparece al compartir el link usa la foto nueva de portada.
+**Sector 8 – Google y redes sociales:** se actualizó cómo aparece la web en Google y al compartirla por WhatsApp o redes. Ahora habla de cristales automotrices, lámina de seguridad Security Film y venta mayorista. La imagen que aparece al compartir el link usa la foto nueva de portada.
 
 ---
 
