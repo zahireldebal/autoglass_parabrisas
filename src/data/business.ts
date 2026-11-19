@@ -68,6 +68,8 @@ export const business = {
 
   /** ¿Trabajan con seguros? Si es false, se ocultan el bloque y el campo del formulario. */
   worksWithInsurance: true,
+  /** Aseguradoras con las que trabajan (se muestran como texto, sin logos). */
+  insurers: ['Mapfre', 'Porto Seguro', 'SURA', 'Sancor Seguros', 'Surco', 'Berkley', 'San Cristóbal', 'HDI'],
   /** ¿Van a domicilio? Si es false, se oculta la opción en el formulario. */
   homeService: true,
   /** Zonas donde el domicilio es SIN COSTO. */
