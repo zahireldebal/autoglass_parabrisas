@@ -1,0 +1,12 @@
+// Cloudflare (Workers Builds): el sitio es 100 % estático (next.config.mjs → output: 'export').
+// `npm run build` genera la carpeta out/ y `npx wrangler deploy` publica solo esa carpeta.
+// Sin este archivo, wrangler detecta Next.js e intenta configurarlo con servidor (OpenNext), y falla.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "autoglass-parabrisas",
+  "compatibility_date": "2026-11-18",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
