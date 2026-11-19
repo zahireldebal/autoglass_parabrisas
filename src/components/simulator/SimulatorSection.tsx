@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useReducedMotionPref } from '@/components/ui/useMediaQuery';
 import model from '@/data/model.json';
 import { business } from '@/data/business';
-import { TINT_LEVELS } from '@/data/options';
+import { SECURITY_FILM_TINT } from '@/data/options';
 import { useQuote } from '@/components/quote/QuoteContext';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconArrowRight, IconChevronLeft, IconChevronRight, IconEye, IconRotate, IconWhatsApp, IconX } from '@/components/ui/Icons';
@@ -124,8 +124,7 @@ export function SimulatorSection() {
       setModelUrl(url);
       setMode('3d');
     });
-    if (capture.layer === 'preview') setState((s) => ({ ...s, tint: '5' }));
-    else setState((s) => ({ ...s, tint: 'none' }));
+    setState((s) => ({ ...s, tint: 'none' }));
   }, [capture]);
 
   // Render solo mientras la sección está visible (no consume batería fuera de pantalla)
@@ -175,13 +174,13 @@ export function SimulatorSection() {
       <div className="container-x relative">
         <SectionHeading
           id="simulador-title"
-          eyebrow="Simulador de polarizado 3D"
+          eyebrow="Simulador 3D"
           title={
             <>
-              Mirá cómo te queda <span className="text-brand">antes de decidir</span>
+              Mirá cómo queda tu vehículo <span className="text-brand">con lámina de seguridad</span>
             </>
           }
-          intro="Girá el auto, elegí el tono de polarizado y mirá desde el asiento del conductor. También podés ver cómo queda un parabrisas cambiado."
+          intro="Girá el vehículo, compará sin lámina y con la lámina de seguridad Security Film (20 %) y mirá desde el asiento del conductor. También podés ver cómo queda un parabrisas cambiado."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
@@ -192,7 +191,7 @@ export function SimulatorSection() {
               tabIndex={mode === '3d' ? 0 : -1}
               role={mode === '3d' ? 'group' : undefined}
               aria-roledescription={mode === '3d' ? 'visor 3D' : undefined}
-              aria-label={mode === '3d' ? `Auto en 3D con polarizado ${t.label}. Usá las flechas del teclado para girarlo y + o - para acercar.` : undefined}
+              aria-label={mode === '3d' ? `Vehículo en 3D: ${state.tint === 'none' ? 'sin lámina' : `con lámina de seguridad ${t.label}`}. Usá las flechas del teclado para girarlo y + o - para acercar.` : undefined}
               onKeyDown={onStageKey}
               className="relative aspect-square overflow-hidden rounded-2xl border border-line bg-ink sm:aspect-[16/11]"
             >
@@ -245,10 +244,10 @@ export function SimulatorSection() {
                     setInteracted(true);
                   }}
                   className="absolute inset-0 flex items-end justify-center pb-6"
-                  aria-label="Activar el visor 3D para girar el auto con el dedo"
+                  aria-label="Activar el visor 3D para girar el vehículo con el dedo"
                 >
                   <span className="inline-flex min-h-12 items-center gap-2 rounded-full bg-ink/85 px-5 py-3 font-display text-lg font-bold uppercase tracking-wide text-snow ring-1 ring-brand/70 backdrop-blur">
-                    <IconRotate className="h-5 w-5 text-brand" /> Tocá para girar el auto
+                    <IconRotate className="h-5 w-5 text-brand" /> Tocá para girar el vehículo
                   </span>
                 </button>
               )}
@@ -312,19 +311,19 @@ export function SimulatorSection() {
           <Reveal delay={0.08} className="card flex flex-col gap-6 p-5 sm:p-6">
             <div>
               <h3 id="tono-label" className="font-display text-xl font-bold uppercase tracking-wide">
-                Tono de polarizado
+                Lámina de seguridad
               </h3>
-              <div role="radiogroup" aria-labelledby="tono-label" className="mt-3 flex flex-wrap gap-2">
-                {(['none', ...TINT_LEVELS.map((l) => l.value)] as TintChoice[]).map((v) => (
+              <div role="radiogroup" aria-labelledby="tono-label" className="mt-3 grid gap-2 min-[420px]:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {(['none', SECURITY_FILM_TINT.value] as TintChoice[]).map((v) => (
                   <button
                     key={v}
                     type="button"
                     role="radio"
                     aria-checked={state.tint === v}
-                    className="chip"
+                    className="chip justify-center text-center"
                     onClick={() => update({ tint: v })}
                   >
-                    {v === 'none' ? 'Sin polarizar' : `${v} %`}
+                    {v === 'none' ? 'Sin lámina' : `Con lámina de seguridad (${SECURITY_FILM_TINT.label})`}
                   </button>
                 ))}
               </div>
@@ -346,7 +345,7 @@ export function SimulatorSection() {
               )}
               {state.view === 'windshield' ? (
                 <button type="button" className="btn btn-ghost btn-sm" onClick={() => update({ view: 'exterior', windshield: 'antes' })}>
-                  <IconArrowRight className="h-5 w-5 rotate-180" /> Volver al auto
+                  <IconArrowRight className="h-5 w-5 rotate-180" /> Volver al vehículo
                 </button>
               ) : (
                 <button type="button" className="btn btn-ghost btn-sm" onClick={() => update({ view: 'windshield', windshield: 'antes' })} disabled={mode !== '3d' && mode !== 'fallback'}>
@@ -378,14 +377,13 @@ export function SimulatorSection() {
                 aria-haspopup="dialog"
                 onClick={() =>
                   openQuote({
-                    service: 'Polarizado',
-                    tint: state.tint === 'none' ? 'asesoramiento' : state.tint,
+                    service: 'Láminas de seguridad',
                     glassScope: 'todos',
                     source: 'simulador',
                   })
                 }
               >
-                <IconWhatsApp className="h-6 w-6" /> Quiero este polarizado
+                <IconWhatsApp className="h-6 w-6" /> Quiero mi lámina de seguridad
               </button>
             </div>
           </Reveal>

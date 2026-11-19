@@ -11,7 +11,7 @@ import { CameraControls, CameraControlsImpl, ContactShadows, Environment, Lightf
 import * as THREE from 'three';
 import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 import { drawCrack, drawSheen } from './crack';
-import { FILM_TINT_COLOR, glassOpacity, type SimState } from './tint';
+import { GLASS_COLOR, glassColor, glassOpacity, type SimState } from './tint';
 
 const { ACTION } = CameraControlsImpl;
 
@@ -23,7 +23,7 @@ export type SceneApi = {
 export type CaptureConfig = {
   /** a0…a5 = ángulos exteriores, 'interior', 'windshield' */
   shot: string;
-  layer: 'base' | 'mask-side' | 'mask-ws' | 'preview';
+  layer: 'base' | 'mask-side' | 'mask-ws';
 };
 
 type Props = {
@@ -83,16 +83,17 @@ function Car({ url, state, capture, onLoaded }: { url: string; state: SimState; 
       depthWrite: false,
       specularIntensity: 1,
     };
-    const side = new THREE.MeshPhysicalMaterial({ ...glassBase, color: FILM_TINT_COLOR.clear, opacity: glassOpacity('none') });
-    const windshield = new THREE.MeshPhysicalMaterial({ ...glassBase, color: FILM_TINT_COLOR.clear, opacity: glassOpacity('none') });
-    // Carrocería gris oscuro casi mate para que combine con el amarillo de la marca
+    const side = new THREE.MeshPhysicalMaterial({ ...glassBase, color: GLASS_COLOR.clear, opacity: glassOpacity('none') });
+    const windshield = new THREE.MeshPhysicalMaterial({ ...glassBase, color: GLASS_COLOR.clear, opacity: glassOpacity('none') });
+    // Carrocería blanca (pedido de la clienta): blanco perlado con laca, sin metalizado
+    // para que no se vea gris con el fondo oscuro del estudio.
     const paint = new THREE.MeshPhysicalMaterial({
-      color: '#33373d',
-      metalness: 0.5,
-      roughness: 0.42,
-      clearcoat: 0.45,
-      clearcoatRoughness: 0.3,
-      envMapIntensity: 1.25,
+      color: '#c9ced3',
+      metalness: 0.1,
+      roughness: 0.38,
+      clearcoat: 1,
+      clearcoatRoughness: 0.08,
+      envMapIntensity: 0.9,
     });
     let windshieldMesh: THREE.Mesh | null = null;
     scene.traverse((o) => {
@@ -137,7 +138,7 @@ function Car({ url, state, capture, onLoaded }: { url: string; state: SimState; 
   const invalidate = useThree((s) => s.invalidate);
   useEffect(() => {
     invalidate();
-  }, [state.tint, state.film, state.includeWindshield, invalidate]);
+  }, [state.tint, state.includeWindshield, invalidate]);
 
   // Transición suave del tono
   const targetColor = useMemo(() => new THREE.Color(), []);
@@ -159,9 +160,9 @@ function Car({ url, state, capture, onLoaded }: { url: string; state: SimState; 
         else moving = true;
       }
     };
-    const filmColor = state.tint === 'none' ? FILM_TINT_COLOR.clear : FILM_TINT_COLOR[state.film];
+    const filmColor = glassColor(state.tint);
     step(mats.side, sideOpacity, filmColor);
-    step(mats.windshield, wsOpacity, state.includeWindshield ? filmColor : FILM_TINT_COLOR.clear);
+    step(mats.windshield, wsOpacity, state.includeWindshield ? filmColor : GLASS_COLOR.clear);
     if (moving) s.invalidate();
   });
 
@@ -560,7 +561,7 @@ export default function CarScene({ modelUrl, state, active, interactive, isTouch
       {!isMask && <ambientLight intensity={0.5} />}
       {!isMask && <directionalLight position={[4, 7, 3]} intensity={1.3} />}
       {!isMask && <directionalLight position={[-5, 3, -4]} intensity={0.9} color="#cfd8e0" />}
-      {/* luz suave en la cabina: el interior se ve a través de los vidrios y el polarizado se nota */}
+      {/* luz suave en la cabina: el interior se ve a través de los vidrios y la lámina se nota */}
       {!isMask && <pointLight position={[0, 1.25, 0.1]} intensity={0.9} distance={2.6} decay={2} />}
       <Stage day={day} hidden={isMask} instant={!!capture} />
       <Rig

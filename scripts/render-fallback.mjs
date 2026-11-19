@@ -4,7 +4,7 @@
  *   public/sim/{toma}-side.webp  → máscara (alfa) de laterales + luneta
  *   public/sim/{toma}-ws.webp    → máscara (alfa) del parabrisas
  * Tomas: a0…a5 (6 ángulos), interior, windshield.
- * También genera la imagen ilustrativa de la tarjeta "Polarizado" y src/data/sim-meta.json.
+ * También genera src/data/sim-meta.json. La toma a0-base es además el póster que se ve mientras carga el 3D.
  *
  * Requiere `npm run build` antes (usa el modo captura del simulador: /?sim-render=…).
  * Uso: npm run render:fallback   (volver a correrlo si se cambia el modelo 3D)
@@ -16,7 +16,6 @@ import path from 'node:path';
 import { serve } from './serve-out.mjs';
 
 const OUT = path.resolve('public/sim');
-const IMG = path.resolve('public/img');
 const W = 1200;
 const H = 900;
 const SHOTS = ['a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'interior', 'windshield'];
@@ -57,16 +56,6 @@ for (const shot of SHOTS) {
   console.log(`✓ ${shot}`);
 }
 
-// Imagen ilustrativa para la tarjeta de Polarizado (vista lateral, tono 5 %)
-const preview = await capture('a1', 'preview');
-const cropped = await sharp(preview.buf).extract({ left: 60, top: 150, width: 1080, height: 675 }).toBuffer();
-const manifestPath = path.resolve('src/data/images.json');
-const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-const sizes = [480, 960, 1080];
-for (const w of sizes) await sharp(cropped).resize({ width: w }).webp({ quality: 78 }).toFile(path.join(IMG, `polarizado-render-${w}.webp`));
-manifest['polarizado-render'] = { width: 1080, height: 675, sizes };
-fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
-console.log('✓ polarizado-render');
 
 if (wsMeta) {
   fs.writeFileSync(path.resolve('src/data/sim-meta.json'), JSON.stringify({ windshield: wsMeta }, null, 2) + '\n');

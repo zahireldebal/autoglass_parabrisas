@@ -2,15 +2,15 @@
 
 /**
  * Versión liviana del simulador (sin WebGL o equipos de baja potencia):
- * renders del auto en 6 ángulos + interior + parabrisas, generados con
- * `npm run render:fallback`. El polarizado se aplica como una capa de color
+ * renders del vehículo en 6 ángulos + interior + parabrisas, generados con
+ * `npm run render:fallback`. La lámina se aplica como una capa de color
  * recortada con una máscara de los vidrios.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import meta from '@/data/sim-meta.json';
 import { IconChevronLeft, IconChevronRight } from '@/components/ui/Icons';
 import { drawCrack } from './crack';
-import { FILM_TINT_COLOR, glassOpacity, type SimState } from './tint';
+import { glassColor, glassOpacity, type SimState } from './tint';
 
 const ANGLES = ['a0', 'a1', 'a2', 'a3', 'a4', 'a5'];
 const BASE_OPACITY = glassOpacity('none'); // el render base ya tiene vidrio claro
@@ -49,7 +49,7 @@ export function Fallback2D({ state, onChange }: { state: SimState; onChange: (p:
 
   const shot = state.view === 'interior' ? 'interior' : state.view === 'windshield' ? 'windshield' : ANGLES[angle];
   const sideTarget = glassOpacity(state.tint);
-  const color = state.tint === 'none' ? FILM_TINT_COLOR.clear : FILM_TINT_COLOR[state.film];
+  const color = glassColor(state.tint);
 
   useEffect(() => {
     if (state.view === 'windshield' && !crackUrl) setCrackUrl(drawCrack(512).toDataURL('image/png'));
@@ -87,7 +87,7 @@ export function Fallback2D({ state, onChange }: { state: SimState; onChange: (p:
       tabIndex={0}
       role="group"
       aria-roledescription="visor de imágenes"
-      aria-label="Auto con polarizado. Usá las flechas izquierda y derecha para girarlo."
+      aria-label="Vehículo con lámina de seguridad. Usá las flechas izquierda y derecha para girarlo."
       onKeyDown={(e) => {
         if (e.key === 'ArrowLeft') go(-1);
         if (e.key === 'ArrowRight') go(1);
@@ -134,10 +134,10 @@ export function Fallback2D({ state, onChange }: { state: SimState; onChange: (p:
 
       {state.view === 'exterior' && (
         <div className="absolute right-3 bottom-3 flex gap-2">
-          <button type="button" onClick={() => go(-1)} className="h-11 w-11 rounded-full bg-ink/85 ring-1 ring-line hover:ring-brand" aria-label="Ver el auto desde otro ángulo (anterior)">
+          <button type="button" onClick={() => go(-1)} className="h-11 w-11 rounded-full bg-ink/85 ring-1 ring-line hover:ring-brand" aria-label="Ver el vehículo desde otro ángulo (anterior)">
             <IconChevronLeft className="mx-auto" />
           </button>
-          <button type="button" onClick={() => go(1)} className="h-11 w-11 rounded-full bg-ink/85 ring-1 ring-line hover:ring-brand" aria-label="Ver el auto desde otro ángulo (siguiente)">
+          <button type="button" onClick={() => go(1)} className="h-11 w-11 rounded-full bg-ink/85 ring-1 ring-line hover:ring-brand" aria-label="Ver el vehículo desde otro ángulo (siguiente)">
             <IconChevronRight className="mx-auto" />
           </button>
         </div>
