@@ -167,6 +167,16 @@
       1152
     ]
   },
+  "seguro-parabrisas": {
+    "width": 1152,
+    "height": 1270,
+    "sizes": [
+      480,
+      720,
+      960,
+      1152
+    ]
+  },
   "cambio-parabrisas-taller": {
     "width": 670,
     "height": 1448,

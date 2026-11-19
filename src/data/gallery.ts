@@ -1,7 +1,7 @@
 /**
  * Galería de trabajos. Para sumar fotos: procesalas con `npm run images`
  * (agregándolas en scripts/images.config.mjs) y agregalas acá.
- * No repetir fotos que ya se usan en el hero, servicios o contacto.
+ * No repetir fotos que ya se usan en el hero, servicios, seguros o contacto.
  * Con 13 fotos la grilla de escritorio (4 columnas, la primera ocupa 2×2) queda completa.
  */
 export const GALLERY_CATEGORIES = [

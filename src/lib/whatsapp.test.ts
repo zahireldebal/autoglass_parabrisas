@@ -15,13 +15,15 @@ describe('formatDay', () => {
 });
 
 describe('buildWhatsAppMessage', () => {
-  it('arma el mensaje completo de un cambio de parabrisas', () => {
+  it('arma el mensaje completo de un cambio de parabrisas por seguro', () => {
     const msg = buildWhatsAppMessage({
       name: 'Juan Pérez',
       service: 'Cambio de parabrisas',
       brand: 'Toyota',
       model: 'Corolla',
       year: '2018',
+      insurance: 'si',
+      insurer: 'BSE',
       preferredDay: '2026-11-19',
       timeSlot: 'tarde',
       location: 'taller',
@@ -31,6 +33,7 @@ describe('buildWhatsAppMessage', () => {
       [
         'Hola, soy *Juan Pérez*, quiero consultar por *Cambio de parabrisas* 👋',
         'Vehículo: *Toyota Corolla 2018*',
+        'Es por seguro: *Sí* (BSE)',
         'Lugar: *En el taller*',
         'Día preferido: *Jueves 19 de noviembre*, por la *tarde*',
         'Comentario: Tiene una rajadura del lado del conductor.',
@@ -45,15 +48,19 @@ describe('buildWhatsAppMessage', () => {
     expect(msg).not.toMatch(/seguro|Día|Lugar|Comentario/);
   });
 
-  it('a domicilio con zona', () => {
+  it('sin seguro y a domicilio con zona', () => {
     const msg = buildWhatsAppMessage({
       name: 'Luis',
       service: 'Vidrio lateral',
       brand: 'VW',
       model: 'Gol',
+      insurance: 'no',
+      insurer: 'no debería salir',
       location: 'domicilio',
       zone: 'San Carlos',
     });
+    expect(msg).toContain('Es por seguro: *No*\n');
+    expect(msg).not.toContain('no debería salir');
     expect(msg).toContain('Lugar: *A domicilio*, zona *San Carlos*');
   });
 

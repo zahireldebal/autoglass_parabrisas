@@ -12,6 +12,8 @@ export type QuoteData = {
   brand?: string;
   model?: string;
   year?: string;
+  insurance?: 'si' | 'no' | '';
+  insurer?: string;
   preferredDay?: string; // YYYY-MM-DD
   timeSlot?: 'mañana' | 'tarde' | '';
   location?: 'taller' | 'domicilio' | '';
@@ -65,6 +67,11 @@ export function buildWhatsAppMessage(d: QuoteData): string {
 
   const vehicle = vehicleText(d);
   if (vehicle) lines.push(`Vehículo: ${bold(vehicle)}`);
+
+  if (business.worksWithInsurance && (d.insurance === 'si' || d.insurance === 'no')) {
+    const insurer = d.insurance === 'si' ? safe(d.insurer) : '';
+    lines.push(`Es por seguro: ${bold(d.insurance === 'si' ? 'Sí' : 'No')}${insurer ? ` (${insurer})` : ''}`);
+  }
 
   if (business.homeService && d.location) {
     if (d.location === 'domicilio') {

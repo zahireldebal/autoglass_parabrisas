@@ -28,7 +28,7 @@ function go(){if(moved)return;var el=document.getElementById(decodeURIComponent(
 addEventListener('load',function(){var f=document.fonts&&document.fonts.ready;Promise.resolve(f).then(function(){requestAnimationFrame(go);setTimeout(go,700)})})})()`;
 
 const title = `Autoglass Parabrisas · Cristales automotrices y láminas de seguridad en ${business.city}`;
-const description = `Cristales automotrices para todo tipo de vehículo en ${business.city}: parabrisas, lunetas y laterales. Láminas de seguridad Security Film, venta mayorista para talleres. Colocación sin costo con la compra del cristal.`;
+const description = `Cristales automotrices para todo tipo de vehículo en ${business.city}: parabrisas, lunetas y laterales. Láminas de seguridad Security Film, venta mayorista para talleres y tu parabrisas gratis con el seguro de tu vehículo. Colocación sin costo con la compra del cristal.`;
 const ogImage = { url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Autoglass Parabrisas: cristales automotrices y láminas de seguridad en Maldonado' };
 
 export const metadata: Metadata = {
@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     'Security Film',
     'láminas de seguridad para vehículos',
     'venta mayorista de cristales',
+    'parabrisas con seguro',
+    'parabrisas gratis con el seguro',
     'luneta',
     'vidrios laterales',
     'cristales para vehículos',

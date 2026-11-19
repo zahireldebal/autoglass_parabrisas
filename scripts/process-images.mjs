@@ -125,7 +125,7 @@ async function main() {
     <text x="200" y="112" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="40" fill="#ffffff">AUTOGLASS <tspan fill="#F0B331">PARABRISAS</tspan></text>
     <text x="64" y="262" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#ffffff">CRISTALES AUTOMOTRICES</text>
     <text x="64" y="334" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#F0B331">Y LÁMINAS DE SEGURIDAD</text>
-    <text x="64" y="400" font-family="Arial, sans-serif" font-size="29" fill="#ffffff">Colocación sin costo con la compra del cristal</text>
+    <text x="64" y="400" font-family="Arial, sans-serif" font-size="29" fill="#ffffff">Parabrisas gratis con el seguro de tu vehículo</text>
     <text x="64" y="442" font-family="Arial, sans-serif" font-size="29" fill="#ffffff">Security Film · Venta mayorista para talleres</text>
     <text x="64" y="530" font-family="Arial, sans-serif" font-weight="700" font-size="29" fill="#F0B331">Maldonado · 096 126 160</text>
   </svg>`);

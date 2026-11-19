@@ -32,6 +32,7 @@ export const IMAGES = [
   // Recortes que quitan los textos sobreimpresos de las historias de Instagram
   { name: 'sellado-parabrisas', dir: 'nuevasfotos', source: 'cristalrotooagretiado.png', crop: { left: 0, top: 420, width: 1152, height: 1628 } },
   { name: 'parabrisas-colocado', dir: 'nuevasfotos', source: 'fotos.png', crop: { left: 0, top: 470, width: 1152, height: 1578 } },
+  { name: 'seguro-parabrisas', dir: 'nuevasfotos', source: 'si tu vehiculo tiene seguro tu parabrisas es gratis.png', crop: { left: 0, top: 500, width: 1152, height: 1270 } },
   // Se recorta el borde derecho (cartel viejo)
   { name: 'cambio-parabrisas-taller', dir: 'nuevasfotos', source: 'cambiandoparabrisas.png', crop: { left: 0, top: 0, width: 670, height: 1448 } },
   { name: 'taller-recepcion', dir: 'nuevasfotos', source: 'fotosprofesionales.png' },
