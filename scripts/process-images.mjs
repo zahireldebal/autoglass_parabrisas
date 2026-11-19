@@ -3,7 +3,7 @@
  *
  * Fuente de cada foto (ver scripts/images.config.mjs):
  *   1. Fotos/hd/<name>.png  → versión en HD (super-resolución ESRGAN, ver README) si existe.
- *   2. Si no, el recorte de la captura original en Fotos/.
+ *   2. Si no, el original (recortado si tiene `crop`) en Fotos/ o en la carpeta indicada en `dir`.
  * Después: acabado suave (contraste/nitidez), censura de matrículas y exportación.
  * Los originales NO se modifican.
  *
@@ -47,15 +47,25 @@ async function censorPlates(buf, plates = []) {
 async function load(img) {
   const hdPath = path.join(HD, `${img.name}.png`);
   if (existsSync(hdPath)) return { pipe: sharp(hdPath), hd: true };
-  return { pipe: sharp(path.join(SRC, img.source)).extract(img.crop), hd: false };
+  const pipe = sharp(path.join(ROOT, img.dir ?? 'Fotos', img.source));
+  return { pipe: img.crop ? pipe.extract(img.crop) : pipe, hd: false };
 }
 
 async function main() {
   await fs.mkdir(OUT, { recursive: true });
   const manifestPath = path.join(ROOT, 'src', 'data', 'images.json');
-  // Se conserva lo que agregan otros scripts (p. ej. polarizado-render de render-fallback.mjs)
-  const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8').catch(() => '{}'));
+  const manifest = {};
   const processed = {};
+
+  // Borra los WebP de fotos que ya no están en la configuración
+  const names = new Set(IMAGES.map((i) => i.name));
+  for (const f of await fs.readdir(OUT)) {
+    const m = /^(.+)-\d+\.webp$/.exec(f);
+    if (m && !names.has(m[1]) && m[1] !== 'logo') {
+      await fs.unlink(path.join(OUT, f));
+      console.log(`✗ ${f} (ya no se usa)`);
+    }
+  }
 
   for (const img of IMAGES) {
     const { pipe, hd } = await load(img);
@@ -100,25 +110,33 @@ async function main() {
   await sharp(logo).resize(96, 96, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(path.join(ROOT, 'src', 'app', 'icon.png'));
   console.log('✓ logo e íconos');
 
-  // Imagen Open Graph 1200x630 (fachada ya censurada + logo)
-  const fachada = processed['fachada-frente'];
-  const fm = await sharp(fachada).metadata();
-  const bg = await sharp(fachada)
-    .extract({ left: 0, top: 0, width: fm.width, height: Math.min(fm.height, Math.round(fm.width * (630 / 1200))) })
-    .resize(1200, 630, { fit: 'cover' })
-    .modulate({ brightness: 0.42 })
+  // Imagen Open Graph 1200x630: foto de portada a la derecha, texto y logo a la izquierda
+  const portada = await sharp(processed['portada'])
+    .resize(560, 630, { fit: 'cover', position: 'centre' })
+    .modulate({ brightness: 1.15 })
     .toBuffer();
-  const logoBuf = await sharp(logo).resize(300).png().toBuffer();
+  const fade = Buffer.from(`<svg width="560" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0C1014" stop-opacity="1"/><stop offset="0.45" stop-color="#0C1014" stop-opacity="0.35"/><stop offset="1" stop-color="#0C1014" stop-opacity="0"/>
+    </linearGradient></defs><rect width="560" height="630" fill="url(#g)"/></svg>`);
+  const logoBuf = await sharp(logo).resize(120).png().toBuffer();
   const svg = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
     <rect x="0" y="600" width="1200" height="30" fill="#F0B331"/>
-    <text x="400" y="250" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#ffffff">PARABRISAS, CRISTALES</text>
-    <text x="400" y="325" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#F0B331">Y POLARIZADO</text>
-    <text x="400" y="390" font-family="Arial, sans-serif" font-size="30" fill="#ffffff">Importación directa · Colocación profesional</text>
-    <text x="400" y="435" font-family="Arial, sans-serif" font-size="30" fill="#ffffff">Maldonado · 096 126 160</text>
+    <text x="200" y="112" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="40" fill="#ffffff">AUTOGLASS <tspan fill="#F0B331">PARABRISAS</tspan></text>
+    <text x="64" y="262" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#ffffff">CRISTALES AUTOMOTRICES</text>
+    <text x="64" y="334" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="64" fill="#F0B331">Y LÁMINAS DE SEGURIDAD</text>
+    <text x="64" y="400" font-family="Arial, sans-serif" font-size="29" fill="#ffffff">Parabrisas gratis con el seguro de tu vehículo</text>
+    <text x="64" y="442" font-family="Arial, sans-serif" font-size="29" fill="#ffffff">Security Film · Venta mayorista para talleres</text>
+    <text x="64" y="530" font-family="Arial, sans-serif" font-weight="700" font-size="29" fill="#F0B331">Maldonado · 096 126 160</text>
   </svg>`);
-  await sharp(bg)
-    .composite([{ input: logoBuf, left: 60, top: 165 }, { input: svg, left: 0, top: 0 }])
-    .jpeg({ quality: 82 })
+  await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#0C1014' } })
+    .composite([
+      { input: portada, left: 640, top: 0 },
+      { input: fade, left: 640, top: 0 },
+      { input: logoBuf, left: 64, top: 40 },
+      { input: svg, left: 0, top: 0 },
+    ])
+    .jpeg({ quality: 84 })
     .toFile(path.join(ROOT, 'public', 'og-image.jpg'));
   console.log('✓ og-image.jpg');
 

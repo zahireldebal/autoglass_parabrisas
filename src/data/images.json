@@ -1,14 +1,4 @@
 {
-  "hero-colocacion": {
-    "width": 1123,
-    "height": 1920,
-    "sizes": [
-      480,
-      720,
-      960,
-      1123
-    ]
-  },
   "stock-parabrisas": {
     "width": 1920,
     "height": 1121,
@@ -117,24 +107,112 @@
       1617
     ]
   },
-  "carteles-taller": {
-    "width": 1599,
+  "portada": {
+    "width": 1131,
     "height": 1920,
     "sizes": [
       480,
       720,
       960,
-      1440,
-      1599
+      1131
     ]
   },
-  "polarizado-render": {
-    "width": 1080,
-    "height": 675,
+  "lamina-suv": {
+    "width": 1440,
+    "height": 1920,
     "sizes": [
       480,
+      720,
       960,
-      1080
+      1440
+    ]
+  },
+  "colocacion-parabrisas": {
+    "width": 1440,
+    "height": 1920,
+    "sizes": [
+      480,
+      720,
+      960,
+      1440
+    ]
+  },
+  "luneta-rota": {
+    "width": 1440,
+    "height": 1920,
+    "sizes": [
+      480,
+      720,
+      960,
+      1440
+    ]
+  },
+  "sellado-parabrisas": {
+    "width": 1152,
+    "height": 1628,
+    "sizes": [
+      480,
+      720,
+      960,
+      1152
+    ]
+  },
+  "parabrisas-colocado": {
+    "width": 1152,
+    "height": 1578,
+    "sizes": [
+      480,
+      720,
+      960,
+      1152
+    ]
+  },
+  "seguro-parabrisas": {
+    "width": 1152,
+    "height": 1270,
+    "sizes": [
+      480,
+      720,
+      960,
+      1152
+    ]
+  },
+  "cambio-parabrisas-taller": {
+    "width": 670,
+    "height": 1448,
+    "sizes": [
+      480,
+      670
+    ]
+  },
+  "taller-recepcion": {
+    "width": 1086,
+    "height": 1448,
+    "sizes": [
+      480,
+      720,
+      960,
+      1086
+    ]
+  },
+  "taller-stock": {
+    "width": 1086,
+    "height": 1448,
+    "sizes": [
+      480,
+      720,
+      960,
+      1086
+    ]
+  },
+  "taller-oficina": {
+    "width": 1086,
+    "height": 1448,
+    "sizes": [
+      480,
+      720,
+      960,
+      1086
     ]
   }
 }

@@ -14,10 +14,12 @@ const OUT = path.resolve('Fotos/hd');
 fs.mkdirSync(IN, { recursive: true });
 fs.mkdirSync(OUT, { recursive: true });
 const only = process.argv.slice(2);
-const list = IMAGES.filter((i) => !only.length || only.includes(i.name));
+// Solo las fotos con `scale` (las originales grandes no lo necesitan)
+const list = IMAGES.filter((i) => i.scale && (!only.length || only.includes(i.name)));
 
 for (const img of list) {
-  await sharp(path.resolve('Fotos', img.source)).extract(img.crop).png().toFile(path.join(IN, `${img.name}.png`));
+  const src = sharp(path.resolve(img.dir ?? 'Fotos', img.source));
+  await (img.crop ? src.extract(img.crop) : src).png().toFile(path.join(IN, `${img.name}.png`));
 }
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.bin': 'application/octet-stream', '.png': 'image/png' };
