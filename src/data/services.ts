@@ -1,70 +1,57 @@
-import type { ServiceOption } from './options';
+import type { QuotePreset } from '@/components/quote/QuoteContext';
 
 export type Service = {
   id: string;
   title: string;
-  /** Servicio que se preselecciona en el formulario al tocar "Consultar". */
-  formService: ServiceOption;
   description: string;
   bullets: string[];
   image: string; // nombre base en /public/img (sin tamaño ni extensión)
   imageAlt: string;
-  /** true = la imagen es ilustrativa (no es un trabajo real). */
-  illustrative?: boolean;
-  showFilms?: boolean;
+  /** Formulario precargado al tocar "Consultar" (termina en WhatsApp). */
+  quote?: QuotePreset;
+  /** Si no usa el formulario: mensaje directo a WhatsApp (p. ej. talleres, que no tienen un vehículo puntual). */
+  whatsappMessage?: string;
+  /** Link secundario (otra sección de la página). */
+  secondary?: { href: string; label: string };
 };
 
 export const services: Service[] = [
   {
-    id: 'venta-importacion',
-    title: 'Venta e importación de cristales',
-    formService: 'Compra de cristal',
-    description:
-      'Somos importadores directos: tenemos stock de cristales para todas las marcas y modelos, y si no lo tenemos, lo conseguimos.',
-    bullets: ['Autos, camionetas y camiones', 'Colocación GRATIS con la compra del cristal'],
-    image: 'stock-parabrisas',
-    imageAlt: 'Estanterías del taller con decenas de parabrisas en stock',
-  },
-  {
-    id: 'cambio-parabrisas',
-    title: 'Cambio de parabrisas',
-    formService: 'Cambio de parabrisas',
-    description:
-      'Rajadura, impacto o filtraciones de agua: cambiamos tu parabrisas con colocación profesional y seguís camino en el día.',
-    bullets: ['Sin turno: llegás y lo resolvemos', 'Con garantía de colocación'],
+    id: 'cristales-automotrices',
+    title: 'Cristales automotrices',
+    description: 'Parabrisas, lunetas, vidrios de puerta, laterales y aletas. Cambio y colocación profesional en el día.',
+    bullets: ['Colocación sin costo con la compra del cristal', 'Para autos, camionetas, camiones, ómnibus y ambulancias'],
     image: 'cambio-parabrisas',
     imageAlt: 'Técnico de Autoglass sellando un parabrisas nuevo en el taller',
-  },
-  {
-    id: 'lunetas-laterales',
-    title: 'Lunetas y vidrios laterales',
-    formService: 'Luneta',
-    description:
-      'Luneta, puertas delanteras o traseras: decinos cuál es y te cotizamos el cristal exacto para tu vehículo.',
-    bullets: ['Si tenés dudas, mandanos una foto', 'A domicilio sin costo en la zona'],
-    image: 'luneta-nivus',
-    imageAlt: 'Volkswagen Nivus blanco visto desde atrás, con su luneta, dentro del taller',
-  },
-  {
-    id: 'polarizado',
-    title: 'Polarizado',
-    formService: 'Polarizado',
-    description:
-      'Más privacidad, menos calor y menos encandilamiento. Elegí el tono y la lámina; te asesoramos sobre qué conviene.',
-    bullets: ['Tonos del 70 % al 5 %', 'Probalo en el simulador 3D'],
-    image: 'polarizado-render',
-    imageAlt: 'Render ilustrativo de un sedán oscuro con vidrios polarizados',
-    illustrative: true,
-    showFilms: true,
+    quote: { service: 'Cambio de parabrisas', source: 'servicio' },
   },
   {
     id: 'laminas-seguridad',
-    title: 'Láminas de seguridad',
-    formService: 'Láminas de seguridad',
+    title: 'Láminas de seguridad Security Film',
     description:
-      'Una barrera extra: la lámina ayuda a mantener el vidrio unido ante un impacto y dificulta el ingreso al vehículo.',
-    bullets: ['Más seguridad ante robos', 'Para lunetas y laterales'],
-    image: 'lamina-seguridad',
-    imageAlt: 'Técnico aplicando lámina de seguridad sobre una luneta con pistola de calor',
+      'Privacidad, protección y seguridad. Mucho más que un polarizado: mantiene el vidrio unido ante un impacto y dificulta el ingreso al vehículo.',
+    bullets: ['Tono 20 %', 'Probala en el simulador 3D'],
+    image: 'lamina-suv',
+    imageAlt: 'Camioneta blanca en el taller con lámina de seguridad oscura en los vidrios laterales',
+    quote: { service: 'Láminas de seguridad', source: 'servicio' },
+    secondary: { href: '#security-film', label: 'Conocé la lámina' },
+  },
+  {
+    id: 'venta-mayorista',
+    title: 'Venta mayorista',
+    description: '¿Tenés un taller? Te vendemos cristales y láminas por mayor para que los coloques vos.',
+    bullets: ['Importador directo de cristales', 'Láminas de seguridad Security Film'],
+    image: 'stock-parabrisas',
+    imageAlt: 'Estanterías del taller con decenas de parabrisas en stock',
+    whatsappMessage: 'Hola, tengo un taller y quiero consultar por la compra de cristales y láminas por mayor.',
+  },
+  {
+    id: 'domicilio',
+    title: 'Servicio a domicilio',
+    description: 'Servicio a domicilio sin costo en Piriápolis, Maldonado, San Carlos y Rocha.',
+    bullets: ['Sin costo en esas cuatro zonas', 'Para otras zonas, consultanos'],
+    image: 'colocacion-parabrisas',
+    imageAlt: 'Dos técnicos colocando un parabrisas nuevo en un vehículo blanco',
+    quote: { service: 'Cambio de parabrisas', location: 'domicilio', source: 'servicio' },
   },
 ];

@@ -12,8 +12,6 @@ export const quoteSchema = z
       .min(2, 'Contanos tu nombre (al menos 2 letras).')
       .max(60, 'El nombre es muy largo.'),
     service: z.union([z.enum(SERVICE_OPTIONS), z.literal('')]).refine((v) => v !== '', 'Elegí un servicio.'),
-    tint: z.string().optional(),
-    film: z.string().optional(),
     glassScope: z.string().optional(),
     brand: z.string().trim().min(2, 'Indicá la marca (ej. Toyota).').max(30, 'Muy largo.'),
     model: z.string().trim().min(1, 'Indicá el modelo (ej. Corolla).').max(40, 'Muy largo.'),
@@ -50,8 +48,6 @@ export type QuoteFormValues = z.input<typeof quoteSchema>;
 export const emptyQuote: QuoteFormValues = {
   name: '',
   service: '',
-  tint: '',
-  film: '',
   glassScope: '',
   brand: '',
   model: '',

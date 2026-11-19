@@ -34,7 +34,7 @@ async function scenario(name, viewport, fn) {
 
 // 1) Modal desde el botón de servicio: cambio de parabrisas, CON seguro, en taller
 await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 900 }, async (page) => {
-  await page.getByRole('button', { name: 'Consultar por Cambio de parabrisas' }).click();
+  await page.getByRole('button', { name: 'Consultar por Cristales automotrices' }).click();
   const dlg = page.getByRole('dialog');
   await dlg.waitFor();
   check((await dlg.getByLabel('Servicio').inputValue()) === 'Cambio de parabrisas', 'servicio preseleccionado');
@@ -45,7 +45,7 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   await dlg.getByLabel('Modelo').fill('Corolla');
   await dlg.getByLabel('Año (opcional)').fill('2018');
   await dlg.locator('label.chip', { hasText: /^Sí$/ }).click();
-  await dlg.getByLabel('Aseguradora (opcional)').fill('BSE');
+  await dlg.getByLabel('Aseguradora (opcional)').fill('Mapfre');
   await dlg.locator('label.chip', { hasText: 'En el taller' }).click();
   await dlg.locator('label.chip', { hasText: 'Tarde' }).click();
   await dlg.getByLabel('Comentario (opcional)').fill('Tiene una rajadura del lado del conductor.');
@@ -57,7 +57,7 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   check(href.startsWith('https://wa.me/59896126160?text='), 'link wa.me al número del negocio');
   check(msg.startsWith('Hola, soy *Juan Pérez*, quiero consultar por *Cambio de parabrisas*'), 'saludo correcto');
   check(msg.includes('Vehículo: *Toyota Corolla 2018*'), 'vehículo');
-  check(msg.includes('Es por seguro: *Sí* (BSE)'), 'seguro con aseguradora');
+  check(msg.includes('Es por seguro: *Sí* (Mapfre)'), 'seguro con aseguradora');
   check(msg.includes('Lugar: *En el taller*'), 'taller');
   check(msg.includes('Franja preferida: por la *tarde*'), 'franja');
   check(await dlg.getByText('Si tenés fotos del daño').isVisible(), 'aviso de fotos');
@@ -109,14 +109,12 @@ await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, a
   check(overflow === 0, 'sin scroll horizontal en 375 px');
 });
 
-// 3) Polarizado con detalles
-await scenario('Polarizado desde tarjeta', { width: 375, height: 812 }, async (page) => {
-  await page.getByRole('button', { name: 'Consultar por Polarizado' }).click();
+// 3) Lámina de seguridad con detalles
+await scenario('Lámina de seguridad desde tarjeta', { width: 375, height: 812 }, async (page) => {
+  await page.getByRole('button', { name: 'Consultar por Láminas de seguridad Security Film' }).click();
   const dlg = page.getByRole('dialog');
   await dlg.waitFor();
   await dlg.getByLabel('Nombre').fill('Sofi');
-  await dlg.locator('label.chip', { hasText: '20 %' }).click();
-  await dlg.getByLabel('Tipo de lámina').selectOption('nano-ceramico');
   await dlg.locator('label.chip', { hasText: 'Laterales y luneta' }).click();
   await dlg.getByLabel('Marca').fill('Chevrolet');
   await dlg.getByLabel('Modelo').fill('Onix');
@@ -124,21 +122,18 @@ await scenario('Polarizado desde tarjeta', { width: 375, height: 812 }, async (p
   await dlg.getByText('Revisá tu mensaje').waitFor();
   const msg = decode(await dlg.getByTestId('send-whatsapp').getAttribute('href'));
   show(msg);
-  check(
-    msg.includes('Tono deseado: *20 %*') && msg.includes('Lámina: *Nano Cerámico*') && msg.includes('Vidrios: *Laterales y luneta*'),
-    'detalles de polarizado',
-  );
+  check(msg.includes('Lámina: *Security Film 20 %*') && msg.includes('Vidrios: *Laterales y luneta*'), 'detalles de la lámina');
 });
 
 if (process.argv.includes('--simulador')) {
-  await scenario('Simulador → Quiero este polarizado', { width: 1440, height: 900 }, async (page) => {
+  await scenario('Simulador → Quiero mi lámina de seguridad', { width: 1440, height: 900 }, async (page) => {
     await page.locator('#simulador').scrollIntoViewIfNeeded();
-    await page.locator('#simulador').getByRole('radio', { name: /^35 %/ }).click();
-    await page.getByRole('button', { name: 'Quiero este polarizado' }).click();
+    await page.locator('#simulador').getByRole('radio', { name: /Con lámina de seguridad/ }).click();
+    await page.getByRole('button', { name: 'Quiero mi lámina de seguridad' }).click();
     const dlg = page.getByRole('dialog');
     await dlg.waitFor();
-    check((await dlg.getByLabel('Servicio').inputValue()) === 'Polarizado', 'servicio Polarizado precargado');
-    check(await dlg.locator('input[value="35"]').isChecked(), 'tono 35 % precargado');
+    check((await dlg.getByLabel('Servicio').inputValue()) === 'Láminas de seguridad', 'servicio Láminas de seguridad precargado');
+    check(await dlg.locator('input[value="todos"]').isChecked(), 'todos los vidrios precargado');
   });
 }
 

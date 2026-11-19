@@ -5,15 +5,7 @@ import { useForm, type FieldErrors, type UseFormRegisterReturn } from 'react-hoo
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
 import { business } from '@/data/business';
-import {
-  FILM_TYPES,
-  GLASS_SCOPE_OPTIONS,
-  LOCATION_OPTIONS,
-  SERVICE_OPTIONS,
-  TIME_SLOTS,
-  TINT_FORM_OPTIONS,
-  ZONE_OPTIONS,
-} from '@/data/options';
+import { GLASS_SCOPE_OPTIONS, LOCATION_OPTIONS, SERVICE_OPTIONS, TIME_SLOTS, ZONE_OPTIONS } from '@/data/options';
 import { emptyQuote, quoteSchema, type QuoteFormValues } from '@/lib/quoteSchema';
 import { buildWhatsAppMessage, buildWhatsAppUrl, type QuoteData } from '@/lib/whatsapp';
 import type { QuotePreset } from './QuoteContext';
@@ -46,9 +38,8 @@ function presetToValues(p?: QuotePreset | null): Partial<QuoteFormValues> {
   if (!p) return {};
   const v: Partial<QuoteFormValues> = {};
   if (p.service) v.service = p.service;
-  if (p.tint) v.tint = p.tint;
-  if (p.film) v.film = p.film;
   if (p.glassScope) v.glassScope = p.glassScope;
+  if (p.location) v.location = p.location;
   return v;
 }
 
@@ -109,7 +100,6 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
   const service = watch('service');
   const insurance = watch('insurance');
   const location = watch('location');
-  const tint = watch('tint');
   const glassScope = watch('glassScope');
   const timeSlot = watch('timeSlot');
   const zone = watch('zone');
@@ -203,27 +193,16 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
         </Field>
 
         <AnimatePresence initial={false}>
-          {service === 'Polarizado' && (
+          {service === 'Láminas de seguridad' && (
             <motion.fieldset
-              key="pol"
+              key="lamina"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="grid gap-4 overflow-hidden rounded-xl border border-brand/40 bg-brand/[0.04] p-4"
             >
-              <legend className="sr-only">Detalles del polarizado</legend>
-              <ChipGroup label="Tono deseado" name="tint" options={TINT_FORM_OPTIONS} value={tint} register={register('tint')} uid={id('tint')} />
-              <Field label="Tipo de lámina" id={id('film')}>
-                <select id={id('film')} className="field" {...register('film')}>
-                  <option value="">Sin preferencia</option>
-                  {FILM_TYPES.map((f) => (
-                    <option key={f.value} value={f.value}>
-                      {f.label}
-                    </option>
-                  ))}
-                  <option value="asesoramiento">No sé, quiero asesoramiento</option>
-                </select>
-              </Field>
+              <legend className="sr-only">Detalles de la lámina de seguridad</legend>
+              <p className="text-sm text-mist">Lámina de seguridad Security Film, tono 20 %.</p>
               <ChipGroup label="¿Qué vidrios?" name="glassScope" options={GLASS_SCOPE_OPTIONS} value={glassScope} register={register('glassScope')} uid={id('scope')} />
             </motion.fieldset>
           )}
@@ -308,7 +287,7 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
             />
             {insurance === 'si' && (
               <Field label="Aseguradora (opcional)" id={id('insurer')} error={errors.insurer?.message}>
-                <input id={id('insurer')} className="field" placeholder="Ej. BSE, Sura, Mapfre…" {...register('insurer')} />
+                <input id={id('insurer')} className="field" placeholder="Ej. Mapfre, SURA, HDI…" {...register('insurer')} />
               </Field>
             )}
           </div>

@@ -3,13 +3,11 @@
  * y genera el link wa.me. Sin dependencias de React (testeable con Vitest).
  */
 import { business } from '@/data/business';
-import { FILM_TYPES, GLASS_SCOPE_OPTIONS, TINT_FORM_OPTIONS, type ServiceOption } from '@/data/options';
+import { GLASS_SCOPE_OPTIONS, SECURITY_FILM_TINT, type ServiceOption } from '@/data/options';
 
 export type QuoteData = {
   name: string;
   service: ServiceOption | '';
-  tint?: string;
-  film?: string;
   glassScope?: string;
   brand?: string;
   model?: string;
@@ -62,12 +60,8 @@ export function buildWhatsAppMessage(d: QuoteData): string {
         : `Hola, quiero consultar por ${bold(service || 'un servicio')} 👋`,
   );
 
-  if (d.service === 'Polarizado') {
-    if (d.tint) {
-      const t = labelOf(TINT_FORM_OPTIONS, d.tint);
-      lines.push(`Tono deseado: ${bold(t)}`);
-    }
-    if (d.film) lines.push(`Lámina: ${bold(d.film === 'asesoramiento' ? 'Quiero asesoramiento' : labelOf(FILM_TYPES, d.film))}`);
+  if (d.service === 'Láminas de seguridad') {
+    lines.push(`Lámina: ${bold(`Security Film ${SECURITY_FILM_TINT.label}`)}`);
     if (d.glassScope) lines.push(`Vidrios: ${bold(labelOf(GLASS_SCOPE_OPTIONS, d.glassScope))}`);
   }
 

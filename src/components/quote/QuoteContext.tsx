@@ -1,13 +1,12 @@
 'use client';
 
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
-import type { FilmValue, GlassScope, ServiceOption, TintValue } from '@/data/options';
+import type { GlassScope, LocationValue, ServiceOption } from '@/data/options';
 
 export type QuotePreset = {
   service?: ServiceOption;
-  tint?: TintValue | 'asesoramiento';
-  film?: FilmValue;
   glassScope?: GlassScope;
+  location?: LocationValue;
   /** De dónde vino (para el título del modal). */
   source?: 'simulador' | 'servicio' | 'general';
 };

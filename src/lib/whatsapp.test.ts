@@ -64,21 +64,19 @@ describe('buildWhatsAppMessage', () => {
     expect(msg).toContain('Lugar: *A domicilio*, zona *San Carlos*');
   });
 
-  it('agrega los detalles de polarizado solo si el servicio es Polarizado', () => {
-    const base = { name: 'Sofi', brand: 'Chevrolet', model: 'Onix', tint: '20', film: 'nano-ceramico', glassScope: 'laterales-luneta' };
-    const pol = buildWhatsAppMessage({ ...base, service: 'Polarizado' });
-    expect(pol).toContain('Tono deseado: *20 %*');
-    expect(pol).toContain('Lámina: *Nano Cerámico*');
-    expect(pol).toContain('Vidrios: *Laterales y luneta*');
+  it('agrega los detalles de la lámina solo si el servicio es Láminas de seguridad', () => {
+    const base = { name: 'Sofi', brand: 'Chevrolet', model: 'Onix', glassScope: 'laterales-luneta' };
+    const lam = buildWhatsAppMessage({ ...base, service: 'Láminas de seguridad' });
+    expect(lam).toContain('Lámina: *Security Film 20 %*');
+    expect(lam).toContain('Vidrios: *Laterales y luneta*');
     const otro = buildWhatsAppMessage({ ...base, service: 'Luneta' });
-    expect(otro).not.toContain('Tono');
     expect(otro).not.toContain('Lámina');
+    expect(otro).not.toContain('Vidrios');
   });
 
-  it('tono "asesoramiento"', () => {
-    const msg = buildWhatsAppMessage({ name: 'Sofi', service: 'Polarizado', tint: 'asesoramiento', film: 'asesoramiento' });
-    expect(msg).toContain('Tono deseado: *No sé, quiero asesoramiento*');
-    expect(msg).toContain('Lámina: *Quiero asesoramiento*');
+  it('lámina con asesoramiento sobre los vidrios', () => {
+    const msg = buildWhatsAppMessage({ name: 'Sofi', service: 'Láminas de seguridad', glassScope: 'asesoramiento' });
+    expect(msg).toContain('Vidrios: *Quiero asesoramiento*');
   });
 
   it('limpia espacios y asteriscos que romperían el formato', () => {
