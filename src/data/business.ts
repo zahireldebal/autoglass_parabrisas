@@ -5,21 +5,21 @@
  */
 
 /**
- * URL pública del sitio (canonical, sitemap, Open Graph).
- * Mientras el prototipo vive en Netlify, queda la URL de Netlify.
- * Para pasar al dominio final, cambiá a 'https://autoglassparabrisas.com'
- * (o definí la variable de entorno NEXT_PUBLIC_SITE_URL en Netlify) — ver README.
+ * URL pública del sitio: ÚNICO lugar donde se define. De acá salen el canonical,
+ * og:url, og:image, twitter:image, sitemap.xml, robots.txt y el JSON-LD.
+ * Mientras el sitio vive en Netlify, queda la URL de Netlify.
+ * Cuando llegue el dominio definitivo: definí NEXT_PUBLIC_SITE_URL en Netlify
+ * (recomendado) o cambiá DEFAULT_SITE_URL acá. Ver README → "Dominio final".
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://autoglass-parabrisas.netlify.app'
-).replace(/\/$/, '');
+const DEFAULT_SITE_URL = 'https://autoglassparabriss.netlify.app';
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, '');
 
 export const business = {
   name: 'Autoglass Parabrisas',
   shortName: 'Autoglass',
   tagline: 'Tu seguridad primero',
   description:
-    'Importación, venta y colocación de cristales automotrices en Maldonado: parabrisas, lunetas, vidrios laterales, polarizado y láminas de seguridad. Colocación gratis con la compra del cristal y servicio a domicilio sin costo.',
+    'Importación, venta y colocación de cristales automotrices para todo tipo de vehículo en Maldonado: parabrisas, lunetas, vidrios de puerta, laterales y aletas, y láminas de seguridad Security Film. Venta mayorista para talleres. Colocación sin costo con la compra del cristal, servicio a domicilio sin cargo y parabrisas con tu seguro.',
 
   /** WhatsApp: solo dígitos, con código de país (Uruguay = 598). Se usa en TODOS los botones. */
   whatsapp: '59896126160',
@@ -89,4 +89,3 @@ export const business = {
 } as const;
 
 export const telHref = `tel:${business.phone}`;
-export const waBase = `https://wa.me/${business.whatsapp}`;

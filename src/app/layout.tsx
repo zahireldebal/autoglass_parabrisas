@@ -22,8 +22,9 @@ const barlowCondensed = Barlow_Condensed({
   display: 'swap',
 });
 
-const title = `Autoglass Parabrisas · Parabrisas, Cristales y Polarizado en ${business.city}`;
-const description = `Cambio de parabrisas en ${business.city}, lunetas, vidrios laterales, polarizado de autos y láminas de seguridad. Importador directo de cristales automotrices: colocación gratis con la compra y a domicilio sin costo. Cotizá por WhatsApp.`;
+const title = `Autoglass Parabrisas · Cristales automotrices y láminas de seguridad en ${business.city}`;
+const description = `Cristales automotrices para todo tipo de vehículo en ${business.city}: parabrisas, lunetas y laterales. Láminas de seguridad Security Film, venta mayorista para talleres y tu parabrisas gratis con el seguro de tu vehículo. Colocación sin costo con la compra del cristal.`;
+const ogImage = { url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Autoglass Parabrisas: cristales automotrices y láminas de seguridad en Maldonado' };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,28 +32,34 @@ export const metadata: Metadata = {
   description,
   applicationName: business.name,
   keywords: [
+    'cristales automotrices',
     `cambio de parabrisas ${business.city}`,
     'parabrisas Maldonado',
-    'polarizado de autos',
-    'láminas de seguridad',
-    'cristales automotrices',
+    'lámina de seguridad',
+    'Security Film',
+    'láminas de seguridad para vehículos',
+    'venta mayorista de cristales',
+    'parabrisas con seguro',
+    'parabrisas gratis con el seguro',
     'luneta',
     'vidrios laterales',
+    'cristales para vehículos',
     'Punta del Este',
     'San Carlos',
     'Piriápolis',
+    'Rocha',
   ],
-  alternates: { canonical: '/' },
+  alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     type: 'website',
     locale: 'es_UY',
-    url: '/',
+    url: `${SITE_URL}/`,
     siteName: business.name,
     title,
     description,
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Autoglass Parabrisas, Maldonado' }],
+    images: [ogImage],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og-image.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: [ogImage.url] },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false },
 };
