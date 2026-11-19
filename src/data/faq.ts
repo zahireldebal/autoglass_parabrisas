@@ -1,6 +1,6 @@
 /**
- * Preguntas frecuentes. Las respuestas marcadas con [CONFIRMAR CON EL CLIENTE]
- * están listadas en PENDIENTES.md.
+ * Preguntas frecuentes. Las marcadas con `pending` tienen un dato a confirmar
+ * con la clienta (ver PENDIENTES.md); el texto visible ya no lleva marcadores.
  */
 export const faq: { q: string; a: string; pending?: boolean }[] = [
   {
@@ -10,30 +10,32 @@ export const faq: { q: string; a: string; pending?: boolean }[] = [
   },
   {
     q: '¿Cuándo puedo manejar después del cambio?',
-    a: '[CONFIRMAR CON EL CLIENTE] Te indicamos el tiempo de espera recomendado al terminar la colocación.',
+    a: 'Al terminar la colocación te indicamos el tiempo de espera recomendado.',
     pending: true,
   },
   {
+    q: '¿El seguro cubre el cambio?',
+    a: 'En la mayoría de los casos sí. Trabajamos con Mapfre, Porto Seguro, SURA, Sancor, Surco, Berkley, San Cristóbal y HDI.',
+  },
+  {
     q: '¿Trabajan con seguros?',
-    a: 'Sí. Si tenés seguro, gestionamos el cambio de tu parabrisas o cristal, que puede salirte gratis según tu cobertura. Contanos con qué aseguradora estás al consultar.',
+    a: 'Sí. Si tu vehículo tiene seguro, posiblemente tengas un cambio de cristal gratis al año. Nosotros nos encargamos de toda la gestión con tu aseguradora. Sujeto a la cobertura de tu póliza.',
+  },
+  {
+    q: '¿Qué es la lámina de seguridad?',
+    a: 'Es una lámina que, además de darle tonalidad al vidrio, lo mantiene unido ante un impacto y dificulta el ingreso al vehículo. Tono 20 %.',
+  },
+  {
+    q: '¿Venden por mayor?',
+    a: 'Sí, cristales y láminas para talleres. Consultanos.',
   },
   {
     q: '¿Van a domicilio?',
     a: 'Sí, vamos a domicilio sin costo adicional en Piriápolis, Maldonado, San Carlos y Rocha. Para otras zonas, consultanos.',
   },
   {
-    q: '¿Cuánto dura el polarizado?',
-    a: '[CONFIRMAR CON EL CLIENTE] La duración depende de la línea de lámina elegida (Window Films, Nano Cerámico o Nano Carbon HP). Consultanos y te contamos la garantía de cada una.',
-    pending: true,
-  },
-  {
-    q: '¿Qué tonos de polarizado están permitidos?',
-    a: '[CONFIRMAR CON EL CLIENTE] El polarizado está regulado, sobre todo en el parabrisas y los vidrios delanteros. Consultanos y te asesoramos sobre qué está permitido para tu vehículo.',
-    pending: true,
-  },
-  {
     q: '¿La colocación tiene costo?',
-    a: 'Con la compra del cristal, la colocación es gratis.',
+    a: 'Con la compra del cristal, la colocación es sin costo.',
   },
   {
     q: '¿Cómo puedo pagar?',
