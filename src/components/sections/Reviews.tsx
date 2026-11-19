@@ -5,12 +5,11 @@ import { IconArrowRight, IconInstagram, IconStar } from '@/components/ui/Icons';
 /**
  * SOLO reseñas reales. Estas son respuestas de clientes publicadas en una historia
  * de Instagram de @parabrisas_autoglass_ (destacada "Reseñas"), sin nombre.
- * La tercera está parcialmente tapada en la captura: pendiente de confirmar (ver PENDIENTES.md).
+ * Había una tercera, pero estaba tapada en la captura y no se pudo confirmar el texto completo: se quitó.
  */
 const reviews = [
   { text: 'Vinieron a casa y me solucionaron el parabrisas al toque, los mejores.' },
   { text: 'Me lograron conseguir el parabrisas que no lograba encontrar por ningún lado, un 10.' },
-  { text: 'Excelente servicio, rapidez y muy buenos […]', pending: true },
 ];
 
 export function Reviews() {
@@ -43,7 +42,7 @@ export function Reviews() {
             </a>
           </Reveal>
 
-          <ul className="grid gap-4 md:grid-cols-3">
+          <ul className="grid gap-4 md:grid-cols-2">
             {reviews.map((r, i) => (
               <Reveal as="li" key={r.text} delay={i * 0.08} className="card relative flex flex-col p-6">
                 <span aria-hidden className="font-display text-6xl leading-none text-brand/70">“</span>
@@ -53,7 +52,6 @@ export function Reviews() {
                 <p className="mt-4 flex items-center gap-2 text-sm text-mist">
                   <IconInstagram className="h-4 w-4" /> Respuesta de cliente en Instagram
                 </p>
-                {r.pending && <p className="mt-1 text-xs text-brand">[Texto completo a confirmar]</p>}
               </Reveal>
             ))}
           </ul>
