@@ -156,7 +156,7 @@ Medilo también con [PageSpeed Insights](https://pagespeed.web.dev/) sobre la UR
 
 ## Créditos
 
-- © 2026 Autoglass Parabrisas · Diseño y desarrollo: MundoWeb · Todos los derechos reservados.
+- © 2026 Autoglass Parabrisas · Diseño y desarrollo: ZAJUX · Todos los derechos reservados.
 - Modelo 3D: ["Generic Sedan Car"](https://sketchfab.com/3d-models/generic-sedan-car-58c33766470d46e7b2aed542650494e5) por [Márcio Meireles](https://sketchfab.com/marciomeireles), licencia [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/). El modelo fue optimizado (se quitaron partes no visibles y se comprimieron la geometría y las texturas) y el color de la carrocería se modifica en el simulador.
 
 Pendientes de contenido: ver [`PENDIENTES.md`](PENDIENTES.md).

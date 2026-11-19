@@ -85,7 +85,7 @@ export const business = {
     licenseUrl: 'http://creativecommons.org/licenses/by/4.0/',
   },
 
-  credits: '© 2026 Autoglass Parabrisas · Diseño y desarrollo: MundoWeb · Todos los derechos reservados.',
+  credits: '© 2026 Autoglass Parabrisas · Diseño y desarrollo: ZAJUX · Todos los derechos reservados.',
 } as const;
 
 export const telHref = `tel:${business.phone}`;
