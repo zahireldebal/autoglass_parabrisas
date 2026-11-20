@@ -50,7 +50,16 @@ export function Faq() {
                   </h3>
                   <div id={panelId} role="region" aria-labelledby={btnId} className="expand-panel" data-open={isOpen} inert={!isOpen}>
                     <div>
-                      <p className="px-5 pb-5 text-mist sm:px-6">{f.a}</p>
+                      <div className="px-5 pb-5 text-mist sm:px-6">
+                        <p>{f.a}</p>
+                        {f.list && (
+                          <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-brand">
+                            {f.list.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </li>

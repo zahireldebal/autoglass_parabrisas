@@ -2,7 +2,7 @@
  * Preguntas frecuentes. Las marcadas con `pending` tienen un dato a confirmar
  * con la clienta (ver PENDIENTES.md); el texto visible ya no lleva marcadores.
  */
-export const faq: { q: string; a: string; pending?: boolean }[] = [
+export const faq: { q: string; a: string; list?: string[]; pending?: boolean }[] = [
   {
     q: '¿Cuánto tarda un cambio de parabrisas?',
     a: 'En la mayoría de los casos lo resolvemos en menos de 1 hora, y trabajamos sin turno: llegás, lo cambiamos y seguís camino. El tiempo puede variar según el vehículo.',
@@ -14,12 +14,32 @@ export const faq: { q: string; a: string; pending?: boolean }[] = [
     pending: true,
   },
   {
+    q: '¿Qué cuidados hay que tener después de colocar un parabrisas?',
+    a: 'Tené en cuenta estos cuidados:',
+    list: [
+      'No retires la cinta de sujeción durante las primeras 24 horas.',
+      'No laves el vehículo con hidrolavadora.',
+      'Si salís a la ruta, manejá a velocidad moderada.',
+    ],
+    pending: true,
+  },
+  {
     q: '¿El seguro cubre el cambio?',
     a: 'En la mayoría de los casos sí: si tu vehículo tiene seguro, posiblemente tengas un cambio de cristal gratis al año. Nosotros nos encargamos de toda la gestión con tu aseguradora. Trabajamos con Mapfre, Porto Seguro, SURA, Sancor, Surco, Berkley, San Cristóbal y HDI. Sujeto a la cobertura de tu póliza.',
   },
   {
     q: '¿Qué es la lámina de seguridad?',
     a: 'Es una lámina que, además de darle tonalidad al vidrio, lo mantiene unido ante un impacto y dificulta el ingreso al vehículo. Tono 20 %.',
+  },
+  {
+    q: '¿Qué cuidados hay que tener con las láminas de seguridad?',
+    a: 'Tené en cuenta estos cuidados:',
+    list: [
+      'No bajes los vidrios durante las primeras 24 horas.',
+      'No enciendas el desempañador.',
+      'Si podés, dejá el vehículo al sol: ayuda a que la lámina seque mejor.',
+    ],
+    pending: true,
   },
   {
     q: '¿Venden por mayor?',
