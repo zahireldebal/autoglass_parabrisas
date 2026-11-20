@@ -34,7 +34,7 @@ export function Hero() {
             Cristales automotrices y <span className="text-brand">láminas de seguridad</span> para tu vehículo
           </p>
           <p className="hero-in mt-2 max-w-xl text-lg text-snow/90 sm:text-xl" style={{ animationDelay: '0.2s' }}>
-            Importamos, vendemos y colocamos cristales para todo tipo de vehículo.{' '}
+            Importamos, vendemos y colocamos cristales para autos, camionetas y camiones.{' '}
             <strong className="font-semibold text-snow">Colocación sin costo con la compra del cristal</strong> y servicio a domicilio sin cargo en{' '}
             {business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}.
           </p>

@@ -8,7 +8,7 @@ const items = [
   { icon: IconHome, title: 'A domicilio sin costo', text: business.homeServiceZones.join(' · ') },
   { icon: IconShield, title: 'Parabrisas con tu seguro', text: 'Nos encargamos de toda la gestión con tu aseguradora.' },
   { icon: IconCard, title: 'Hasta 6 pagos', text: 'Con todas las tarjetas.' },
-  { icon: IconTruck, title: 'Todo tipo de vehículo', text: 'Autos, camionetas, camiones, ómnibus y ambulancias.' },
+  { icon: IconTruck, title: 'Autos, camionetas y camiones', text: 'Cristales y láminas de seguridad para tu vehículo.' },
   { icon: IconBoxes, title: 'Stock para todas las marcas', text: 'Y si no está, lo conseguimos.' },
 ];
 

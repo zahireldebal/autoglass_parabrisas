@@ -20,7 +20,7 @@ export const services: Service[] = [
     id: 'cristales-automotrices',
     title: 'Cristales automotrices',
     description: 'Parabrisas, lunetas, vidrios de puerta, laterales y aletas. Cambio y colocación profesional en el día.',
-    bullets: ['Colocación sin costo con la compra del cristal', 'Para autos, camionetas, camiones, ómnibus y ambulancias'],
+    bullets: ['Colocación sin costo con la compra del cristal', 'Para autos, camionetas y camiones'],
     image: 'cristales-saveiro',
     imageAlt: 'Técnico de Autoglass colocando el parabrisas de una Volkswagen Saveiro gris en el taller',
     quote: { service: 'Cambio de parabrisas', source: 'servicio' },

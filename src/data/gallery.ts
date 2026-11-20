@@ -15,7 +15,7 @@ export const gallery: { name: string; alt: string; caption: string; category: Ga
   {
     name: 'taller-stock',
     alt: 'Pasillo del taller Autoglass con estanterías altas llenas de parabrisas, escalera de madera y banco de herramientas',
-    caption: 'Stock de cristales para todo tipo de vehículo',
+    caption: 'Stock de cristales para autos, camionetas y camiones',
     category: 'taller',
   },
   {

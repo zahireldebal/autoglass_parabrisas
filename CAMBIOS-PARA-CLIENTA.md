@@ -5,7 +5,7 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 
 ---
 
-**Sector 0 – Cambios generales:** en toda la web dice "vehículo" en lugar de "auto", porque trabajan con autos, camionetas, camiones, ómnibus y ambulancias. Se sacó todo lo de polarizado (tonos, líneas de lámina y textos). Ahora se habla siempre de lámina de seguridad.
+**Sector 0 – Cambios generales:** en toda la web dice "vehículo" en lugar de "auto", porque trabajan con autos, camionetas y camiones. Se sacó todo lo de polarizado (tonos, líneas de lámina y textos). Ahora se habla siempre de lámina de seguridad.
 
 **Sector 1 – Portada:** tiene la foto nueva y el título "Cristales automotrices y láminas de seguridad para tu vehículo", con el texto que mandaste. Abajo aparece la frase "Tu vehículo, en las mejores manos." y un sello destacado: "Tu parabrisas gratis con el seguro de tu vehículo". Si lo tocan, lleva directo a la sección de seguros.
 

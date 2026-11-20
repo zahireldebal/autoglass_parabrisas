@@ -19,7 +19,7 @@ export const business = {
   shortName: 'Autoglass',
   tagline: 'Tu seguridad primero',
   description:
-    'Importación, venta y colocación de cristales automotrices para todo tipo de vehículo en Maldonado: parabrisas, lunetas, vidrios de puerta, laterales y aletas, y láminas de seguridad Security Film. Venta mayorista para talleres. Colocación sin costo con la compra del cristal, servicio a domicilio sin cargo y parabrisas con tu seguro.',
+    'Importación, venta y colocación de cristales automotrices para autos, camionetas y camiones en Maldonado: parabrisas, lunetas, vidrios de puerta, laterales y aletas, y láminas de seguridad Security Film. Venta mayorista para talleres. Colocación sin costo con la compra del cristal, servicio a domicilio sin cargo y parabrisas con tu seguro.',
 
   /** WhatsApp: solo dígitos, con código de país (Uruguay = 598). Se usa en TODOS los botones. */
   whatsapp: '59896126160',

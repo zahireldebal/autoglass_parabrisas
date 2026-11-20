@@ -1,6 +1,6 @@
 # Autoglass Parabrisas: sitio web
 
-Sitio one-page de **Autoglass Parabrisas** (Maldonado, Uruguay): importación, venta y colocación de cristales automotrices para todo tipo de vehículo, láminas de seguridad Security Film y venta mayorista para talleres. Toda consulta termina en **WhatsApp** (con un formulario que arma el mensaje, o con un mensaje directo en Security Film y venta mayorista). Incluye un **simulador 3D de la lámina de seguridad**.
+Sitio one-page de **Autoglass Parabrisas** (Maldonado, Uruguay): importación, venta y colocación de cristales automotrices para autos, camionetas y camiones, láminas de seguridad Security Film y venta mayorista para talleres. Toda consulta termina en **WhatsApp** (con un formulario que arma el mensaje, o con un mensaje directo en Security Film y venta mayorista). Incluye un **simulador 3D de la lámina de seguridad**.
 
 - **Stack:** Next.js 15 (App Router, exportación estática), TypeScript, Tailwind CSS 4, React Three Fiber + drei (3D), React Hook Form + Zod, Framer Motion (solo en partes que se cargan bajo demanda).
 - **Sin backend:** se despliega como sitio estático en Netlify.
