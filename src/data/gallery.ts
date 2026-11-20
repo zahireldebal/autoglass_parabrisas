@@ -25,8 +25,8 @@ export const gallery: { name: string; alt: string; caption: string; category: Ga
     category: 'parabrisas',
   },
   {
-    name: 'lamina-seguridad',
-    alt: 'Técnico aplicando lámina de seguridad sobre una luneta con pistola de calor',
+    name: 'lamina-lateral',
+    alt: 'Técnico de Autoglass colocando lámina de seguridad en el vidrio lateral de un vehículo blanco, con una espátula',
     caption: 'Colocación de lámina de seguridad',
     category: 'laminas',
   },

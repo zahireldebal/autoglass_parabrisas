@@ -21,8 +21,8 @@ export const services: Service[] = [
     title: 'Cristales automotrices',
     description: 'Parabrisas, lunetas, vidrios de puerta, laterales y aletas. Cambio y colocación profesional en el día.',
     bullets: ['Colocación sin costo con la compra del cristal', 'Para autos, camionetas, camiones, ómnibus y ambulancias'],
-    image: 'cambio-parabrisas',
-    imageAlt: 'Técnico de Autoglass sellando un parabrisas nuevo en el taller',
+    image: 'cristales-saveiro',
+    imageAlt: 'Técnico de Autoglass colocando el parabrisas de una Volkswagen Saveiro gris en el taller',
     quote: { service: 'Cambio de parabrisas', source: 'servicio' },
   },
   {
@@ -41,8 +41,8 @@ export const services: Service[] = [
     title: 'Venta mayorista',
     description: '¿Tenés un taller? Te vendemos cristales y láminas por mayor para que los coloques vos.',
     bullets: ['Importador directo de cristales', 'Láminas de seguridad Security Film'],
-    image: 'stock-parabrisas',
-    imageAlt: 'Estanterías del taller con decenas de parabrisas en stock',
+    image: 'stock-cristales',
+    imageAlt: 'Estantería del depósito con decenas de parabrisas importados en stock, etiquetados y listos para entregar',
     whatsappMessage: 'Hola, tengo un taller y quiero consultar por la compra de cristales y láminas por mayor.',
   },
   {

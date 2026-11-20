@@ -1,26 +1,4 @@
 {
-  "stock-parabrisas": {
-    "width": 1920,
-    "height": 1121,
-    "sizes": [
-      480,
-      720,
-      960,
-      1440,
-      1920
-    ]
-  },
-  "cambio-parabrisas": {
-    "width": 1920,
-    "height": 1058,
-    "sizes": [
-      480,
-      720,
-      960,
-      1440,
-      1920
-    ]
-  },
   "luneta-nivus": {
     "width": 1880,
     "height": 1700,
@@ -30,16 +8,6 @@
       960,
       1440,
       1880
-    ]
-  },
-  "lamina-seguridad": {
-    "width": 1419,
-    "height": 1920,
-    "sizes": [
-      480,
-      720,
-      960,
-      1419
     ]
   },
   "taller-importacion": {
@@ -206,6 +174,35 @@
     ]
   },
   "taller-oficina": {
+    "width": 1086,
+    "height": 1448,
+    "sizes": [
+      480,
+      720,
+      960,
+      1086
+    ]
+  },
+  "cristales-saveiro": {
+    "width": 946,
+    "height": 650,
+    "sizes": [
+      480,
+      720,
+      946
+    ]
+  },
+  "stock-cristales": {
+    "width": 1086,
+    "height": 747,
+    "sizes": [
+      480,
+      720,
+      960,
+      1086
+    ]
+  },
+  "lamina-lateral": {
     "width": 1086,
     "height": 1448,
     "sizes": [

@@ -9,10 +9,7 @@
  *          así sirven para cualquier resolución: { x, y, w, h }.
  */
 export const IMAGES = [
-  { name: 'stock-parabrisas', source: 'sitio2.png', crop: { left: 0, top: 116, width: 1264, height: 738 }, scale: 2 },
-  { name: 'cambio-parabrisas', source: 'instagram3.png', crop: { left: 12, top: 324, width: 570, height: 314 }, scale: 4 },
   { name: 'luneta-nivus', source: 'sitio4.png', crop: { left: 12, top: 0, width: 940, height: 850 }, scale: 2 },
-  { name: 'lamina-seguridad', source: 'instagram11.png', crop: { left: 698, top: 80, width: 510, height: 690 }, scale: 4 },
   { name: 'taller-importacion', source: 'sitio1.png', crop: { left: 72, top: 106, width: 1195, height: 740 }, scale: 2 },
   { name: 'fachada-frente', source: 'maps3.png', crop: { left: 70, top: 116, width: 1150, height: 734 }, scale: 2,
     plates: [{ x: 0.703, y: 0.59, w: 0.042, h: 0.028 }, { x: 0.76, y: 0.55, w: 0.034, h: 0.026 }, { x: 0.68, y: 0.527, w: 0.02, h: 0.014 }] },
@@ -38,4 +35,12 @@ export const IMAGES = [
   { name: 'taller-recepcion', dir: 'nuevasfotos', source: 'fotosprofesionales.png' },
   { name: 'taller-stock', dir: 'nuevasfotos', source: 'fotosprofesionales2.png' },
   { name: 'taller-oficina', dir: 'nuevasfotos', source: 'fotosprofesionales3.png' },
+
+  // ——— Ronda 2 (nuevasfotosv2/): reemplazos pedidos por la clienta ———
+  // Tarjeta "Cristales automotrices" (16:11): se recorta a la derecha del cartel viejo de "polarizados" y por encima de la matrícula.
+  { name: 'cristales-saveiro', dir: 'nuevasfotosv2', source: 'cambiarfotocristalesautomotrices DESPUES.png', crop: { left: 590, top: 800, width: 946, height: 650 } },
+  // Tarjeta "Venta mayorista" (16:11): franja central de la estantería.
+  { name: 'stock-cristales', dir: 'nuevasfotosv2', source: 'ventamayorista DESPUES.png', crop: { left: 0, top: 350, width: 1086, height: 747 } },
+  // Galería, "Colocación de lámina de seguridad".
+  { name: 'lamina-lateral', dir: 'nuevasfotosv2', source: 'colocacion de laminas de seguridad DESPUES.png' },
 ];
