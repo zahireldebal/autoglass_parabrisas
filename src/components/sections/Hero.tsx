@@ -27,12 +27,13 @@ export function Hero() {
             Importador directo · {business.city}
           </p>
           <h1 id="hero-title" className="h-display mt-4 text-[2.6rem] min-[400px]:text-[2.9rem] sm:text-6xl lg:text-[4.4rem]">
-            Cristales automotrices y <span className="text-brand">láminas de seguridad</span> para tu vehículo
-          </h1>
-          <p className="hero-in mt-4 font-display text-2xl font-bold tracking-wide text-snow uppercase sm:text-3xl" style={{ animationDelay: '0.14s' }}>
             Tu vehículo, <span className="text-brand">en las mejores manos.</span>
+          </h1>
+          {/* Subtítulo en texto real: lleva las palabras clave que ya no están en el H1 */}
+          <p className="hero-in mt-6 font-display text-2xl leading-tight font-bold tracking-wide text-snow uppercase sm:text-3xl" style={{ animationDelay: '0.14s' }}>
+            Cristales automotrices y <span className="text-brand">láminas de seguridad</span> para tu vehículo
           </p>
-          <p className="hero-in mt-4 max-w-xl text-lg text-snow/90 sm:text-xl" style={{ animationDelay: '0.2s' }}>
+          <p className="hero-in mt-2 max-w-xl text-lg text-snow/90 sm:text-xl" style={{ animationDelay: '0.2s' }}>
             Importamos, vendemos y colocamos cristales para todo tipo de vehículo.{' '}
             <strong className="font-semibold text-snow">Colocación sin costo con la compra del cristal</strong> y servicio a domicilio sin cargo en{' '}
             {business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}.
