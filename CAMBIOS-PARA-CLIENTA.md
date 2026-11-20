@@ -37,3 +37,39 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 - **Carteles viejos en algunas fotos:** en algunas fotos del taller se ve un cartel viejo que dice "polarizados". En la portada y en otra foto lo recortamos. Si cambian esos carteles, conviene sacar fotos nuevas.
 - **Titular de la política de privacidad:** la página figura a nombre de "Autoglass Parabrisas", con la dirección, el WhatsApp y el teléfono del taller. Si el negocio está a nombre de una empresa o de una persona (razón social y RUT), pasanos ese dato y lo cambiamos. Les recomendamos que la revise su contador o abogado.
 - **Frase "Mucho más que un polarizado":** la dejamos tal cual la pediste en la tarjeta de Security Film. Es el único lugar de la web donde aparece la palabra. Si preferís sacarla, avisanos.
+
+---
+
+# Ronda 2
+
+Estos son los cambios de la segunda ronda, ordenados en el mismo orden en que aparecen en la página. Tampoco están publicados todavía: los ves primero y, cuando des el visto bueno, se suben.
+
+Junto a cada sector está el nombre de la imagen comparativa (ANTES a la izquierda, DESPUÉS a la derecha). También hay una versión para computadora de cada una, con el mismo nombre terminado en "desktop".
+
+**Sector 01 – Portada:** el título grande ahora es "Tu vehículo, en las mejores manos." Debajo, justo arriba del texto, va "Cristales automotrices y láminas de seguridad para tu vehículo". La frase ya no aparece repetida.
+Ver: 01-hero-comparacion-mobile.png
+
+**Sector 02 – Beneficios:** la tarjeta que decía "Todo tipo de vehículo" ahora dice "Autos, camionetas y camiones". Ya no se mencionan ómnibus ni ambulancias.
+Ver: 02-beneficios-comparacion-mobile.png
+
+**Sector 03 – Servicios:** fotos nuevas en "Cristales automotrices" (colocación de un parabrisas en el taller) y en "Venta mayorista" (la estantería con los parabrisas en stock). En "Cristales automotrices" ahora dice "Para autos, camionetas y camiones".
+Ver: 03-servicios-comparacion-mobile.png
+
+**Sector 04 – Trabajos (galería):** la foto de "Colocación de lámina de seguridad" se cambió por la nueva, la de la lámina en un vidrio lateral. La foto del stock ahora dice "Stock de cristales para autos, camionetas y camiones".
+Ver: 04-trabajos-comparacion-mobile.png
+
+**Sector 05 – Importador directo:** se sacó "Lo que no está, lo conseguimos", como marcaste en tu captura. Quedan "Mejor precio" y "Disponibilidad".
+Ver: 05-importacion-comparacion-mobile.png
+
+**Sector 06 – Preguntas frecuentes:** queda una sola pregunta sobre seguros, "¿El seguro cubre el cambio?". Ahora explica que nos encargamos de toda la gestión, nombra las aseguradoras con las que trabajamos y aclara que está sujeto a la cobertura de tu póliza. Se sumaron dos preguntas nuevas: "¿Qué cuidados hay que tener después de colocar un parabrisas?" y "¿Qué cuidados hay que tener con las láminas de seguridad?", con los cuidados que nos pasaste.
+Ver: 06-preguntas-comparacion-mobile.png
+
+**Google:** la descripción con la que aparece la web en Google también dice "autos, camionetas y camiones". Este cambio no se ve en la página.
+
+## Pendiente de confirmar (Ronda 2)
+
+- **Cuánto tiempo sin hidrolavadora** después de cambiar el parabrisas. Hoy la web dice "No laves el vehículo con hidrolavadora", sin plazo.
+- **Cuánto tiempo sin desempañador** después de colocar la lámina. Hoy dice "No enciendas el desempañador", sin plazo.
+- **¿Dejamos la pregunta "¿Cuándo puedo manejar después del cambio?"?** Se parece bastante a la nueva de cuidados del parabrisas. Si nos pasás cuánto tiempo hay que esperar para manejar, lo sumamos a los cuidados y sacamos esa pregunta.
+- **Fotos:** las tres fotos que mandaste se encontraron en la web y se cambiaron. No quedó ninguna sin ubicar.
+- **"Y si no está, lo conseguimos":** en la franja de beneficios, la tarjeta "Stock para todas las marcas" dice esa frase, parecida a la que pediste sacar de "Importador directo". ¿La sacamos también?
