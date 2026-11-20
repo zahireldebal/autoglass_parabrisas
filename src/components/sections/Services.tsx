@@ -43,7 +43,7 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-auto flex flex-wrap gap-3 pt-6">
+                  <div className="mt-auto flex flex-wrap-reverse gap-3 pt-6">
                     {s.whatsappMessage ? (
                       <a
                         href={buildWhatsAppUrl(s.whatsappMessage)}

@@ -41,7 +41,7 @@ export const securityFilm = {
     { value: '99 %', label: 'Rechazo UV' },
     { value: '20 %', label: 'Transmisión de luz' },
     { value: '60 %', label: 'Rechazo IR' },
-    { value: '100', label: 'Micrones de espesor (4 MIL)' },
+    { value: '100', label: 'Micrones de espesor (4 MIL)' },
     { value: '5 años', label: 'Garantía' },
   ],
 

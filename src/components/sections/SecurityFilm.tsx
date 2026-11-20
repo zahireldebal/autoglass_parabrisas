@@ -140,7 +140,7 @@ export function SecurityFilm() {
             <h2 id="security-film-title" className="mt-2 font-sans text-5xl leading-none font-extrabold tracking-tight uppercase sm:text-6xl lg:text-7xl">
               {sf.name}
             </h2>
-            <p className="mt-3 text-sm tracking-[0.32em] text-white/85 uppercase sm:text-base">{sf.subtitle}</p>
+            <p className="mt-3 text-sm tracking-[0.32em] text-balance text-white/85 uppercase sm:text-base">{sf.subtitle}</p>
             <div className="mt-4 h-px w-full max-w-xl bg-sf-blue" aria-hidden />
           </div>
         </Reveal>

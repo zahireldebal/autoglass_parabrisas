@@ -330,6 +330,20 @@
   }
 }
 
+/* Foto del hero: se acomoda con un acercamiento suave al cargar. Solo escala, nunca opacidad:
+   la foto se ve desde el primer cuadro y no demora el LCP. */
+@keyframes hero-photo-settle {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: none;
+  }
+}
+.hero-photo {
+  animation: hero-photo-settle 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Brillo que recorre el parabrisas (versión liviana del simulador) */
 @keyframes sheen-sweep {
   from {
