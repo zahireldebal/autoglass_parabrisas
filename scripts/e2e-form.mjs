@@ -50,6 +50,10 @@ await scenario('Servicio → modal, con seguro, taller', { width: 1440, height: 
   await dlg.locator('label.chip', { hasText: 'Tarde' }).click();
   await dlg.getByLabel('Comentario (opcional)').fill('Tiene una rajadura del lado del conductor.');
   await dlg.getByRole('button', { name: 'Ver mensaje' }).click();
+  check(await dlg.getByText('marcá la casilla de la política').isVisible(), 'exige aceptar la política de privacidad');
+  check((await dlg.getByRole('link', { name: 'política de privacidad' }).getAttribute('href')) === '/privacidad/', 'enlace a la política');
+  await dlg.getByLabel('Acepto la política de privacidad').check();
+  await dlg.getByRole('button', { name: 'Ver mensaje' }).click();
   await dlg.getByText('Revisá tu mensaje').waitFor();
   const href = await dlg.getByTestId('send-whatsapp').getAttribute('href');
   const msg = decode(href);
@@ -96,6 +100,7 @@ await scenario('Contacto, sin seguro, domicilio', { width: 375, height: 812 }, a
   });
   await form.getByLabel('Día preferido (opcional)').fill(day);
   await form.locator('label.chip', { hasText: 'Mañana' }).click();
+  await form.getByLabel('Acepto la política de privacidad').check();
   await form.getByRole('button', { name: 'Ver mensaje' }).click();
   const sec = page.locator('#contacto');
   await sec.getByText('Revisá tu mensaje').waitFor();
@@ -118,6 +123,7 @@ await scenario('Lámina de seguridad desde tarjeta', { width: 375, height: 812 }
   await dlg.locator('label.chip', { hasText: 'Laterales y luneta' }).click();
   await dlg.getByLabel('Marca').fill('Chevrolet');
   await dlg.getByLabel('Modelo').fill('Onix');
+  await dlg.getByLabel('Acepto la política de privacidad').check();
   await dlg.getByRole('button', { name: 'Ver mensaje' }).click();
   await dlg.getByText('Revisá tu mensaje').waitFor();
   const msg = decode(await dlg.getByTestId('send-whatsapp').getAttribute('href'));

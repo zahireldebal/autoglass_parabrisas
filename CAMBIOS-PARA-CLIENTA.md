@@ -25,6 +25,8 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 
 **Sector 9 – Google y redes sociales:** se actualizó cómo aparece la web en Google y al compartirla por WhatsApp o redes. Ahora habla de cristales automotrices, lámina de seguridad Security Film, venta mayorista y parabrisas con seguro. La imagen que aparece al compartir el link usa la foto nueva de portada.
 
+**Política de privacidad (nuevo):** se sumó la página "Política de privacidad", enlazada desde el pie de la web. Explica qué datos llegan por el formulario, para qué se usan y cómo pedir que se borren, según la ley uruguaya de datos personales. Antes de enviar el formulario ahora hay que marcar la casilla "Acepto la política de privacidad". No se agregó aviso de cookies porque la web no usa cookies de publicidad ni de estadísticas.
+
 ---
 
 ## Pendiente de confirmar
@@ -33,4 +35,5 @@ Todavía **no están publicados**: la web que se ve hoy en internet sigue igual 
 - **Dominio definitivo:** por ahora la web funciona en la dirección de prueba (autoglassparabriss.netlify.app). Cuando tengan el dominio definitivo, se cambia en un solo lugar.
 - **Composición de la lámina Security Film:** la ficha de la marca indica el espesor (4 MIL, 100 micrones), pero no cómo está compuesta la lámina por capas. Si la marca tiene ese dato, lo sumamos. El resto de la ficha se leyó bien y está completo.
 - **Carteles viejos en algunas fotos:** en algunas fotos del taller se ve un cartel viejo que dice "polarizados". En la portada y en otra foto lo recortamos. Si cambian esos carteles, conviene sacar fotos nuevas.
+- **Titular de la política de privacidad:** la página figura a nombre de "Autoglass Parabrisas", con la dirección, el WhatsApp y el teléfono del taller. Si el negocio está a nombre de una empresa o de una persona (razón social y RUT), pasanos ese dato y lo cambiamos. Les recomendamos que la revise su contador o abogado.
 - **Frase "Mucho más que un polarizado":** la dejamos tal cual la pediste en la tarjeta de Security Film. Es el único lugar de la web donde aparece la palabra. Si preferís sacarla, avisanos.

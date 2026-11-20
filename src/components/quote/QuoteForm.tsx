@@ -16,14 +16,20 @@ const DRAFT_KEY = 'autoglass-cotizacion-borrador-v1';
 function loadDraft(): Partial<QuoteFormValues> {
   try {
     const raw = window.localStorage.getItem(DRAFT_KEY);
-    return raw ? (JSON.parse(raw) as Partial<QuoteFormValues>) : {};
+    if (!raw) return {};
+    // El consentimiento nunca se recupera: hay que marcarlo cada vez.
+    const { privacy: _omit, ...rest } = JSON.parse(raw) as Partial<QuoteFormValues>;
+    void _omit;
+    return rest;
   } catch {
     return {};
   }
 }
 function saveDraft(v: QuoteFormValues) {
   try {
-    window.localStorage.setItem(DRAFT_KEY, JSON.stringify(v));
+    const { privacy: _omit, ...rest } = v;
+    void _omit;
+    window.localStorage.setItem(DRAFT_KEY, JSON.stringify(rest));
   } catch {
     /* modo privado o almacenamiento bloqueado: no pasa nada */
   }
@@ -340,6 +346,31 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
             {...register('comment')}
           />
         </Field>
+
+        <div>
+          <label htmlFor={id('privacy')} className="flex min-h-11 cursor-pointer items-start gap-3 text-[0.98rem] leading-snug">
+            <input
+              id={id('privacy')}
+              type="checkbox"
+              className="mt-0.5 h-6 w-6 shrink-0 cursor-pointer accent-brand"
+              aria-invalid={!!errors.privacy}
+              aria-describedby={errors.privacy ? id('privacy-err') : undefined}
+              {...register('privacy')}
+            />
+            <span>
+              Acepto la{' '}
+              <a href="/privacidad/" target="_blank" rel="noopener" className="font-semibold text-brand underline underline-offset-2 hover:text-snow">
+                política de privacidad
+              </a>
+              . <span className="text-brand">*</span>
+            </span>
+          </label>
+          {errors.privacy && (
+            <p id={id('privacy-err')} className="field-error" role="alert">
+              {errors.privacy.message}
+            </p>
+          )}
+        </div>
 
         <button type="submit" className="btn btn-primary w-full text-xl">
           <IconWhatsApp className="h-6 w-6" /> Ver mensaje

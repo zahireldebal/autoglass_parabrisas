@@ -9,7 +9,7 @@ export function Footer() {
       <div className="absolute inset-x-0 top-0 h-[3px] bg-brand" aria-hidden />
       <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Autoglass Parabrisas, volver al inicio">
+          <a href="/#inicio" className="inline-flex items-center gap-3" aria-label="Autoglass Parabrisas, volver al inicio">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/img/logo-160.webp" alt="" width={160} height={160} loading="lazy" className="h-16 w-16 rounded-full" />
             <span className="h-display text-2xl">
@@ -27,7 +27,7 @@ export function Footer() {
             {services.map((s) => (
               <li key={s.id}>
                 {/* before: amplía la zona táctil a 44 px sin cambiar cómo se ve */}
-                <a href="#servicios" className="nav-link block w-fit before:absolute before:inset-x-0 before:-inset-y-1.5 before:content-[''] hover:text-snow">
+                <a href="/#servicios" className="nav-link block w-fit before:absolute before:inset-x-0 before:-inset-y-1.5 before:content-[''] hover:text-snow">
                   {s.title}
                 </a>
               </li>
@@ -76,7 +76,13 @@ export function Footer() {
       </div>
 
       <div className="container-x mt-12 flex flex-col gap-2 border-t border-line pt-6 text-sm text-mist sm:flex-row sm:items-center sm:justify-between">
-        <p>{business.credits}</p>
+        <p>
+          {business.credits}{' '}
+          <span aria-hidden>·</span>{' '}
+          <a href="/privacidad/" className="underline-offset-2 hover:text-snow hover:underline">
+            Política de privacidad
+          </a>
+        </p>
         <p>
           <a href={business.modelCredit.url} target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:text-snow hover:underline">
             {business.modelCredit.text}

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Barlow, Barlow_Condensed } from 'next/font/google';
 import './globals.css';
 import { business, SITE_URL } from '@/data/business';
-import { localBusinessJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { localBusinessJsonLd } from '@/lib/jsonld';
 import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -87,7 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />
         <Providers>
             <Navbar />
             <main id="contenido">{children}</main>

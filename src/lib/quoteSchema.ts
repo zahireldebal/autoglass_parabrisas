@@ -29,6 +29,8 @@ export const quoteSchema = z
     location: z.enum(['taller', 'domicilio', '']).optional(),
     zone: z.string().optional(),
     comment: z.string().max(500, 'Máximo 500 caracteres.').optional(),
+    /** Consentimiento (Ley 18.331): la casilla arranca desmarcada y no se guarda en el borrador. */
+    privacy: z.boolean().refine((v) => v === true, 'Para continuar, marcá la casilla de la política de privacidad.'),
   })
   .superRefine((d, ctx) => {
     if (business.homeService && d.location === 'domicilio' && !(ZONE_OPTIONS as readonly string[]).includes(d.zone ?? '')) {
@@ -59,4 +61,5 @@ export const emptyQuote: QuoteFormValues = {
   location: '',
   zone: '',
   comment: '',
+  privacy: false,
 };

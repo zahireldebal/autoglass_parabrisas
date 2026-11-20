@@ -110,7 +110,7 @@ describe('vehicleText', () => {
 });
 
 describe('quoteSchema', () => {
-  const valid = { ...emptyQuote, name: 'Juan', service: 'Luneta' as const, brand: 'Fiat', model: 'Uno' };
+  const valid = { ...emptyQuote, name: 'Juan', service: 'Luneta' as const, brand: 'Fiat', model: 'Uno', privacy: true };
   it('acepta un formulario mínimo válido', () => {
     expect(quoteSchema.safeParse(valid).success).toBe(true);
   });
@@ -129,6 +129,11 @@ describe('quoteSchema', () => {
     const r = quoteSchema.safeParse({ ...valid, location: 'domicilio' });
     expect(r.success).toBe(false);
     expect(quoteSchema.safeParse({ ...valid, location: 'domicilio', zone: 'Rocha' }).success).toBe(true);
+  });
+  it('exige aceptar la política de privacidad', () => {
+    const r = quoteSchema.safeParse({ ...valid, privacy: false });
+    expect(r.success).toBe(false);
+    expect(r.success ? [] : r.error.issues.map((i) => i.message)).toContain('Para continuar, marcá la casilla de la política de privacidad.');
   });
   it('rechaza días pasados', () => {
     expect(quoteSchema.safeParse({ ...valid, preferredDay: '2020-01-01' }).success).toBe(false);

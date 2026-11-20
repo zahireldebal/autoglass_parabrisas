@@ -10,10 +10,12 @@ import { WhyImport } from '@/components/sections/WhyImport';
 import { Faq } from '@/components/sections/Faq';
 import { Reviews } from '@/components/sections/Reviews';
 import { Contact } from '@/components/sections/Contact';
+import { faqJsonLd } from '@/lib/jsonld';
 
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />
       <Hero />
       <TrustBar />
       <Services />
