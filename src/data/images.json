@@ -75,16 +75,6 @@
       1617
     ]
   },
-  "portada": {
-    "width": 1131,
-    "height": 1920,
-    "sizes": [
-      480,
-      720,
-      960,
-      1131
-    ]
-  },
   "lamina-suv": {
     "width": 1440,
     "height": 1920,
@@ -181,6 +171,16 @@
       720,
       960,
       1086
+    ]
+  },
+  "hero-taller": {
+    "width": 1366,
+    "height": 2048,
+    "sizes": [
+      640,
+      960,
+      1280,
+      1366
     ]
   },
   "cristales-saveiro": {

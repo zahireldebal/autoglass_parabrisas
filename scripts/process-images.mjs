@@ -70,7 +70,7 @@ async function main() {
   for (const img of IMAGES) {
     const { pipe, hd } = await load(img);
     let buf = await pipe
-      .resize({ width: MAX, height: MAX, fit: 'inside', withoutEnlargement: true, kernel: 'lanczos3' })
+      .resize({ width: img.max ?? MAX, height: img.max ?? MAX, fit: 'inside', withoutEnlargement: true, kernel: 'lanczos3' })
       .modulate({ saturation: 1.05 })
       .linear(1.05, -5) // un poco más de contraste
       .sharpen(hd ? { sigma: 1.1, m1: 0.6, m2: 2.2 } : { sigma: 0.6 })
@@ -81,11 +81,11 @@ async function main() {
     const { width, height } = await sharp(buf).metadata();
     // limpiar versiones anteriores de esta foto
     for (const f of await fs.readdir(OUT)) if (f.startsWith(`${img.name}-`) && f.endsWith('.webp')) await fs.unlink(path.join(OUT, f));
-    const sizes = [...new Set([...WIDTHS.filter((w) => w < width), Math.min(width, MAX)])].sort((a, b) => a - b);
+    const sizes = [...new Set([...(img.widths ?? WIDTHS).filter((w) => w < width), Math.min(width, img.max ?? MAX)])].sort((a, b) => a - b);
     for (const w of sizes) {
       await sharp(buf)
         .resize({ width: w, kernel: 'lanczos3' })
-        .webp({ quality: w >= 1440 ? 74 : 78, effort: 6, smartSubsample: true })
+        .webp({ quality: img.quality ?? (w >= 1440 ? 74 : 78), effort: 6, smartSubsample: true })
         .toFile(path.join(OUT, `${img.name}-${w}.webp`));
     }
     manifest[img.name] = { width, height, sizes };
@@ -110,8 +110,8 @@ async function main() {
   await sharp(logo).resize(96, 96, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(path.join(ROOT, 'src', 'app', 'icon.png'));
   console.log('✓ logo e íconos');
 
-  // Imagen Open Graph 1200x630: foto de portada a la derecha, texto y logo a la izquierda
-  const portada = await sharp(processed['portada'])
+  // Imagen Open Graph 1200x630: foto de portada (hero) a la derecha, texto y logo a la izquierda
+  const portada = await sharp(processed['hero-taller'])
     .resize(560, 630, { fit: 'cover', position: 'centre' })
     .modulate({ brightness: 1.15 })
     .toBuffer();

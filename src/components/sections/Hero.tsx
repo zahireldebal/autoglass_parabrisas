@@ -1,27 +1,36 @@
+import { preload } from 'react-dom';
 import { business } from '@/data/business';
-import { Picture } from '@/components/ui/Picture';
+import { Picture, imageSrc, imageSrcSet } from '@/components/ui/Picture';
 import { IconArrowRight, IconShield, IconStar, IconWhatsApp } from '@/components/ui/Icons';
 import { QuoteButton } from '@/components/quote/QuoteContext';
 
+/** Foto de portada. Celular y tablet: franja a todo el ancho arriba del texto. Desktop: columna derecha. */
+const HERO_IMG = 'hero-taller';
+const HERO_SIZES = '(min-width: 1024px) 46vw, 100vw';
+
 export function Hero() {
+  // Precarga con prioridad alta (va al <head>): la foto empieza a bajar antes que el CSS y el JS.
+  preload(imageSrc(HERO_IMG), { as: 'image', imageSrcSet: imageSrcSet(HERO_IMG), imageSizes: HERO_SIZES, fetchPriority: 'high' });
   return (
     <section id="inicio" aria-labelledby="hero-title" className="cut-bottom relative overflow-hidden bg-ink">
-      {/* Fondo: foto real de un trabajo (en mobile ocupa todo; en desktop va a la derecha) */}
-      <div className="absolute inset-0 lg:left-auto lg:w-[46%]">
+      {/* Foto real de un trabajo: en celular y tablet va arriba, limpia y sin texto encima; en desktop, a la derecha */}
+      <div className="relative h-[50svh] min-h-[20rem] overflow-hidden lg:absolute lg:overflow-visible lg:inset-0 lg:left-auto lg:h-auto lg:min-h-0 lg:w-[46%]">
         <Picture
-          name="portada"
-          alt="Técnico de Autoglass con la remera del taller trabajando sobre el parabrisas de un vehículo gris en el taller de Maldonado"
-          sizes="(min-width: 1024px) 46vw, (min-width: 640px) 100vw, 67vw"
+          name={HERO_IMG}
+          alt="Técnico de Autoglass con la remera del taller aplicando sellador en el marco del parabrisas de un vehículo blanco, en el taller de Maldonado"
+          sizes={HERO_SIZES}
           priority
-          className="h-full w-full object-cover object-[50%_35%]"
+          className="hero-photo h-full w-full object-cover object-[50%_42%] lg:object-[50%_38%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/30 lg:bg-gradient-to-r lg:from-ink lg:via-ink/40 lg:to-transparent" />
+        {/* Celular: la foto queda limpia; solo se funde abajo con el fondo (donde empieza el texto) y un toque arriba,
+            detrás del menú. Desktop: el texto va al costado → solo se funde el borde izquierdo. */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-ink)_0%,transparent_32%,transparent_80%,rgb(12_16_20/0.45)_100%)] lg:bg-none lg:bg-gradient-to-r lg:from-ink lg:via-ink/10 lg:via-25% lg:to-transparent" />
         {/* Franja amarilla en el borde diagonal (desktop) */}
         <div className="absolute inset-y-0 -left-10 hidden w-24 origin-top -skew-x-[8deg] bg-ink lg:block" />
         <div className="absolute inset-y-0 left-[2.6rem] hidden w-[3px] origin-top -skew-x-[8deg] bg-brand lg:block" />
       </div>
 
-      <div className="container-x relative flex min-h-[100svh] flex-col justify-end pt-28 pb-[calc(3.5vw+3.5rem)] lg:min-h-[44rem] lg:justify-center">
+      <div className="container-x relative -mt-6 flex flex-col pb-[calc(3.5vw+3.5rem)] lg:mt-0 lg:min-h-[44rem] lg:justify-center lg:pt-28">
         <div className="max-w-2xl lg:max-w-[47%]">
           <p className="hero-in eyebrow" style={{ animationDelay: '0.05s' }}>
             Importador directo · {business.city}

@@ -7,6 +7,8 @@
  *          se guarda en Fotos/hd/<name>.png con `node scripts/upscale/run.mjs`.
  * - plates: matrículas a censurar, en FRACCIONES de la imagen recortada (0–1),
  *          así sirven para cualquier resolución: { x, y, w, h }.
+ * - widths / quality / max: anchos, calidad WebP y lado máximo propios (si no, los generales del script).
+ *          Nunca se agranda por encima del original.
  */
 export const IMAGES = [
   { name: 'luneta-nivus', source: 'sitio4.png', crop: { left: 12, top: 0, width: 940, height: 850 }, scale: 2 },
@@ -21,8 +23,6 @@ export const IMAGES = [
   { name: 'fachada-acceso', source: 'maps2.png', crop: { left: 0, top: 0, width: 716, height: 850 }, scale: 3 },
 
   // ——— Segunda tanda (nuevasfotos/): fotos originales de la clienta ———
-  // Portada: se recorta el borde izquierdo (cartel viejo con líneas de lámina que ya no se ofrecen).
-  { name: 'portada', dir: 'nuevasfotos', source: 'portada.png', crop: { left: 165, top: 0, width: 603, height: 1024 }, scale: 2 },
   { name: 'lamina-suv', dir: 'nuevasfotos', source: 'laminasdeseguridad.png', scale: 2 },
   { name: 'colocacion-parabrisas', dir: 'nuevasfotos', source: 'parabrisas.png', scale: 2 },
   { name: 'luneta-rota', dir: 'nuevasfotos', source: 'cristales laterales lunetas.png', scale: 2 },
@@ -37,6 +37,9 @@ export const IMAGES = [
   { name: 'taller-oficina', dir: 'nuevasfotos', source: 'fotosprofesionales3.png' },
 
   // ——— Ronda 2 (nuevasfotosv2/): reemplazos pedidos por la clienta ———
+  // Portada (hero). Original 1536x2048: se recorta el borde izquierdo (cartel viejo de "polarizados").
+  // Más calidad que el resto, para que se vea nítida en pantallas grandes y retina.
+  { name: 'hero-taller', dir: 'nuevasfotosv2', source: 'nuevohero.png', crop: { left: 170, top: 0, width: 1366, height: 2048 }, widths: [640, 960, 1280], quality: 88, max: 2048 },
   // Tarjeta "Cristales automotrices" (16:11): se recorta a la derecha del cartel viejo de "polarizados" y por encima de la matrícula.
   { name: 'cristales-saveiro', dir: 'nuevasfotosv2', source: 'cambiarfotocristalesautomotrices DESPUES.png', crop: { left: 590, top: 800, width: 946, height: 650 } },
   // Tarjeta "Venta mayorista" (16:11): franja central de la estantería.
