@@ -1,6 +1,6 @@
 import { Picture } from '@/components/ui/Picture';
 import { Reveal } from '@/components/ui/Reveal';
-import { IconBoxes, IconCheck, IconShip, IconTag } from '@/components/ui/Icons';
+import { IconBoxes, IconCheck, IconTag } from '@/components/ui/Icons';
 
 const points = [
   {
@@ -12,11 +12,6 @@ const points = [
     icon: IconBoxes,
     title: 'Disponibilidad',
     text: 'Tenemos stock de cristales para todas las marcas y modelos. Muchas veces lo tenemos en el momento.',
-  },
-  {
-    icon: IconShip,
-    title: 'Lo que no está, lo conseguimos',
-    text: '¿Un modelo difícil? Como importamos, podemos buscar ese cristal que no encontrás en otro lado.',
   },
 ];
 
