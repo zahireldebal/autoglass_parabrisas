@@ -11,7 +11,7 @@ export function Footer() {
         <div>
           <a href="/#inicio" className="inline-flex items-center gap-3" aria-label="Autoglass Parabrisas, volver al inicio">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/logo-160.webp" alt="" width={160} height={160} loading="lazy" className="h-16 w-16 rounded-full" />
+            <img src="/img/logo-mark.png" alt="" width={200} height={115} loading="lazy" className="h-12 w-auto" />
             <span className="h-display text-2xl">
               Autoglass <span className="text-brand">Parabrisas</span>
             </span>

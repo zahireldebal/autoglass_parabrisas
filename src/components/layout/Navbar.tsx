@@ -52,11 +52,11 @@ export function Navbar() {
         <a href="/#inicio" className="flex min-h-11 items-center gap-3" aria-label="Autoglass Parabrisas, ir al inicio">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/logo-160.webp"
+            src="/img/logo-mark.png"
             alt=""
-            width={160}
-            height={160}
-            className={`rounded-full transition-all duration-300 ${compact ? 'h-10 w-10' : 'h-12 w-12'}`}
+            width={200}
+            height={115}
+            className={`w-auto transition-all duration-300 ${compact ? 'h-8' : 'h-10'}`}
           />
           <span className="h-display text-xl leading-none whitespace-nowrap sm:text-2xl">
             Autoglass <span className="text-brand">Parabrisas</span>

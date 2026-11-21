@@ -110,6 +110,34 @@ async function main() {
   await sharp(logo).resize(96, 96, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(path.join(ROOT, 'src', 'app', 'icon.png'));
   console.log('✓ logo e íconos');
 
+  // Logo para header y footer: solo el isotipo y las letras, sin el círculo negro (PNG transparente, 2x).
+  // El fondo del círculo es negro puro: la transparencia sale de "desmezclar" cada píxel contra ese negro,
+  // así los bordes suavizados no dejan halo oscuro.
+  {
+    const { data, info } = await sharp(path.join(ROOT, 'logo.png')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    const { width: W, height: H } = info;
+    let x0 = W, x1 = 0, y0 = H, y1 = 0;
+    for (let y = 0; y < H; y++)
+      for (let x = 0; x < W; x++) {
+        const k = (y * W + x) * 4;
+        if (data[k] < 6 && data[k + 1] < 6 && data[k + 2] < 6) (x0 = Math.min(x0, x)), (x1 = Math.max(x1, x)), (y0 = Math.min(y0, y)), (y1 = Math.max(y1, y));
+      }
+    const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, R = Math.min(x1 - x0, y1 - y0) / 2;
+    const out = Buffer.alloc(W * H * 4);
+    for (let y = 0; y < H; y++)
+      for (let x = 0; x < W; x++) {
+        const k = (y * W + x) * 4;
+        const inside = Math.min(1, Math.max(0, (R - 6 - Math.hypot(x - cx, y - cy)) / 2)); // fuera del anillo
+        let a = Math.min(1, Math.max(0, (Math.max(data[k], data[k + 1], data[k + 2]) - 8) / 222)) * inside;
+        if (a < 0.02) a = 0;
+        for (let c = 0; c < 3; c++) out[k + c] = a ? Math.min(255, Math.max(0, Math.round((data[k + c] - (1 - a) * 2) / a))) : 0;
+        out[k + 3] = Math.round(a * 255);
+      }
+    const raw = await sharp(out, { raw: { width: W, height: H, channels: 4 } }).png().toBuffer();
+    await sharp(raw).trim({ threshold: 1 }).resize({ width: 200, kernel: 'lanczos3' }).png({ compressionLevel: 9 }).toFile(path.join(OUT, 'logo-mark.png'));
+    console.log('✓ logo-mark.png (sin círculo)');
+  }
+
   // Imagen Open Graph 1200x630: foto de portada (hero) a la derecha, texto y logo a la izquierda
   const portada = await sharp(processed['hero-taller'])
     .resize(560, 630, { fit: 'cover', position: 'centre' })
