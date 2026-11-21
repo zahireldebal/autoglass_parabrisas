@@ -16,6 +16,7 @@ export function localBusinessJsonLd() {
     image: `${SITE_URL}/og-image.jpg`,
     logo: `${SITE_URL}/img/logo-320.png`,
     telephone: `+${business.whatsapp}`,
+    email: business.email,
     contactPoint: [
       { '@type': 'ContactPoint', telephone: `+${business.whatsapp}`, contactType: 'customer service', availableLanguage: 'es' },
       { '@type': 'ContactPoint', telephone: business.phone, contactType: 'customer service', availableLanguage: 'es' },

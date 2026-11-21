@@ -27,6 +27,8 @@ export const business = {
   /** Teléfono fijo: visible en contacto y footer. */
   phone: '+59842251708',
   phoneDisplay: '4225 1708',
+  /** Email de contacto: visible en contacto y footer, y en los datos estructurados. */
+  email: 'autoglass@vera.com.uy',
 
   instagram: {
     handle: '@parabrisas_autoglass_',

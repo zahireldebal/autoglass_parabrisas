@@ -1,7 +1,7 @@
 import { business, telHref } from '@/data/business';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
-import { IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
+import { IconInstagram, IconMail, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 import { HoursCard, MapCard } from './ContactIslands';
 import { LazyQuoteForm } from '@/components/quote/LazyQuoteForm';
 
@@ -50,6 +50,17 @@ export function Contact() {
                   <span>
                     <span className="block text-sm text-mist">Teléfono fijo</span>
                     <span className="h-display text-2xl">{business.phoneDisplay}</span>
+                  </span>
+                </a>
+              </li>
+              <li className="sm:col-span-2 lg:col-span-1 xl:col-span-2">
+                <a href={`mailto:${business.email}`} className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-steel text-brand">
+                    <IconMail className="h-6 w-6" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm text-mist">Email</span>
+                    <span className="block truncate font-semibold">{business.email}</span>
                   </span>
                 </a>
               </li>

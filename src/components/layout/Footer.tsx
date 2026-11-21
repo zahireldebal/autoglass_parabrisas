@@ -1,7 +1,7 @@
 import { business, telHref } from '@/data/business';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { services } from '@/data/services';
-import { IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
+import { IconInstagram, IconMail, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 
 export function Footer() {
   return (
@@ -46,6 +46,11 @@ export function Footer() {
             <li>
               <a href={telHref} className="inline-flex min-h-11 items-center gap-2 hover:text-snow">
                 <IconPhone className="h-5 w-5 text-brand" /> Teléfono {business.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${business.email}`} className="inline-flex min-h-11 items-center gap-2 break-all hover:text-snow">
+                <IconMail className="h-5 w-5 shrink-0 text-brand" /> {business.email}
               </a>
             </li>
             <li className="flex gap-2">
