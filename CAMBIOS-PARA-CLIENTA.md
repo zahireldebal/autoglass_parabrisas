@@ -73,3 +73,73 @@ Ver: 06-preguntas-comparacion-mobile.png
 - **¿Dejamos la pregunta "¿Cuándo puedo manejar después del cambio?"?** Se parece bastante a la nueva de cuidados del parabrisas. Si nos pasás cuánto tiempo hay que esperar para manejar, lo sumamos a los cuidados y sacamos esa pregunta.
 - **Fotos:** las tres fotos que mandaste se encontraron en la web y se cambiaron. No quedó ninguna sin ubicar.
 - **"Y si no está, lo conseguimos":** en la franja de beneficios, la tarjeta "Stock para todas las marcas" dice esa frase, parecida a la que pediste sacar de "Importador directo". ¿La sacamos también?
+
+---
+
+# Ronda 3
+
+Estos son los cambios de la tercera ronda, en el mismo orden en que aparecen en la página. Todavía no están publicados: los ves primero y, cuando des el visto bueno, se suben.
+
+Cada sector tiene su imagen comparativa en la carpeta "antesdespuesv3finalisima" (ANTES a la izquierda, DESPUÉS a la derecha). Hay una versión para celular ("mobile") y otra para computadora ("desktop").
+
+**Sector 01 – Logo:** el logo de arriba y el de abajo de la página ya no tienen el círculo negro. Queda solo el auto y las letras "Auto Glass", integrados al fondo de la página.
+Ver: 01-header-comparacion-desktop.png
+
+**Sector 02 – Portada:** en computadora, la línea amarilla diagonal que separa el texto de la foto ahora acompaña el borde de la foto de arriba a abajo, con el mismo grosor, y ya no pasa por encima del menú. En celular se ve igual que antes. El texto ahora dice que el servicio a domicilio es con agenda, sin cargo en Piriápolis, Maldonado y San Carlos, y que también llegamos a Rocha. Abajo dice "En el taller, sin turno".
+Ver: 02-hero-comparacion-desktop.png
+
+**Sector 03 – Beneficios:**
+- "A domicilio sin costo": Piriápolis, Maldonado y San Carlos, con agenda. También llegamos a Rocha.
+- "Parabrisas con tu seguro" pasa a ser "Asesoramiento con tu seguro": el trámite lo hacés vos y te asesoramos en todo el proceso.
+- "Stock para todas las marcas" ahora dice "Consultanos por el tuyo." Era el único lugar de la página donde decía "lo conseguimos".
+
+Ver: 03-beneficios-comparacion-mobile.png
+
+**Sector 04 – Servicios:** la tarjeta "Servicio a domicilio" aclara que es siempre con agenda previa y muestra los días de recorrido, tal cual tu imagen:
+- Maldonado: todos los días.
+- San Carlos: lunes y jueves.
+- Piriápolis y Pan de Azúcar: miércoles.
+- Rocha ciudad: viernes.
+
+El botón ahora dice "Agendá por WhatsApp".
+Ver: 04-servicios-comparacion-mobile.png
+
+**Sector 05 – Cómo trabajamos:** el paso 3 ahora dice "En el taller, sin turno. A domicilio, con agenda previa", con las mismas zonas que arriba.
+Ver: 05-como-trabajamos-comparacion-desktop.png
+
+**Sector 06 – Seguros:** el texto ahora dice: "Si tu vehículo tiene seguro, posiblemente tengas un cambio de cristal gratis al año. El trámite lo hacés vos con tu aseguradora; nosotros te asesoramos en todo el proceso." El botón dice "Consultanos y te asesoramos". La lista de aseguradoras y la aclaración "Sujeto a la cobertura de tu póliza." siguen igual.
+Ver: 06-seguros-comparacion-mobile.png
+
+**Sector 07 – Galería:** la foto de "Atención en el taller" se cambió por la nueva del frente de la oficina, en el mismo lugar.
+Ver: 07-galeria-comparacion-desktop.png
+
+**Sector 08 – Preguntas frecuentes:**
+- "¿El seguro cubre el cambio?" tiene el texto nuevo: el trámite lo hacés vos y nosotros te asesoramos.
+- "¿Van a domicilio?" ahora dice que es siempre con agenda previa, muestra los días de recorrido y tiene el botón "Agendá por WhatsApp".
+- La pregunta de las láminas ahora dice "¿Qué cuidados hay que tener con las láminas de seguridad después de la instalación?".
+- En "¿Cuánto tarda un cambio de parabrisas?" se aclara que el "sin turno" es en el taller.
+
+Ver: 08-preguntas-comparacion-mobile.png
+
+**Sector 09 – Contacto:** se sumó el email autoglass@vera.com.uy. Se toca y abre el correo para escribirles.
+Ver: 09-contacto-comparacion-desktop.png
+
+**Sector 10 – Pie de página:** el logo sin círculo y el email autoglass@vera.com.uy.
+Ver: 10-footer-comparacion-mobile.png
+
+**Política de privacidad:** se sacó "Hacer el trámite con tu aseguradora", como marcaste en tu foto. También cambió la frase sobre con quién compartimos tus datos: antes decía que los compartíamos con tu aseguradora y ahora dice "No compartimos tus datos con terceros, salvo cuando una ley nos lo exige."
+
+**Detalles de diseño:** se hicieron algunos ajustes chicos para que la página se sienta más cuidada, sin cambiar textos ni colores:
+- Las tarjetas de servicios y de contacto se iluminan al pasar el mouse.
+- Las preguntas frecuentes se abren con una animación más suave, y la pregunta abierta queda resaltada.
+- Las fotos de la galería aparecen una tras otra al cambiar de filtro.
+- La barra de arriba cambia de forma más suave al bajar por la página.
+
+Para quien tiene activada la opción de reducir movimiento en el celular o la computadora, la página se ve sin animaciones.
+
+## Pendiente de confirmar (Ronda 3)
+
+- **Pan de Azúcar:** en los días de recorrido aparece junto a Piriápolis (miércoles), como en tu imagen. En la web, el servicio "sin costo" figura solo en Piriápolis, Maldonado y San Carlos. ¿Pan de Azúcar también es sin costo? Si es así, lo sumamos.
+- **Política de privacidad:** ¿está bien la frase "No compartimos tus datos con terceros, salvo cuando una ley nos lo exige"? Si en algún caso le mandan datos a la aseguradora o a otra empresa, por ejemplo una factura, hay que nombrarlo.
+- **Título "Simple, rápido y sin turno"** (sección Cómo trabajamos): lo dejamos igual, porque el paso 3 ya aclara que a domicilio es con agenda. Si preferís otro título, por ejemplo "Simple, rápido y sin vueltas", lo cambiamos.
+- Siguen pendientes los puntos de la Ronda 2: cuánto tiempo sin hidrolavadora, cuánto tiempo sin desempañador y si dejamos la pregunta "¿Cuándo puedo manejar después del cambio?".
