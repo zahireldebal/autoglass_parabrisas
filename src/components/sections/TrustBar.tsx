@@ -1,11 +1,11 @@
-import { business } from '@/data/business';
+import { homeServiceAlso, homeServiceFreeZones } from '@/data/business';
 import { Reveal } from '@/components/ui/Reveal';
 import { IconBoxes, IconCard, IconGift, IconHome, IconShield, IconShip, IconTruck } from '@/components/ui/Icons';
 
 const items = [
   { icon: IconShip, title: 'Importador directo', text: 'Sin intermediarios: mejor precio y disponibilidad.' },
   { icon: IconGift, title: 'Colocación sin costo', text: 'Con la compra del cristal.' },
-  { icon: IconHome, title: 'A domicilio sin costo', text: business.homeServiceZones.join(' · ') },
+  { icon: IconHome, title: 'A domicilio sin costo', text: `${homeServiceFreeZones}, con agenda. ${homeServiceAlso}` },
   { icon: IconShield, title: 'Parabrisas con tu seguro', text: 'Nos encargamos de toda la gestión con tu aseguradora.' },
   { icon: IconCard, title: 'Hasta 6 pagos', text: 'Con todas las tarjetas.' },
   { icon: IconTruck, title: 'Autos, camionetas y camiones', text: 'Cristales y láminas de seguridad para tu vehículo.' },

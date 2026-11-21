@@ -1,4 +1,4 @@
-import { business } from '@/data/business';
+import { business, homeServiceAlso, homeServiceFreeZones } from '@/data/business';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
 import { IconChat, IconHome, IconTag, IconWrench } from '@/components/ui/Icons';
 
@@ -8,7 +8,7 @@ const steps = [
   {
     icon: IconHome,
     title: 'Venís al taller o vamos a tu casa',
-    text: `Sin turno. A domicilio sin costo en ${business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}.`,
+    text: `En el taller, sin turno. A domicilio, con agenda previa: sin costo en ${homeServiceFreeZones}. ${homeServiceAlso}`,
   },
   { icon: IconWrench, title: 'Colocación y entrega', text: `Colocación profesional ${business.replacementTime} y con garantía. Llegás, lo cambiamos y seguís camino.` },
 ];

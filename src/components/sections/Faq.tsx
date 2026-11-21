@@ -3,7 +3,7 @@
 import { useId, useState } from 'react';
 import { faq } from '@/data/faq';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
-import { IconChevronDown } from '@/components/ui/Icons';
+import { IconChevronDown, IconWhatsApp } from '@/components/ui/Icons';
 import { QuoteButton } from '@/components/quote/QuoteContext';
 
 export function Faq() {
@@ -58,6 +58,11 @@ export function Faq() {
                               <li key={item}>{item}</li>
                             ))}
                           </ul>
+                        )}
+                        {f.cta && (
+                          <QuoteButton preset={f.cta.preset} className="btn btn-primary btn-sm mt-4">
+                            <IconWhatsApp className="h-5 w-5" /> {f.cta.label}
+                          </QuoteButton>
                         )}
                       </div>
                     </div>

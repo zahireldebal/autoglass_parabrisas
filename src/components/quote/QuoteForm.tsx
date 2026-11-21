@@ -315,7 +315,7 @@ export function QuoteForm({ preset, nonce, autoFocus }: Props) {
                   error={errors.zone?.message}
                 />
                 <p className="text-sm text-mist">
-                  El domicilio sin costo es solo en {business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}. Para otras zonas, te confirmamos por WhatsApp.
+                  A domicilio es siempre con agenda previa: te confirmamos el día por WhatsApp.
                 </p>
               </div>
             )}

@@ -1,5 +1,5 @@
 import { preload } from 'react-dom';
-import { business } from '@/data/business';
+import { business, homeServiceAlso, homeServiceFreeZones } from '@/data/business';
 import { Picture, imageSrc, imageSrcSet } from '@/components/ui/Picture';
 import { IconArrowRight, IconShield, IconStar, IconWhatsApp } from '@/components/ui/Icons';
 import { QuoteButton } from '@/components/quote/QuoteContext';
@@ -44,8 +44,8 @@ export function Hero() {
           </p>
           <p className="hero-in mt-2 max-w-xl text-lg text-snow/90 sm:text-xl" style={{ animationDelay: '0.2s' }}>
             Importamos, vendemos y colocamos cristales para autos, camionetas y camiones.{' '}
-            <strong className="font-semibold text-snow">Colocación sin costo con la compra del cristal</strong> y servicio a domicilio sin cargo en{' '}
-            {business.homeServiceZones.join(', ').replace(/, ([^,]*)$/, ' y $1')}.
+            <strong className="font-semibold text-snow">Colocación sin costo con la compra del cristal</strong> y servicio a domicilio con agenda, sin
+            cargo en {homeServiceFreeZones}. {homeServiceAlso}
           </p>
 
           {/* Sello destacado: seguro */}
@@ -84,7 +84,7 @@ export function Hero() {
               </a>
             </li>
             <li className="flex items-center gap-2">
-              <span className="stripe !w-5" aria-hidden /> Sin turno: cambio {business.replacementTime}
+              <span className="stripe !w-5" aria-hidden /> En el taller, sin turno: cambio {business.replacementTime}
             </li>
           </ul>
         </div>

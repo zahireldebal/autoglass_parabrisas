@@ -1,4 +1,5 @@
 import type { QuotePreset } from '@/components/quote/QuoteContext';
+import { homeServiceAlso, homeServiceFreeZones } from '@/data/business';
 
 export type Service = {
   id: string;
@@ -13,6 +14,10 @@ export type Service = {
   whatsappMessage?: string;
   /** Link secundario (otra sección de la página). */
   secondary?: { href: string; label: string };
+  /** Muestra los días de recorrido por zona (business.homeServiceDays). */
+  schedule?: boolean;
+  /** Texto del botón principal (por defecto, "Consultar"). */
+  cta?: string;
 };
 
 export const services: Service[] = [
@@ -48,10 +53,12 @@ export const services: Service[] = [
   {
     id: 'domicilio',
     title: 'Servicio a domicilio',
-    description: 'Servicio a domicilio sin costo en Piriápolis, Maldonado, San Carlos y Rocha.',
-    bullets: ['Sin costo en esas cuatro zonas', 'Para otras zonas, consultanos'],
+    description: `Siempre con agenda previa. Sin costo en ${homeServiceFreeZones}. ${homeServiceAlso}`,
+    bullets: [],
     image: 'colocacion-parabrisas',
     imageAlt: 'Dos técnicos colocando un parabrisas nuevo en un vehículo blanco',
     quote: { service: 'Cambio de parabrisas', location: 'domicilio', source: 'servicio' },
+    schedule: true,
+    cta: 'Agendá por WhatsApp',
   },
 ];

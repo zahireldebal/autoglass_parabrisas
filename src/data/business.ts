@@ -19,7 +19,7 @@ export const business = {
   shortName: 'Autoglass',
   tagline: 'Tu seguridad primero',
   description:
-    'Importación, venta y colocación de cristales automotrices para autos, camionetas y camiones en Maldonado: parabrisas, lunetas, vidrios de puerta, laterales y aletas, y láminas de seguridad Security Film. Venta mayorista para talleres. Colocación sin costo con la compra del cristal, servicio a domicilio sin cargo y parabrisas con tu seguro.',
+    'Importación, venta y colocación de cristales automotrices para autos, camionetas y camiones en Maldonado: parabrisas, lunetas, vidrios de puerta, laterales y aletas, y láminas de seguridad Security Film. Venta mayorista para talleres. Colocación sin costo con la compra del cristal y servicio a domicilio con agenda, sin cargo en Piriápolis, Maldonado y San Carlos. Parabrisas con tu seguro.',
 
   /** WhatsApp: solo dígitos, con código de país (Uruguay = 598). Se usa en TODOS los botones. */
   whatsapp: '59896126160',
@@ -70,10 +70,19 @@ export const business = {
   worksWithInsurance: true,
   /** Aseguradoras con las que trabajan (se muestran como texto, sin logos). */
   insurers: ['Mapfre', 'Porto Seguro', 'SURA', 'Sancor Seguros', 'Surco', 'Berkley', 'San Cristóbal', 'HDI'],
-  /** ¿Van a domicilio? Si es false, se oculta la opción en el formulario. */
+  /** ¿Van a domicilio? Si es false, se oculta la opción en el formulario. A domicilio es SIEMPRE con agenda previa. */
   homeService: true,
   /** Zonas donde el domicilio es SIN COSTO. */
-  homeServiceZones: ['Piriápolis', 'Maldonado', 'San Carlos', 'Rocha'],
+  homeServiceZones: ['Piriápolis', 'Maldonado', 'San Carlos'],
+  /** Otras zonas a las que también van (con costo: en la web NO se menciona el precio, solo que llegan). */
+  homeServiceOtherZones: ['Rocha'],
+  /** Días de recorrido por zona, tal cual el flyer de la clienta ("Para estar más cerca tuyo"). */
+  homeServiceDays: [
+    { zone: 'Maldonado', days: 'Todos los días' },
+    { zone: 'San Carlos', days: 'Lunes y jueves' },
+    { zone: 'Piriápolis y Pan de Azúcar', days: 'Miércoles' },
+    { zone: 'Rocha ciudad', days: 'Viernes' },
+  ],
   installments: 'Hasta 6 pagos con todas las tarjetas',
   /** Tiempo de cambio publicado. PENDIENTE de confirmar (ver PENDIENTES.md). */
   replacementTime: 'en menos de 1 hora',
@@ -89,3 +98,11 @@ export const business = {
 } as const;
 
 export const telHref = `tel:${business.phone}`;
+
+/** "a, b y c" */
+export const joinList = (items: readonly string[]) => items.join(', ').replace(/, ([^,]*)$/, ' y $1');
+
+/** Zonas sin costo, en texto: "Piriápolis, Maldonado y San Carlos". */
+export const homeServiceFreeZones = joinList(business.homeServiceZones);
+/** "También llegamos a Rocha." (sin hablar de precio) */
+export const homeServiceAlso = business.homeServiceOtherZones.length ? `También llegamos a ${joinList(business.homeServiceOtherZones)}.` : '';

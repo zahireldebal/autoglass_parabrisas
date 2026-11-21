@@ -38,7 +38,7 @@ export function localBusinessJsonLd() {
         opens: h.open,
         closes: h.close,
       })),
-    areaServed: business.homeServiceZones.map((z) => ({ '@type': 'City', name: z })),
+    areaServed: [...business.homeServiceZones, ...business.homeServiceOtherZones].map((z) => ({ '@type': 'City', name: z })),
     sameAs: [business.instagram.url, business.mapsUrl],
     paymentAccepted: 'Tarjeta de crédito, tarjeta de débito, efectivo',
     aggregateRating: {

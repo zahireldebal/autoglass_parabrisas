@@ -1,11 +1,14 @@
+import type { QuotePreset } from '@/components/quote/QuoteContext';
+import { business } from '@/data/business';
+
 /**
  * Preguntas frecuentes. Las marcadas con `pending` tienen un dato a confirmar
  * con la clienta (ver PENDIENTES.md); el texto visible ya no lleva marcadores.
  */
-export const faq: { q: string; a: string; list?: string[]; pending?: boolean }[] = [
+export const faq: { q: string; a: string; list?: string[]; pending?: boolean; cta?: { label: string; preset: QuotePreset } }[] = [
   {
     q: '¿Cuánto tarda un cambio de parabrisas?',
-    a: 'En la mayoría de los casos lo resolvemos en menos de 1 hora, y trabajamos sin turno: llegás, lo cambiamos y seguís camino. El tiempo puede variar según el vehículo.',
+    a: 'En la mayoría de los casos lo resolvemos en menos de 1 hora, y en el taller trabajamos sin turno: llegás, lo cambiamos y seguís camino. El tiempo puede variar según el vehículo.',
     pending: true,
   },
   {
@@ -47,7 +50,9 @@ export const faq: { q: string; a: string; list?: string[]; pending?: boolean }[]
   },
   {
     q: '¿Van a domicilio?',
-    a: 'Sí, vamos a domicilio sin costo adicional en Piriápolis, Maldonado, San Carlos y Rocha. Para otras zonas, consultanos.',
+    a: 'Sí, siempre con agenda previa. A domicilio sin costo en Piriápolis, Maldonado y San Carlos; también llegamos a Rocha. Estos son nuestros días de recorrido (los trabajos por día son limitados, así que agendá por WhatsApp):',
+    list: business.homeServiceDays.map((d) => `${d.zone}: ${d.days.toLowerCase()}.`),
+    cta: { label: 'Agendá por WhatsApp', preset: { service: 'Cambio de parabrisas', location: 'domicilio', source: 'servicio' } },
   },
   {
     q: '¿La colocación tiene costo?',

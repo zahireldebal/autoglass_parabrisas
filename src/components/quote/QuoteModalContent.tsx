@@ -86,7 +86,7 @@ export default function QuoteModalContent() {
             <div className="h-1 w-full bg-brand" aria-hidden />
             <div className="flex items-start justify-between gap-4 border-b border-line px-5 pt-4 pb-3 sm:px-7">
               <div>
-                <p className="eyebrow text-sm">Sin turno · Respuesta por WhatsApp</p>
+                <p className="eyebrow text-sm">Respuesta por WhatsApp</p>
                 <h2 id="quote-title" className="h-display mt-1 text-3xl sm:text-4xl">
                   {title}
                 </h2>

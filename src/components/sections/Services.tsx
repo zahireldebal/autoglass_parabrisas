@@ -1,3 +1,4 @@
+import { business } from '@/data/business';
 import { services } from '@/data/services';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { Picture } from '@/components/ui/Picture';
@@ -36,13 +37,30 @@ export function Services() {
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="h-display text-3xl">{s.title}</h3>
                   <p className="mt-3 text-mist">{s.description}</p>
-                  <ul className="mt-4 space-y-2">
-                    {s.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-[0.97rem]">
-                        <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand" /> {b}
-                      </li>
-                    ))}
-                  </ul>
+                  {s.bullets.length > 0 && (
+                    <ul className="mt-4 space-y-2">
+                      {s.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-[0.97rem]">
+                          <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand" /> {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {s.schedule && (
+                    <div className="mt-4 rounded-xl border border-line bg-ink/60 p-3">
+                      <p className="eyebrow text-xs">Días de recorrido</p>
+                      <ul className="mt-2 space-y-1.5 text-[0.95rem]">
+                        {business.homeServiceDays.map((d) => (
+                          <li key={d.zone} className="flex items-start gap-2">
+                            <IconCheck className="mt-1 h-4 w-4 shrink-0 text-brand" />
+                            <span>
+                              <strong className="font-semibold text-snow">{d.zone}:</strong> <span className="text-mist">{d.days.toLowerCase()}</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <div className="mt-auto flex flex-wrap-reverse gap-3 pt-6">
                     {s.whatsappMessage ? (
                       <a
@@ -55,8 +73,8 @@ export function Services() {
                         <IconWhatsApp className="h-5 w-5" /> Consultar
                       </a>
                     ) : (
-                      <QuoteButton preset={s.quote} className="btn btn-primary btn-sm" ariaLabel={`Consultar por ${s.title}`}>
-                        <IconWhatsApp className="h-5 w-5" /> Consultar
+                      <QuoteButton preset={s.quote} className="btn btn-primary btn-sm" ariaLabel={s.cta ? `${s.cta}: ${s.title}` : `Consultar por ${s.title}`}>
+                        <IconWhatsApp className="h-5 w-5" /> {s.cta ?? 'Consultar'}
                       </QuoteButton>
                     )}
                     {s.secondary && (
