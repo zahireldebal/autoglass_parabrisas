@@ -28,7 +28,7 @@ export const faq: { q: string; a: string; list?: string[]; pending?: boolean; ct
   },
   {
     q: '¿El seguro cubre el cambio?',
-    a: 'En la mayoría de los casos sí: si tu vehículo tiene seguro, posiblemente tengas un cambio de cristal gratis al año. Nosotros nos encargamos de toda la gestión con tu aseguradora. Trabajamos con Mapfre, Porto Seguro, SURA, Sancor, Surco, Berkley, San Cristóbal y HDI. Sujeto a la cobertura de tu póliza.',
+    a: 'En la mayoría de los casos, sí. El trámite lo hacés vos directamente con tu aseguradora; nosotros te asesoramos sobre qué pedir y cómo hacerlo. Trabajamos con Mapfre, Porto Seguro, SURA, Sancor, Surco, Berkley, San Cristóbal y HDI.',
   },
   {
     q: '¿Qué es la lámina de seguridad?',

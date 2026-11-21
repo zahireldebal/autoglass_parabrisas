@@ -24,8 +24,8 @@ export function Insurance() {
                 Tu parabrisas <span className="text-brand">gratis</span> con el seguro de tu vehículo
               </h2>
               <p className="mt-5 max-w-2xl text-lg text-snow/90 sm:text-xl">
-                Si tu vehículo tiene seguro, posiblemente tengas <strong className="text-snow">un cambio de cristal gratis al año</strong>. Nosotros nos
-                encargamos de toda la gestión con tu aseguradora.
+                Si tu vehículo tiene seguro, posiblemente tengas <strong className="text-snow">un cambio de cristal gratis al año</strong>. El trámite lo
+                hacés vos con tu aseguradora; nosotros te asesoramos en todo el proceso.
               </p>
 
               <h3 className="mt-8 font-display text-lg font-bold tracking-wide text-mist uppercase">Trabajamos con</h3>
@@ -38,8 +38,8 @@ export function Insurance() {
               </ul>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6" data-hide-fab>
-                <QuoteButton preset={{ service: 'Cambio de parabrisas', source: 'servicio' }} className="btn btn-primary text-lg sm:text-xl" ariaLabel="Consultanos por tu seguro">
-                  <IconWhatsApp className="h-6 w-6" /> Consultanos por tu seguro
+                <QuoteButton preset={{ service: 'Cambio de parabrisas', source: 'servicio' }} className="btn btn-primary text-lg sm:text-xl" ariaLabel="Consultanos y te asesoramos sobre tu seguro">
+                  <IconWhatsApp className="h-6 w-6" /> Consultanos y te asesoramos
                 </QuoteButton>
                 <p className="text-sm text-mist">Sujeto a la cobertura de tu póliza.</p>
               </div>

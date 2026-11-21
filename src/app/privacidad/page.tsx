@@ -65,11 +65,10 @@ export default function Privacidad() {
       <ul className={ul}>
         <li>Responder tu consulta y pasarte un presupuesto.</li>
         <li>Coordinar el día, el horario y el lugar del trabajo.</li>
-        <li>Hacer el trámite con tu aseguradora, cuando el trabajo es por seguro y vos nos lo pedís.</li>
         <li>Emitir la factura y cumplir con nuestras obligaciones legales.</li>
       </ul>
       <p className={p}>
-        Solo compartimos tus datos con tu aseguradora, cuando el trabajo es por seguro, o cuando una ley nos lo exige.
+        No compartimos tus datos con terceros, salvo cuando una ley nos lo exige.
       </p>
 
       <h2 className={h2}>Cómo nos llegan</h2>
