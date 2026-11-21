@@ -76,14 +76,14 @@ export const business = {
   homeService: true,
   /** Zonas donde el domicilio es SIN COSTO. */
   homeServiceZones: ['Piriápolis', 'Maldonado', 'San Carlos'],
-  /** Otras zonas a las que también van (con costo: en la web NO se menciona el precio, solo que llegan). */
+  /** Otras zonas a las que también van, con costo adicional (se aclara en la web, sin monto). */
   homeServiceOtherZones: ['Rocha'],
   /** Días de recorrido por zona, tal cual el flyer de la clienta ("Para estar más cerca tuyo"). */
   homeServiceDays: [
     { zone: 'Maldonado', days: 'Todos los días' },
     { zone: 'San Carlos', days: 'Lunes y jueves' },
     { zone: 'Piriápolis y Pan de Azúcar', days: 'Miércoles' },
-    { zone: 'Rocha ciudad', days: 'Viernes' },
+    { zone: 'Rocha ciudad (con costo adicional)', days: 'Viernes' },
   ],
   installments: 'Hasta 6 pagos con todas las tarjetas',
   /** Tiempo de cambio publicado. PENDIENTE de confirmar (ver PENDIENTES.md). */
@@ -106,5 +106,5 @@ export const joinList = (items: readonly string[]) => items.join(', ').replace(/
 
 /** Zonas sin costo, en texto: "Piriápolis, Maldonado y San Carlos". */
 export const homeServiceFreeZones = joinList(business.homeServiceZones);
-/** "También llegamos a Rocha." (sin hablar de precio) */
-export const homeServiceAlso = business.homeServiceOtherZones.length ? `También llegamos a ${joinList(business.homeServiceOtherZones)}.` : '';
+/** "También llegamos a Rocha, con costo adicional." */
+export const homeServiceAlso = business.homeServiceOtherZones.length ? `También llegamos a ${joinList(business.homeServiceOtherZones)}, con costo adicional.` : '';

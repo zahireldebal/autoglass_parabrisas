@@ -85,11 +85,11 @@ Cada sector tiene su imagen comparativa en la carpeta "antesdespuesv3finalisima"
 **Sector 01 – Logo:** el logo de arriba y el de abajo de la página ya no tienen el círculo negro. Queda solo el auto y las letras "Auto Glass", integrados al fondo de la página.
 Ver: 01-header-comparacion-desktop.png
 
-**Sector 02 – Portada:** en computadora, la línea amarilla diagonal que separa el texto de la foto ahora acompaña el borde de la foto de arriba a abajo, con el mismo grosor, y ya no pasa por encima del menú. En celular se ve igual que antes. El texto ahora dice que el servicio a domicilio es con agenda, sin cargo en Piriápolis, Maldonado y San Carlos, y que también llegamos a Rocha. Abajo dice "En el taller, sin turno".
+**Sector 02 – Portada:** en computadora, la línea amarilla diagonal que separa el texto de la foto ahora acompaña el borde de la foto de arriba a abajo, con el mismo grosor, y ya no pasa por encima del menú. En celular se ve igual que antes. El texto ahora dice que el servicio a domicilio es con agenda, sin cargo en Piriápolis, Maldonado y San Carlos, y que también llegamos a Rocha, con costo adicional. Abajo dice "En el taller, sin turno".
 Ver: 02-hero-comparacion-desktop.png
 
 **Sector 03 – Beneficios:**
-- "A domicilio sin costo": Piriápolis, Maldonado y San Carlos, con agenda. También llegamos a Rocha.
+- "A domicilio sin costo": Piriápolis, Maldonado y San Carlos, con agenda. También llegamos a Rocha, con costo adicional.
 - "Parabrisas con tu seguro" pasa a ser "Asesoramiento con tu seguro": el trámite lo hacés vos y te asesoramos en todo el proceso.
 - "Stock para todas las marcas" ahora dice "Consultanos por el tuyo." Era el único lugar de la página donde decía "lo conseguimos".
 
@@ -99,7 +99,7 @@ Ver: 03-beneficios-comparacion-mobile.png
 - Maldonado: todos los días.
 - San Carlos: lunes y jueves.
 - Piriápolis y Pan de Azúcar: miércoles.
-- Rocha ciudad: viernes.
+- Rocha ciudad (con costo adicional): viernes.
 
 El botón ahora dice "Agendá por WhatsApp".
 Ver: 04-servicios-comparacion-mobile.png

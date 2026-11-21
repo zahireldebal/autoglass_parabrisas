@@ -50,7 +50,7 @@ export const faq: { q: string; a: string; list?: string[]; pending?: boolean; ct
   },
   {
     q: '¿Van a domicilio?',
-    a: 'Sí, siempre con agenda previa. A domicilio sin costo en Piriápolis, Maldonado y San Carlos; también llegamos a Rocha. Estos son nuestros días de recorrido (los trabajos por día son limitados, así que agendá por WhatsApp):',
+    a: 'Sí, siempre con agenda previa. A domicilio sin costo en Piriápolis, Maldonado y San Carlos; también llegamos a Rocha, con costo adicional. Estos son nuestros días de recorrido (los trabajos por día son limitados, así que agendá por WhatsApp):',
     list: business.homeServiceDays.map((d) => `${d.zone}: ${d.days.toLowerCase()}.`),
     cta: { label: 'Agendá por WhatsApp', preset: { service: 'Cambio de parabrisas', location: 'domicilio', source: 'servicio' } },
   },
