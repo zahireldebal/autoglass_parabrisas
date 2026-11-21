@@ -40,11 +40,14 @@ export function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        compact || menuOpen ? 'bg-ink/92 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.8)] backdrop-blur-md' : 'bg-gradient-to-b from-ink/80 to-transparent'
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-40 bg-gradient-to-b from-ink/80 to-transparent">
+      {/* Fondo con blur al bajar: aparece con un fundido (un degradado no se puede transicionar) */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 -z-10 bg-ink/88 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.8)] backdrop-blur-md backdrop-saturate-150 transition-opacity duration-300 ${
+          compact || menuOpen ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
       <a href="#contenido" className="sr-only-focusable btn btn-primary btn-sm absolute left-4 top-2 z-50">
         Saltar al contenido
       </a>
