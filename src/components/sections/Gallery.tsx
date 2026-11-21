@@ -55,7 +55,12 @@ export function Gallery() {
 
         <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
               {items.map((g, i) => (
-                <li key={`${filter}-${g.name}`} className={`fade-in ${i === 0 ? 'col-span-2 lg:col-span-2 lg:row-span-2' : ''}`}>
+                <li
+                  key={`${filter}-${g.name}`}
+                  // Al cambiar de filtro, las fotos entran en cascada corta (máx. ~0,3 s en total)
+                  style={{ animationDelay: `${Math.min(i, 8) * 35}ms` }}
+                  className={`fade-in ${i === 0 ? 'col-span-2 lg:col-span-2 lg:row-span-2' : ''}`}
+                >
                   <button
                     ref={(el) => {
                       triggers.current[i] = el;
