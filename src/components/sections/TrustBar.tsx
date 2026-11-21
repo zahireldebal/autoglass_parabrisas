@@ -9,7 +9,7 @@ const items = [
   { icon: IconShield, title: 'Asesoramiento con tu seguro', text: 'El trámite lo hacés vos; te asesoramos en todo el proceso.' },
   { icon: IconCard, title: 'Hasta 6 pagos', text: 'Con todas las tarjetas.' },
   { icon: IconTruck, title: 'Autos, camionetas y camiones', text: 'Cristales y láminas de seguridad para tu vehículo.' },
-  { icon: IconBoxes, title: 'Stock para todas las marcas', text: 'Y si no está, lo conseguimos.' },
+  { icon: IconBoxes, title: 'Stock para todas las marcas', text: 'Consultanos por el tuyo.' },
 ];
 
 export function TrustBar() {
