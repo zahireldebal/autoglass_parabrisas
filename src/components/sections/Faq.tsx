@@ -34,7 +34,7 @@ export function Faq() {
               const btnId = `${uid}-q${i}`;
               const panelId = `${uid}-a${i}`;
               return (
-                <li key={f.q}>
+                <li key={f.q} className={`transition-colors duration-300 ${isOpen ? 'bg-white/[0.025]' : ''}`}>
                   <h3>
                     <button
                       id={btnId}
@@ -42,7 +42,7 @@ export function Faq() {
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => setOpen(isOpen ? null : i)}
-                      className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold transition-colors hover:text-brand sm:px-6"
+                      className={`flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold transition-colors hover:text-brand sm:px-6 ${isOpen ? 'text-brand' : ''}`}
                     >
                       {f.q}
                       <IconChevronDown className={`h-6 w-6 shrink-0 text-brand transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />

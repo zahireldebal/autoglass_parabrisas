@@ -423,6 +423,21 @@
   overflow: hidden;
   min-height: 0;
 }
+/* El contenido acompaña la apertura con un desplazamiento corto (y se va antes al cerrar) */
+.expand-panel > * > * {
+  transform: translateY(-6px);
+  transition: transform 320ms var(--ease-out-soft);
+}
+.expand-panel[data-open='true'] > * > * {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .expand-panel > * > *,
+  a.card-hover:hover,
+  a.card-hover:active {
+    transform: none;
+  }
+}
 
 @keyframes fade-in {
   from {
