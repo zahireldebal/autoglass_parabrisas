@@ -34,10 +34,10 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+  /* El contorno sigue la forma de cada elemento (botón, chip, tarjeta): no se le cambia el radio al enfocar */
   :focus-visible {
     outline: 3px solid var(--color-brand);
     outline-offset: 3px;
-    border-radius: 4px;
   }
   ::selection {
     background: var(--color-brand);
@@ -226,6 +226,25 @@
     background: linear-gradient(180deg, var(--color-carbon-2), var(--color-carbon));
     border: 1px solid var(--color-line);
     border-radius: 1rem;
+  }
+  /* Tarjetas con acción: el borde se enciende al pasar el mouse; las que son un link además se elevan apenas */
+  .card-hover {
+    transition:
+      border-color 260ms var(--ease-out-soft),
+      transform 260ms var(--ease-out-soft),
+      box-shadow 260ms var(--ease-out-soft);
+  }
+  @media (hover: hover) {
+    .card-hover:hover {
+      border-color: rgb(240 179 49 / 0.55);
+      box-shadow: 0 18px 36px -24px rgb(0 0 0 / 0.9);
+    }
+    a.card-hover:hover {
+      transform: translateY(-2px);
+    }
+  }
+  a.card-hover:active {
+    transform: scale(0.985);
   }
 
   /* Campos del formulario */

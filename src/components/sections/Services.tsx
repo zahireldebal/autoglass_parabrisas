@@ -24,7 +24,7 @@ export function Services() {
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => (
             <Reveal as="li" key={s.id} delay={(i % 4) * 0.08} className="h-full">
-              <article className="card group flex h-full flex-col overflow-hidden">
+              <article className="card card-hover group flex h-full flex-col overflow-hidden">
                 <div className="glass-sheen relative aspect-[16/11] overflow-hidden">
                   <Picture
                     name={s.image}

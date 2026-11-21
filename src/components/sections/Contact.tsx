@@ -32,7 +32,7 @@ export function Contact() {
           <Reveal delay={0.08} className="grid content-start gap-6">
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <li>
-                <a href={buildWhatsAppUrl('Hola, quiero hacer una consulta.')} target="_blank" rel="noopener noreferrer" className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                <a href={buildWhatsAppUrl('Hola, quiero hacer una consulta.')} target="_blank" rel="noopener noreferrer" className="card card-hover flex min-h-20 items-center gap-4 p-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-ink">
                     <IconWhatsApp className="h-6 w-6" />
                   </span>
@@ -43,7 +43,7 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <a href={telHref} className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                <a href={telHref} className="card card-hover flex min-h-20 items-center gap-4 p-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-steel text-brand">
                     <IconPhone className="h-6 w-6" />
                   </span>
@@ -54,7 +54,7 @@ export function Contact() {
                 </a>
               </li>
               <li className="sm:col-span-2 lg:col-span-1 xl:col-span-2">
-                <a href={`mailto:${business.email}`} className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                <a href={`mailto:${business.email}`} className="card card-hover flex min-h-20 items-center gap-4 p-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-steel text-brand">
                     <IconMail className="h-6 w-6" />
                   </span>
@@ -65,7 +65,7 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <a href={business.instagram.url} target="_blank" rel="noopener noreferrer" className="card flex min-h-20 items-center gap-4 p-4 transition-colors hover:border-brand">
+                <a href={business.instagram.url} target="_blank" rel="noopener noreferrer" className="card card-hover flex min-h-20 items-center gap-4 p-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-steel text-brand">
                     <IconInstagram className="h-6 w-6" />
                   </span>
