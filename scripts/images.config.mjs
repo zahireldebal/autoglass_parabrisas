@@ -34,7 +34,6 @@ export const IMAGES = [
   { name: 'cambio-parabrisas-taller', dir: 'nuevasfotos', source: 'cambiandoparabrisas.png', crop: { left: 0, top: 0, width: 670, height: 1448 } },
   { name: 'taller-recepcion', dir: 'nuevasfotos', source: 'fotosprofesionales.png' },
   { name: 'taller-stock', dir: 'nuevasfotos', source: 'fotosprofesionales2.png' },
-  { name: 'taller-oficina', dir: 'nuevasfotos', source: 'fotosprofesionales3.png' },
 
   // ——— Ronda 2 (nuevasfotosv2/): reemplazos pedidos por la clienta ———
   // Portada (hero). Original 1536x2048: se recorta el borde izquierdo (cartel viejo de "polarizados").
@@ -46,4 +45,8 @@ export const IMAGES = [
   { name: 'stock-cristales', dir: 'nuevasfotosv2', source: 'ventamayorista DESPUES.png', crop: { left: 0, top: 350, width: 1086, height: 747 } },
   // Galería, "Colocación de lámina de seguridad".
   { name: 'lamina-lateral', dir: 'nuevasfotosv2', source: 'colocacion de laminas de seguridad DESPUES.png' },
+
+  // ——— Ronda 3 (nuevasfotosv3/) ———
+  // Galería, "Atención en el taller": frente nuevo de la oficina (reemplaza a taller-oficina, que tenía una goma a medio colocar).
+  { name: 'oficina-frente', dir: 'nuevasfotosv3', source: 'foto de atencion en el taller cambiar(despues).png' },
 ];

@@ -78,6 +78,7 @@ export function Gallery() {
                       alt={g.alt}
                       loading="lazy"
                       decoding="async"
+                      style={g.position ? { objectPosition: g.position } : undefined}
                       className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${i === 0 ? 'aspect-[4/3] lg:aspect-auto' : 'aspect-square'}`}
                     />
                     <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-3 pt-10 text-left text-sm font-semibold sm:text-base">

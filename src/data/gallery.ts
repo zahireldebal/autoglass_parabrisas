@@ -11,7 +11,7 @@ export const GALLERY_CATEGORIES = [
 ] as const;
 export type GalleryCategory = (typeof GALLERY_CATEGORIES)[number]['value'];
 
-export const gallery: { name: string; alt: string; caption: string; category: GalleryCategory }[] = [
+export const gallery: { name: string; alt: string; caption: string; category: GalleryCategory; /** object-position de la miniatura */ position?: string }[] = [
   {
     name: 'taller-stock',
     alt: 'Pasillo del taller Autoglass con estanterías altas llenas de parabrisas, escalera de madera y banco de herramientas',
@@ -55,8 +55,10 @@ export const gallery: { name: string; alt: string; caption: string; category: Ga
     category: 'parabrisas',
   },
   {
-    name: 'taller-oficina',
-    alt: 'Oficina del taller Autoglass con carteles de las marcas Pilkington y Saint-Gobain Sekurit',
+    name: 'oficina-frente',
+    alt: 'Frente de la oficina del taller Autoglass: pared gris oscura con letras doradas "Auto Glass", carteles de Pilkington y Saint-Gobain Sekurit y ventana de atención',
+    // Foto horizontal en tarjeta cuadrada: se corre a la izquierda para que entren las letras y la puerta
+    position: '22% 50%',
     caption: 'Atención en el taller',
     category: 'taller',
   },
