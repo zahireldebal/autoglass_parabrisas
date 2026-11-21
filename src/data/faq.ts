@@ -35,7 +35,7 @@ export const faq: { q: string; a: string; list?: string[]; pending?: boolean; ct
     a: 'Es una lámina que, además de darle tonalidad al vidrio, lo mantiene unido ante un impacto y dificulta el ingreso al vehículo. Tono 20 %.',
   },
   {
-    q: '¿Qué cuidados hay que tener con las láminas de seguridad?',
+    q: '¿Qué cuidados hay que tener con las láminas de seguridad después de la instalación?',
     a: 'Tené en cuenta estos cuidados:',
     list: [
       'No bajes los vidrios durante las primeras 24 horas.',
