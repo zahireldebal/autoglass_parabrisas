@@ -344,6 +344,20 @@
   animation: hero-photo-settle 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Hero en desktop: la foto se corta en diagonal y la línea amarilla ES ese borde (paralela a la foto,
+   mismo grosor de arriba a abajo). La línea aparece recién debajo del menú, para no cruzar los links. */
+@media (min-width: 1024px) {
+  .hero-media {
+    --hero-cut: 7rem; /* cuánto entra la diagonal arriba (≈ 7° sobre el alto del hero) */
+    --hero-line: 4px;
+    clip-path: polygon(var(--hero-cut) 0, 100% 0, 100% 100%, 0 100%);
+    background: linear-gradient(to bottom, transparent 0, transparent 4.75rem, var(--color-brand) 9rem);
+  }
+  .hero-media-photo {
+    clip-path: polygon(calc(var(--hero-cut) + var(--hero-line)) 0, 100% 0, 100% 100%, var(--hero-line) 100%);
+  }
+}
+
 /* Brillo que recorre el parabrisas (versión liviana del simulador) */
 @keyframes sheen-sweep {
   from {

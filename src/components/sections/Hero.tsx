@@ -14,20 +14,20 @@ export function Hero() {
   return (
     <section id="inicio" aria-labelledby="hero-title" className="cut-bottom relative overflow-hidden bg-ink">
       {/* Foto real de un trabajo: en celular y tablet va arriba, limpia y sin texto encima; en desktop, a la derecha */}
-      <div className="relative h-[50svh] min-h-[20rem] overflow-hidden lg:absolute lg:overflow-visible lg:inset-0 lg:left-auto lg:h-auto lg:min-h-0 lg:w-[46%]">
-        <Picture
-          name={HERO_IMG}
-          alt="Técnico de Autoglass con la remera del taller aplicando sellador en el marco del parabrisas de un vehículo blanco, en el taller de Maldonado"
-          sizes={HERO_SIZES}
-          priority
-          className="hero-photo h-full w-full object-cover object-[50%_42%] lg:object-[50%_38%]"
-        />
-        {/* Celular: la foto queda limpia; solo se funde abajo con el fondo (donde empieza el texto) y un toque arriba,
-            detrás del menú. Desktop: el texto va al costado → solo se funde el borde izquierdo. */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-ink)_0%,transparent_32%,transparent_80%,rgb(12_16_20/0.45)_100%)] lg:bg-none lg:bg-gradient-to-r lg:from-ink lg:via-ink/10 lg:via-25% lg:to-transparent" />
-        {/* Franja amarilla en el borde diagonal (desktop) */}
-        <div className="absolute inset-y-0 -left-10 hidden w-24 origin-top -skew-x-[8deg] bg-ink lg:block" />
-        <div className="absolute inset-y-0 left-[2.6rem] hidden w-[3px] origin-top -skew-x-[8deg] bg-brand lg:block" />
+      {/* Desktop: .hero-media corta la foto en diagonal y su fondo amarillo asoma como la línea del borde (ver globals.css) */}
+      <div className="hero-media relative h-[50svh] min-h-[20rem] overflow-hidden lg:absolute lg:inset-0 lg:left-auto lg:h-auto lg:min-h-0 lg:w-[46%]">
+        <div className="hero-media-photo absolute inset-0 overflow-hidden">
+          <Picture
+            name={HERO_IMG}
+            alt="Técnico de Autoglass con la remera del taller aplicando sellador en el marco del parabrisas de un vehículo blanco, en el taller de Maldonado"
+            sizes={HERO_SIZES}
+            priority
+            className="hero-photo h-full w-full object-cover object-[50%_42%] lg:object-[50%_38%]"
+          />
+          {/* Celular: la foto queda limpia; solo se funde abajo con el fondo (donde empieza el texto) y un toque arriba,
+              detrás del menú. Desktop: sombra suave desde la línea hacia la foto, para darle profundidad. */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-ink)_0%,transparent_32%,transparent_80%,rgb(12_16_20/0.45)_100%)] lg:bg-[linear-gradient(to_right,rgb(12_16_20/0.55)_0%,transparent_22%),linear-gradient(to_bottom,rgb(12_16_20/0.5)_0%,transparent_7rem)]" />
+        </div>
       </div>
 
       <div className="container-x relative -mt-6 flex flex-col pb-[calc(3.5vw+3.5rem)] lg:mt-0 lg:min-h-[44rem] lg:justify-center lg:pt-28">
